@@ -1,1 +1,36 @@
+name: Run Python Script and Push Changes
 
+on:
+  schedule:
+    - cron: '0 5 */2 * *'  # Runs every 2 days at 05:00 UTC
+  workflow_dispatch:  # Allows manual triggering
+
+jobs:
+  run-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      - name: Run Python script
+        run: python getData.py
+
+      - name: Git Auto Commit
+        uses: stefanzweifel/git-auto-commit-action@v6
+        with:
+          commit_message: "Update data from getData.py"
+          file_pattern: "allFiles/* currentFiles/*"
+          branch: main
+          commit_author: GitHub Actions <actions@github.com>
