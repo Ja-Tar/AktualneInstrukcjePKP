@@ -140,7 +140,7 @@ def merge_duplicate_file_versions(files: list[File]) -> list[File]:
             # Combine the file versions
             combined_versions = []
             for f in files_group:
-                print("Więcej niż jedna wersja:", f.number, f.versions)
+                #print("Więcej niż jedna wersja:", f.number, f.versions)
                 combined_versions.extend(f.versions)
             # Create a new File object with the combined versions
             combined_file = File(files_group[0].number, combined_versions)
