@@ -1,0 +1,549 @@
+[
+    {
+        "number": "Ir-1",
+        "versions": [
+            {
+                "name": "Instrukcja o prowadzeniu ruchu pociągów",
+                "number": "Ir-1",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Instrukcja_Ir-1_od_29_05_2025_WCAG..pdf",
+                "wcag": true,
+                "from_date": "2025-05-29",
+                "to_date": null
+            },
+            {
+                "name": "Instrukcja o prowadzeniu ruchu pociągów",
+                "number": "Ir-1",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/02_Instrukcja_Ir-1_WCAG-od_20.05.2025.pdf",
+                "wcag": true,
+                "from_date": "2025-05-20",
+                "to_date": "2025-05-28"
+            },
+            {
+                "name": "Instrukcja o prowadzeniu ruchu pociągów",
+                "number": "Ir-1",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir-1_format_A4__ze_egz_porown_09.04.pdf",
+                "wcag": true,
+                "from_date": "2025-05-10",
+                "to_date": "2025-05-19"
+            },
+            {
+                "name": "Instrukcja o prowadzeniu ruchu pociągów",
+                "number": "Ir-1",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir-1_format_A4__zm._14.pdf",
+                "wcag": true,
+                "from_date": "2024-12-01",
+                "to_date": "2025-05-09"
+            },
+            {
+                "name": "Instrukcja o prowadzeniu ruchu pociągów",
+                "number": "Ir-1",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir-1_format_A4__zm._13_-_obowiazuje_od_2024-09-12.pdf",
+                "wcag": true,
+                "from_date": "2024-09-12",
+                "to_date": "2024-11-30"
+            },
+            {
+                "name": "Instrukcja o prowadzeniu ruchu pociągów",
+                "number": "Ir-1",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir-1_format_A4__zm._12_od_29.11.2023.pdf",
+                "wcag": true,
+                "from_date": "2023-11-29",
+                "to_date": "2024-09-11"
+            },
+            {
+                "name": "Instrukcja o prowadzeniu ruchu pociągów",
+                "number": "Ir-1",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir-1_format_A4__zm._11.pdf",
+                "wcag": true,
+                "from_date": "2024-01-01",
+                "to_date": "2024-09-11"
+            },
+            {
+                "name": "Instrukcja o prowadzeniu ruchu pociągów",
+                "number": "Ir-1",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Instrukcja_Ir-1_-_obowiazuje_od_01.08.2023_r..pdf",
+                "wcag": true,
+                "from_date": "2023-08-01",
+                "to_date": "2023-12-31"
+            },
+            {
+                "name": "Instrukcja o prowadzeniu ruchu pociągów",
+                "number": "Ir-1",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir-1_format_A4__zm._9_-_wchodzi_w_zycie_z_dniem_1_lutego_2023.pdf",
+                "wcag": true,
+                "from_date": "2023-02-01",
+                "to_date": "2023-07-31"
+            },
+            {
+                "name": "Instrukcja o prowadzeniu ruchu pociągów",
+                "number": "Ir-1",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir-1_format_A4__zm._VIII.pdf",
+                "wcag": true,
+                "from_date": "2022-10-31",
+                "to_date": "2023-01-31"
+            }
+        ]
+    },
+    {
+        "number": "Ir-1a",
+        "versions": [
+            {
+                "name": "Instrukcja o prowadzeniu ruchu pociągów z wykorzystaniem systemu ERTMS/ETCS poziomu 1",
+                "number": "Ir-1a",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Instrukcja_Ir-1a_06_08_2025.pdf",
+                "wcag": true,
+                "from_date": "2024-08-07",
+                "to_date": null
+            }
+        ]
+    },
+    {
+        "number": "Ir-1b",
+        "versions": [
+            {
+                "name": "Instrukcja o prowadzeniu ruchu pociągów z wykorzystaniem systemu ERTMS/ETCS poziomu 2",
+                "number": "Ir-1b",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Instrukcja_Ir-1b_20.12.2023.pdf",
+                "wcag": true,
+                "from_date": "2023-12-20",
+                "to_date": null
+            }
+        ]
+    },
+    {
+        "number": "Ir-2",
+        "versions": [
+            {
+                "name": "Instrukcja dla pracowników posterunków nastawczych",
+                "number": "Ir-2",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Instrukcja_Ir-2_obowiazuje_od_17_06_2024.pdf",
+                "wcag": true,
+                "from_date": "2024-06-17",
+                "to_date": null
+            },
+            {
+                "name": "Instrukcja dla pracowników posterunków nastawczych",
+                "number": "Ir-2",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir-2__R-7__WCAG.pdf",
+                "wcag": true,
+                "from_date": "2015-11-01",
+                "to_date": null
+            }
+        ]
+    },
+    {
+        "number": "Ir-3",
+        "versions": [
+            {
+                "name": "Instrukcja o sporządzaniu regulaminów technicznych",
+                "number": "Ir-3",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/03_Instrukcja_Ir-3_WCAG_od_16.05.2025.pdf",
+                "wcag": true,
+                "from_date": "2025-05-16",
+                "to_date": null
+            },
+            {
+                "name": "Instrukcja o sporządzaniu regulaminów technicznych",
+                "number": "Ir-3",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir-3_WCAG_.pdf",
+                "wcag": true,
+                "from_date": "2023-11-21",
+                "to_date": "2025-05-15"
+            }
+        ]
+    },
+    {
+        "number": "Ir-5",
+        "versions": [
+            {
+                "name": "Instrukcja o użytkowaniu urządzeń radiołączności pociągowej",
+                "number": "Ir-5",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir-5_wersja_WCAG-_obowiazuje_od_31.05.2025.pdf",
+                "wcag": true,
+                "from_date": "2025-05-31",
+                "to_date": null
+            },
+            {
+                "name": "Instrukcja o użytkowaniu urządzeń radiołączności pociągowej",
+                "number": "Ir-5",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir-5_zm._3.pdf",
+                "wcag": false,
+                "from_date": "2025-05-31",
+                "to_date": null
+            },
+            {
+                "name": "Instrukcja o użytkowaniu urządzeń radiołączności pociągowej",
+                "number": "Ir-5",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir-5__R-12__WCAG_format_A4__Z_.pdf",
+                "wcag": true,
+                "from_date": "2016-12-11",
+                "to_date": null
+            },
+            {
+                "name": "Instrukcja o użytkowaniu urządzeń radiołączności pociągowej",
+                "number": "Ir-5",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Instrukcja_o_uzytkowaniu_urzadzen_radiolacznosci_pociagowej_Ir-5__R-12_.pdf",
+                "wcag": false,
+                "from_date": null,
+                "to_date": null
+            }
+        ]
+    },
+    {
+        "number": "Ir-5a",
+        "versions": [
+            {
+                "name": "Instrukcja o użytkowaniu urządzeń radiołączności w sieci GSM-R",
+                "number": "Ir-5a",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir-5a_WCAG_-_obowiazuje_od_31.03.2025.pdf",
+                "wcag": true,
+                "from_date": null,
+                "to_date": null
+            },
+            {
+                "name": "Instrukcja o użytkowaniu urządzeń radiołączności w sieci GSM-R",
+                "number": "Ir-5a",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir-5a_-_obowiazuje_od_31.03.2025.pdf",
+                "wcag": false,
+                "from_date": null,
+                "to_date": null
+            }
+        ]
+    },
+    {
+        "number": "Ir-7",
+        "versions": [
+            {
+                "name": "Instrukcja obsługi przejazdów kolejowo-drogowych i przejść",
+                "number": "Ir-7",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir-7_ujednolicony__2024_WCAG_05.12.2024.pdf",
+                "wcag": true,
+                "from_date": "2024-12-01",
+                "to_date": null
+            },
+            {
+                "name": "Instrukcja obsługi przejazdów kolejowo-drogowych i przejść",
+                "number": "Ir-7",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir-7__-_obowiazuje_od_03.08.2020__z_wyjatkiem___1_ust._5_-_od_01.12.2020_.pdf",
+                "wcag": false,
+                "from_date": "2020-06-05",
+                "to_date": null
+            }
+        ]
+    },
+    {
+        "number": "Ir-8",
+        "versions": [
+            {
+                "name": "Instrukcja o postępowaniu w sprawach poważnych wypadków, wypadków i incydentów w transporcie kolejowym",
+                "number": "Ir-8",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Instrukcja_Ir-8_-_obowiazuje_od_dnia_7_marca_2020_r._-_WCAG.PDF",
+                "wcag": true,
+                "from_date": "2020-03-07",
+                "to_date": null
+            }
+        ]
+    },
+    {
+        "number": "Ir-9",
+        "versions": [
+            {
+                "name": "Instrukcja o technice wykonywania manewrów",
+                "number": "Ir-9",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir-9_zm._5_format_A4.pdf",
+                "wcag": true,
+                "from_date": "2025-05-20",
+                "to_date": null
+            },
+            {
+                "name": "Instrukcja o technice wykonywania manewrów",
+                "number": "Ir-9",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Instrukcja_o_technice_wykonywania_manewrow_Ir-9_-_obowiazuje_od_1_marca_....pdf",
+                "wcag": false,
+                "from_date": "2019-03-01",
+                "to_date": null
+            }
+        ]
+    },
+    {
+        "number": "Ir-10",
+        "versions": [
+            {
+                "name": "Instrukcja o przewozie przesyłek nadzwyczajnych po torze 1435 mm",
+                "number": "Ir-10",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/WCAG_Ir-10_instrukcja_o_przewozie_przesylek_nadzwyczajnych_po_torze_1435_mm.pdf",
+                "wcag": true,
+                "from_date": "2022-03-01",
+                "to_date": null
+            },
+            {
+                "name": "Instrukcja o przewozie przesyłek nadzwyczajnych po torze 1435 mm",
+                "number": "Ir-10",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir-10_instrukcja_o_przewozie_przesylek_nadzwyczajnych_po_torze_1435_mm.pdf",
+                "wcag": false,
+                "from_date": "2022-03-01",
+                "to_date": null
+            },
+            {
+                "name": "Instrukcja o przewozie przesyłek nadzwyczajnych",
+                "number": "Ir-10",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir-10.pdf",
+                "wcag": false,
+                "from_date": null,
+                "to_date": null
+            }
+        ]
+    },
+    {
+        "number": "Ir-10a",
+        "versions": [
+            {
+                "name": "Instrukcja o przewozie przesyłek nadzwyczajnych po torze 1520 mm",
+                "number": "",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/WCAG_Ir-10a_instrukcja_o_przewozie_przesylek_nadzwyczajnych_po_torze_1520_mm.pdf",
+                "wcag": true,
+                "from_date": "2022-03-01",
+                "to_date": null
+            },
+            {
+                "name": "Instrukcja o przewozie przesyłek nadzwyczajnych po torze 1520 mm",
+                "number": "",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir-10a_instrukcja_o_przewozie_przesylek_nadzwyczajnych_po_torze_1520_mm.pdf",
+                "wcag": false,
+                "from_date": "2022-03-01",
+                "to_date": null
+            }
+        ]
+    },
+    {
+        "number": "Ir-11",
+        "versions": [
+            {
+                "name": "Instrukcja o rozkładzie jazdy pociągów",
+                "number": "Ir-11",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Instrukcja_Ir-11_o_rozkladzie_jazdy_12_10__2021.pdf",
+                "wcag": true,
+                "from_date": "2021-11-11",
+                "to_date": null
+            },
+            {
+                "name": "Instrukcja o rozkładzie jazdy pociągów",
+                "number": "Ir-11",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Instrukcja_Ir-11_18_12_2015_.pdf",
+                "wcag": false,
+                "from_date": null,
+                "to_date": "2021-11-10"
+            }
+        ]
+    },
+    {
+        "number": "Ir-13",
+        "versions": [
+            {
+                "name": "Instrukcja dla dyspozytora zarządcy infrastruktury kolejowej",
+                "number": "Ir-13",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir_-13_1_03_2015.pdf",
+                "wcag": false,
+                "from_date": null,
+                "to_date": null
+            }
+        ]
+    },
+    {
+        "number": "Ir-14",
+        "versions": [
+            {
+                "name": "Instrukcja o kontroli biegu pociągów pasażerskich i towarowych",
+                "number": "Ir-14",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Instrukcja_Ir_14_WCAG_-_obowiazuje_od_15.12.2024.pdf",
+                "wcag": true,
+                "from_date": "2024-12-15",
+                "to_date": null
+            },
+            {
+                "name": "Instrukcja o kontroli biegu pociągów pasażerskich i towarowych",
+                "number": "Ir-14",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Instrukcja_Ir_14_jednolita_dnia_10.12.2024.pdf",
+                "wcag": false,
+                "from_date": "2024-12-15",
+                "to_date": null
+            },
+            {
+                "name": "Instrukcja o kontroli biegu pociągów pasażerskich i towarowych",
+                "number": "Ir-14",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Instrukcja_Ir_14_w_wersji_WCAG.pdf",
+                "wcag": true,
+                "from_date": "2023-09-12",
+                "to_date": null
+            },
+            {
+                "name": "Instrukcja o kontroli biegu pociągów pasażerskich i towarowych",
+                "number": "Ir-14",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Instrukcja_Ir_14_z_poprawkami_zatwierdzonymi_przez_Zarzad_12_wrzesnia__002_.pdf",
+                "wcag": false,
+                "from_date": "2023-09-12",
+                "to_date": null
+            }
+        ]
+    },
+    {
+        "number": "Ir-15",
+        "versions": [
+            {
+                "name": "Instrukcja o kolejowym ratownictwie technicznym",
+                "number": "Ir-15",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir_-15_WCAG_.PDF",
+                "wcag": true,
+                "from_date": null,
+                "to_date": null
+            }
+        ]
+    },
+    {
+        "number": "Ir-16",
+        "versions": [
+            {
+                "name": "Instrukcja o postępowaniu przy przewozie koleją towarów niebezpiecznych",
+                "number": "Ir-16",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Instrukcja_Ir-16_WCAG_od_01.07.2025.pdf",
+                "wcag": true,
+                "from_date": "2025-07-01",
+                "to_date": null
+            },
+            {
+                "name": "Instrukcja o postępowaniu przy przewozie koleją towarów niebezpiecznych",
+                "number": "Ir-16",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir-16__2023_WCAG.pdf",
+                "wcag": true,
+                "from_date": "2023-06-19",
+                "to_date": null
+            },
+            {
+                "name": "Instrukcja o postępowaniu przy przewozie koleją towarów niebezpiecznych",
+                "number": "Ir-16",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/17.05.2023_Ir-16__2023_wersja_po_zminach_A5_-_KONCOWA.pdf",
+                "wcag": false,
+                "from_date": "2023-06-19",
+                "to_date": null
+            },
+            {
+                "name": "Instrukcja o postępowaniu przy przewozie koleją towarów niebezpiecznych",
+                "number": "Ir-16",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Instrukcja_Ir-16_WCAG.pdf",
+                "wcag": true,
+                "from_date": null,
+                "to_date": "2021-08-31"
+            },
+            {
+                "name": "Instrukcja o postępowaniu przy przewozie koleją towarów niebezpiecznych",
+                "number": "Ir-16",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Instrukcja_o_postepowaniu_przy_przewozie_koleja_towarow_niebezpiecznych_Ir-16_08_2021.pdf",
+                "wcag": false,
+                "from_date": "2021-09-01",
+                "to_date": null
+            }
+        ]
+    },
+    {
+        "number": "Ir-17",
+        "versions": [
+            {
+                "name": "Instrukcja o zapewnieniu sprawności kolei w zimie",
+                "number": "Ir-17",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/A4_Ir-17_2021_wcag.pdf",
+                "wcag": true,
+                "from_date": "2021-10-15",
+                "to_date": null
+            },
+            {
+                "name": "Instrukcja o zapewnieniu sprawności kolei w zimie",
+                "number": "Ir-17",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir-17_uchw.mapa516.2021.pdf",
+                "wcag": false,
+                "from_date": "2021-10-15",
+                "to_date": null
+            }
+        ]
+    },
+    {
+        "number": "Ir-18",
+        "versions": [
+            {
+                "name": "Instrukcja sporządzania, wydawania i prowadzenia Dodatku 2 do wewnętrznego rozkładu jazdy",
+                "number": "Ir-18",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir-18_WCAG_2021_poprawione.pdf",
+                "wcag": true,
+                "from_date": "2021-01-01",
+                "to_date": null
+            }
+        ]
+    },
+    {
+        "number": "Ir-19",
+        "versions": [
+            {
+                "name": "Zasady organizacji i udzielania zamknięć torowych",
+                "number": "Ir-19",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir-19_wersja_WCAG_2024.pdf",
+                "wcag": true,
+                "from_date": "2024-07-10",
+                "to_date": null
+            }
+        ]
+    },
+    {
+        "number": "Ir-20",
+        "versions": [
+            {
+                "name": "Wytyczne postępowania przy wydawaniu zezwoleń do wykonywania pracy manewrowej na torach stacyjnych PKP Polskie Linie Kolejowe S.A.",
+                "number": "Ir-20",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Wytyczne_Ir-20_2024_WCAG.pdf",
+                "wcag": true,
+                "from_date": "2024-04-24",
+                "to_date": null
+            }
+        ]
+    },
+    {
+        "number": "Ir-23",
+        "versions": [
+            {
+                "name": "Instrukcja sporządzania, wydawania i prowadzenia Dodatku 1 do wewnętrznego rozkładu jazdy",
+                "number": "Ir-23",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/A4_Ir-23_2023_wcag.pdf",
+                "wcag": true,
+                "from_date": "2023-09-05",
+                "to_date": null
+            },
+            {
+                "name": "Instrukcja sporządzania, wydawania i prowadzenia Dodatku 1 do wewnętrznego rozkładu jazdy",
+                "number": "Ir-23",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/A4_Ir-23_2021_wcag.pdf",
+                "wcag": true,
+                "from_date": "2021-03-14",
+                "to_date": "2023-09-04"
+            },
+            {
+                "name": "Instrukcja sporządzania, wydawania i prowadzenia Dodatku 1 do wewnętrznego rozkładu jazdy",
+                "number": "Ir-23",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir-23.pdf",
+                "wcag": false,
+                "from_date": null,
+                "to_date": "2021-03-13"
+            }
+        ]
+    },
+    {
+        "number": "Ir-27",
+        "versions": [
+            {
+                "name": "Warunki dopuszczenia do stosowania na liniach kolejowych zarządzanych przez PKP Polskie Linie Kolejowe S.A. środków do smarowania części trących w rozjazdach kolejowych",
+                "number": "Ir-27",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir-27_2024_-_WCAG_-_26.09.pdf",
+                "wcag": true,
+                "from_date": null,
+                "to_date": null
+            }
+        ]
+    }
+]

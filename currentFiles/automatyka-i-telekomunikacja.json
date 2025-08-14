@@ -1,0 +1,754 @@
+[
+    {
+        "name": "Instrukcja sygnalizacji",
+        "number": "Ie-1",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/05_Instrukcja_Ie-1-od_2025-05-20_WCAG.pdf",
+        "wcag": true,
+        "from_date": "2025-05-20",
+        "to_date": null
+    },
+    {
+        "name": "Instrukcja sygnalizacji",
+        "number": "Ie-1",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/05_Instrukcja_Ie-1-od_2025-05-20.pdf",
+        "wcag": false,
+        "from_date": "2025-05-20",
+        "to_date": null
+    },
+    {
+        "name": "Instrukcja o telefonicznej przewodowej łączności ruchowej",
+        "number": "Ie-2",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/INSTRUKCJA_o_telefonicznej_przewodowej_lacznosci_ruchowej_Ie-2__E-3_.pdf",
+        "wcag": true,
+        "from_date": null,
+        "to_date": null
+    },
+    {
+        "name": "Wytyczne techniczno-eksploatacyjne urządzeń do wykrywania stanów awaryjnych taboru",
+        "number": "Ie-3",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Wytyczne_Ie-3_wersja_jednolita_od_13.06.2024_WCAG.pdf",
+        "wcag": true,
+        "from_date": "2024-06-13",
+        "to_date": null
+    },
+    {
+        "name": "Wytyczne techniczno-eksploatacyjne urządzeń do wykrywania stanów awaryjnych taboru",
+        "number": "Ie-3",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Wytyczne_Ie-3_wersja_jednolita_od_13.06.2024.pdf",
+        "wcag": false,
+        "from_date": "2024-06-13",
+        "to_date": null
+    },
+    {
+        "name": "Wytyczne techniczne budowy urządzeń sterowania ruchem kolejowym",
+        "number": "Ie-4",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-4__WTB-E10__WCAG.pdf",
+        "wcag": true,
+        "from_date": "2020-01-01",
+        "to_date": null
+    },
+    {
+        "name": "Wytyczne techniczne budowy urządzeń sterowania ruchem kolejowym",
+        "number": "Ie-4",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie_4_2019_p.pdf",
+        "wcag": false,
+        "from_date": "2020-01-01",
+        "to_date": null
+    },
+    {
+        "name": "Instrukcja o zasadach eksploatacji i prowadzenia robót w urządzeniach sterowania ruchem kolejowym",
+        "number": "Ie-5",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/WCAG_Ie-5__E-11_.pdf",
+        "wcag": true,
+        "from_date": null,
+        "to_date": null
+    },
+    {
+        "name": "Wytyczne odbioru technicznego oraz przekazywania do eksploatacji urządzeń sterowania ruchem kolejowym",
+        "number": "Ie-6",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-6_uz_1078_24_obowiazuje_od_2024-11-21_WCAG.pdf",
+        "wcag": true,
+        "from_date": "2024-11-21",
+        "to_date": null
+    },
+    {
+        "name": "Wytyczne odbioru technicznego oraz przekazywania do eksploatacji urządzeń sterowania ruchem kolejowym",
+        "number": "Ie-6",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-6_uz_1078_24_obowiazuje_od_2024-11-21.pdf",
+        "wcag": false,
+        "from_date": "2024-11-21",
+        "to_date": null
+    },
+    {
+        "name": "Instrukcja diagnostyki technicznej i kontroli okresowych urządzeń sterowania ruchem kolejowym",
+        "number": "Ie-7",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-7_Instrukcja_diagnostyki_technicznej_i_kontroli_okresowych_urzadzen_sterow....pdf",
+        "wcag": false,
+        "from_date": null,
+        "to_date": null
+    },
+    {
+        "name": "Instrukcja o zasadach budowy i utrzymania mechanicznych urządzeń sterowania ruchem kolejowym",
+        "number": "Ie-11",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-11__E-20__WCAG.pdf",
+        "wcag": true,
+        "from_date": null,
+        "to_date": null
+    },
+    {
+        "name": "Instrukcja konserwacji, przeglądów oraz napraw bieżących urządzeń sterowania ruchem kolejowym",
+        "number": "Ie-12",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Instrukcja_Ie-12.pdf",
+        "wcag": false,
+        "from_date": null,
+        "to_date": null
+    },
+    {
+        "name": "Instrukcja o zasadach wykonywania obsługi technicznej urządzeń telekomunikacji kolejowej oraz urządzeń GSM-R",
+        "number": "Ie-13",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/02._Ie-13_2025_WCAG_od_22.05.2025.pdf",
+        "wcag": true,
+        "from_date": "2025-05-22",
+        "to_date": null
+    },
+    {
+        "name": "Instrukcja o zasadach wykonywania obsługi technicznej urządzeń telekomunikacji kolejowej oraz urządzeń GSM-R",
+        "number": "Ie-13",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/02._Ie-13_2025_od_22.05.2025.pdf",
+        "wcag": false,
+        "from_date": "2025-05-22",
+        "to_date": null
+    },
+    {
+        "name": "Instrukcja o organizacji i użytkowaniu sieci radiotelefonicznych",
+        "number": "Ie-14",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Podglad/Ie/Ie-14.pdf",
+        "wcag": false,
+        "from_date": null,
+        "to_date": null
+    },
+    {
+        "name": "Instrukcja o organizacji i użytkowaniu sieci GSM-R",
+        "number": "Ie-16",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/WCAG_IST4__Instrukcja_Ie-16__2__obowiazuje_od_18.05.2025.pdf",
+        "wcag": true,
+        "from_date": "2025-05-18",
+        "to_date": null
+    },
+    {
+        "name": "Instrukcja o organizacji i użytkowaniu sieci GSM-R",
+        "number": "Ie-16",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/IST4__Instrukcja_Ie-16__2__obowiazuje_od_18.05.2025.pdf",
+        "wcag": false,
+        "from_date": "2025-05-18",
+        "to_date": null
+    },
+    {
+        "name": "Instrukcja obsługi komputerowych urządzeń sterowania ruchem kolejowym w PKP Polskie Linie Kolejowe S.A.",
+        "number": "Ie-20",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-20_WCAG.pdf",
+        "wcag": true,
+        "from_date": "2020-03-04",
+        "to_date": null
+    },
+    {
+        "name": "Instrukcja obsługi komputerowych urządzeń sterowania ruchem kolejowym w PKP Polskie Linie Kolejowe S.A.",
+        "number": "Ie-20",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-20.pdf",
+        "wcag": false,
+        "from_date": "2020-03-04",
+        "to_date": null
+    },
+    {
+        "name": "Wytyczne sporządzenia stanowiskowych instrukcji obsługi komputerowych urządzeń sterowania ruchem kolejowym",
+        "number": "Ie-20a",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-20a_WCAG.pdf",
+        "wcag": true,
+        "from_date": "2020-04-04",
+        "to_date": null
+    },
+    {
+        "name": "Wytyczne sporządzenia stanowiskowych instrukcji obsługi komputerowych urządzeń sterowania ruchem kolejowym",
+        "number": "Ie-20a",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-20a.pdf",
+        "wcag": false,
+        "from_date": "2020-04-04",
+        "to_date": null
+    },
+    {
+        "name": "Wytyczne instalacji i eksploatacji cyfrowych rejestratorów rozmów telefonicznych",
+        "number": "Ie-21",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Podglad/Ie/Wytyczne_Ie-21_instalacja_cyfrowych_rejestratorow_rozmow_telefonicznych_UCHWALONA_WCAG.pdf",
+        "wcag": true,
+        "from_date": "2025-07-31",
+        "to_date": null
+    },
+    {
+        "name": "Wytyczne instalacji i eksploatacji cyfrowych rejestratorów rozmów telefonicznych",
+        "number": "Ie-21",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Podglad/Ie/Wytyczne_Ie-21_instalacja_cyfrowych_rejestratorow_rozmow_telefonicznych_UCHWALONA.pdf",
+        "wcag": false,
+        "from_date": "2025-07-31",
+        "to_date": null
+    },
+    {
+        "name": "Instrukcja obsługi tymczasowych ograniczeń prędkości (TSR) w systemie ETCS",
+        "number": "Ie-30",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-30_2025_WCAG__obowiazuje_od_31.07.2025_r._.pdf",
+        "wcag": true,
+        "from_date": "2025-07-31",
+        "to_date": null
+    },
+    {
+        "name": "Instrukcja obsługi tymczasowych ograniczeń prędkości (TSR) w systemie ETCS",
+        "number": "Ie-30",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-30_2025__obowiazuje_od_31.07.2025_r._.pdf",
+        "wcag": false,
+        "from_date": "2025-07-31",
+        "to_date": null
+    },
+    {
+        "name": "Wytyczne sporządzania regulaminów obsługi terminala urządzeń do wykrywania stanów awaryjnych w taborze podczas jazdy",
+        "number": "Ie-31",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-31_WCAG.pdf",
+        "wcag": true,
+        "from_date": "2020-05-03",
+        "to_date": null
+    },
+    {
+        "name": "Wytyczne sporządzania regulaminów obsługi terminala urządzeń do wykrywania stanów awaryjnych w taborze podczas jazdy",
+        "number": "Ie-31",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Instrukcja_Ie_31_2020.pdf",
+        "wcag": false,
+        "from_date": "2020-05-03",
+        "to_date": null
+    },
+    {
+        "name": "Tymczasowa instrukcja obsługi scentralizowanych urządzeń systemu ERTMS/ETCS poziom 2",
+        "number": "Ie-32",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-32.pdf",
+        "wcag": false,
+        "from_date": null,
+        "to_date": null
+    },
+    {
+        "name": "Wytyczne do projektowania systemu łączności awaryjnej dla służb ratunkowych w tunelach kolejowych",
+        "number": "Ie-33",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/01_Wytyczne_Ie-33__WCAG-od_16.05.2025.pdf",
+        "wcag": true,
+        "from_date": "2025-05-16",
+        "to_date": null
+    },
+    {
+        "name": "Wytyczne do projektowania systemu łączności awaryjnej dla służb ratunkowych w tunelach kolejowych",
+        "number": "Ie-33",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/01_Wytyczne_Ie-33-od_16.05.2025.pdf",
+        "wcag": false,
+        "from_date": "2025-05-16",
+        "to_date": null
+    },
+    {
+        "name": "Standard oznaczeń elementów sieci transmisyjnej oraz sieci GSM-R",
+        "number": "Ie-50",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-50z1.3_obowiazuje_od_2025-08-13__uz_659_25__WCAG.pdf",
+        "wcag": true,
+        "from_date": "2025-08-13",
+        "to_date": null
+    },
+    {
+        "name": "Standard oznaczeń elementów sieci transmisyjnej oraz sieci GSM-R",
+        "number": "Ie-50",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-125_obowiazuje_od_2025-08-13__uz_658_25_.pdf",
+        "wcag": false,
+        "from_date": "2025-08-13",
+        "to_date": null
+    },
+    {
+        "name": "Warunki bezpiecznej instalacji i eksploatacji urządzeń sterowania ruchem kolejowym na liniach kolejowych zarządzanych przez PKP Polskie Linie Kolejowe S.A.",
+        "number": "",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/07_Instrukcja_Ie-100a-od_2025.05.16_WCAG.pdf",
+        "wcag": true,
+        "from_date": "2025-05-16",
+        "to_date": null
+    },
+    {
+        "name": "Warunki bezpiecznej instalacji i eksploatacji urządzeń sterowania ruchem kolejowym na liniach kolejowych zarządzanych przez PKP Polskie Linie Kolejowe S.A.",
+        "number": "",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/07_Instrukcja_Ie-100a-od_2025.05.16.pdf",
+        "wcag": false,
+        "from_date": "2025-05-16",
+        "to_date": null
+    },
+    {
+        "name": "Wymagania techniczno-eksploatacyjne dla radiotelefonu stacjonarnego/przewoźnego dla sieci radiotelefonicznych bez selektywnego wywołania grupowego",
+        "number": "Ie-101",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Podglad/Ie/Ie-101.pdf",
+        "wcag": false,
+        "from_date": null,
+        "to_date": null
+    },
+    {
+        "name": "Wymagania techniczne dla wskaźników i tablic sygnałowych",
+        "number": "Ie-102",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/06_Instrukcja_Ie-102-od_2025-05-20_WCAG.pdf",
+        "wcag": true,
+        "from_date": "2025-05-20",
+        "to_date": null
+    },
+    {
+        "name": "Wymagania techniczne dla wskaźników i tablic sygnałowych",
+        "number": "Ie-102",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/06_Instrukcja_Ie-102-od_2025-05-20.pdf",
+        "wcag": false,
+        "from_date": "2025-05-20",
+        "to_date": null
+    },
+    {
+        "name": "Warunki Techniczne Odbioru Żarówki sygnałowe kolejowe",
+        "number": "Ie-103",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-103_obowiazuje_od_2025-08-07__uz_633_25__WCAG.pdf",
+        "wcag": true,
+        "from_date": null,
+        "to_date": null
+    },
+    {
+        "name": "Warunki Techniczne Odbioru Żarówki sygnałowe kolejowe",
+        "number": "Ie-103",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-103_obowiazuje_od_2025-08-07__uz_633_25_.pdf",
+        "wcag": false,
+        "from_date": null,
+        "to_date": null
+    },
+    {
+        "name": "Wytyczne w zakresie zobrazowania, wprowadzania poleceń oraz rejestracji zdarzeń dla komputerowych stanowisk obsługi urządzeń sterowania ruchem kolejowym",
+        "number": "Ie-104",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-104_2012_p.pdf",
+        "wcag": false,
+        "from_date": null,
+        "to_date": "2028-02-19"
+    },
+    {
+        "name": "Wytyczne w zakresie zobrazowania, wprowadzania poleceń oraz rejestracji zdarzeń dla komputerowych stanowisk obsługi urządzeń sterowania ruchem kolejowym",
+        "number": "",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-104.1_2025_WCAG.pdf",
+        "wcag": true,
+        "from_date": "2025-02-19",
+        "to_date": null
+    },
+    {
+        "name": "Wytyczne w zakresie zobrazowania, wprowadzania poleceń oraz rejestracji zdarzeń dla komputerowych stanowisk obsługi urządzeń sterowania ruchem kolejowym",
+        "number": "",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-104.1_2025.pdf",
+        "wcag": false,
+        "from_date": "2025-02-19",
+        "to_date": null
+    },
+    {
+        "name": "Wytyczne w zakresie zobrazowania, wprowadzania poleceń oraz rejestracji zdarzeń dla komputerowych stanowisk obsługi urządzeń sterowania ruchem kolejowym z wykorzystaniem systemu ETCS poziom 2",
+        "number": "",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-104.2_WCAG.pdf",
+        "wcag": true,
+        "from_date": "2025-03-27",
+        "to_date": null
+    },
+    {
+        "name": "Wytyczne w zakresie zobrazowania, wprowadzania poleceń oraz rejestracji zdarzeń dla komputerowych stanowisk obsługi urządzeń sterowania ruchem kolejowym z wykorzystaniem systemu ETCS poziom 2",
+        "number": "",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-104.2_-_tekst_jednolity.pdf",
+        "wcag": false,
+        "from_date": "2025-03-27",
+        "to_date": null
+    },
+    {
+        "name": "Wymagania techniczno-eksploatacyjne dla radiotelefonu stacjonarnego/przewoźnego dla sieci radiotelefonicznych z selektywnym wywołaniem grupowym",
+        "number": "Ie-105",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-105_04-2018.pdf",
+        "wcag": false,
+        "from_date": null,
+        "to_date": null
+    },
+    {
+        "name": "Wytyczne dla projektowania i budowy linii optotelekomunikacyjnych",
+        "number": "Ie-108",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-108_2023_WCAG.pdf",
+        "wcag": true,
+        "from_date": "2023-03-02",
+        "to_date": null
+    },
+    {
+        "name": "Wytyczne dla projektowania i budowy linii optotelekomunikacyjnych",
+        "number": "Ie-108",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-108_2023.pdf",
+        "wcag": false,
+        "from_date": "2023-03-02",
+        "to_date": null
+    },
+    {
+        "name": "Warunki techniczne odbioru transformatorów i dławików wyrównawczych typu REJ i ich odpowiedników",
+        "number": "Ie-110",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-110__WTO-REJ_.pdf",
+        "wcag": false,
+        "from_date": null,
+        "to_date": null
+    },
+    {
+        "name": "Wymagania na systemy telewizji przemysłowej stosowane na przejazdach kolejowo - drogowych kategorii B",
+        "number": "Ie-111",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-111.pdf",
+        "wcag": false,
+        "from_date": null,
+        "to_date": null
+    },
+    {
+        "name": "Wymagania na system łączności zapowiadawczej z wykorzystaniem sieci GSM",
+        "number": "Ie-112",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-112.pdf",
+        "wcag": false,
+        "from_date": null,
+        "to_date": null
+    },
+    {
+        "name": "Wymagania na system wymiany informacji pomiędzy pracownikami posterunków ruchu biorącymi udział w obsłudze przejazdu kolejowo-drogowego i pracownikiem obsługi przejazdu kolejowo-drogowego",
+        "number": "Ie-113",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-113.pdf",
+        "wcag": false,
+        "from_date": null,
+        "to_date": null
+    },
+    {
+        "name": "Wymagania dla napędów zwrotnicowych stosowanych na sieci linii kolejowych zarządzanych przez PKP Polskie Linie Kolejowe S.A.",
+        "number": "Ie-114",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-114_WCAG.pdf",
+        "wcag": true,
+        "from_date": "2019-01-01",
+        "to_date": null
+    },
+    {
+        "name": "Wymagania dla napędów zwrotnicowych stosowanych na sieci linii kolejowych zarządzanych przez PKP Polskie Linie Kolejowe S.A.",
+        "number": "Ie-114",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-114.pdf",
+        "wcag": false,
+        "from_date": "2019-01-01",
+        "to_date": null
+    },
+    {
+        "name": "Wymagania w zakresie dopuszczalnych poziomów i parametrów zakłóceń dla urządzeń kontroli niezajętości stosowanych na liniach kolejowych zarządzanych przez PKP Polskie Linie Kolejowe S.A.",
+        "number": "Ie-115",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-115.pdf",
+        "wcag": false,
+        "from_date": null,
+        "to_date": null
+    },
+    {
+        "name": "Wymagania na system teleinformatyczny do prowadzenia ruchu pociągów",
+        "number": "Ie-116",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-116_-_WCAG.pdf",
+        "wcag": true,
+        "from_date": null,
+        "to_date": null
+    },
+    {
+        "name": "Wymagania na system teleinformatyczny do prowadzenia ruchu pociągów",
+        "number": "Ie-116",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-116.pdf",
+        "wcag": false,
+        "from_date": null,
+        "to_date": null
+    },
+    {
+        "name": "Wymagania techniczne dla sygnalizatorów stosowanych na liniach kolejowych oraz ich konstrukcji wsporczych",
+        "number": "Ie-117",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-117_WCAG_obowiazuje_od_20.05.2025_r..pdf",
+        "wcag": true,
+        "from_date": "2025-05-20",
+        "to_date": null
+    },
+    {
+        "name": "Wymagania techniczne dla sygnalizatorów stosowanych na liniach kolejowych oraz ich konstrukcji wsporczych",
+        "number": "Ie-117",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-117_obowiazuje_od_20.05.2025_r..pdf",
+        "wcag": false,
+        "from_date": "2025-05-20",
+        "to_date": null
+    },
+    {
+        "name": "Wymagania na systemy telewizji użytkowej stosowane na przejazdach kolejowo-drogowych kategorii A, F i przejściach, obsługiwanych z odległości oraz innych posterunkach związanych z prowadzeniem ruchu kolejowego",
+        "number": "Ie-118",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-118_obowiazuje_od_2025-08-07__uz_634_25__WCAG.pdf",
+        "wcag": true,
+        "from_date": "2025-08-07",
+        "to_date": null
+    },
+    {
+        "name": "Wymagania na systemy telewizji użytkowej stosowane na przejazdach kolejowo-drogowych kategorii A, F i przejściach, obsługiwanych z odległości oraz innych posterunkach związanych z prowadzeniem ruchu kolejowego",
+        "number": "Ie-118",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-118_obowiazuje_od_2025-08-07__uz_634_25_.pdf",
+        "wcag": false,
+        "from_date": "2025-08-07",
+        "to_date": null
+    },
+    {
+        "name": "Wymagania na systemy zabezpieczenia ruchu na przejazdach kolejowo – drogowych i przejściach",
+        "number": "Ie-119",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-119_WCAG.pdf",
+        "wcag": true,
+        "from_date": "2021-01-01",
+        "to_date": null
+    },
+    {
+        "name": "Wymagania na systemy zabezpieczenia ruchu na przejazdach kolejowo-drogowych i przejściach",
+        "number": "Ie-119",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-119.pdf",
+        "wcag": false,
+        "from_date": "2021-01-01",
+        "to_date": null
+    },
+    {
+        "name": "Wymagania techniczne dla zapewnienia ochrony przed przepięciami i od wyładowań atmosferycznych urządzeń sterowania ruchem kolejowym, łączności i dSAT",
+        "number": "Ie-120",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-120.pdf",
+        "wcag": false,
+        "from_date": "2018-02-01",
+        "to_date": null
+    },
+    {
+        "name": "Wytyczne obsługi technicznej przekaźników stosowanych w urządzeniach sterowania ruchem kolejowym",
+        "number": "Ie-121",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-121_tekst_jednolity_26.01.2024_-_WCAG.pdf",
+        "wcag": true,
+        "from_date": "2024-01-26",
+        "to_date": null
+    },
+    {
+        "name": "Wytyczne obsługi technicznej przekaźników stosowanych w urządzeniach sterowania ruchem kolejowym",
+        "number": "Ie-121",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-121_tekst_jednolity_26.01.2024.pdf",
+        "wcag": false,
+        "from_date": "2024-01-26",
+        "to_date": null
+    },
+    {
+        "name": "Wymagania na budowę i integrację z siecią teletransmisyjną PKP Polskie Linie Kolejowe S.A. sieci transmisji danych systemów CSDIP, SMW, SPA",
+        "number": "Ie-122",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-122_wersja_jednolita_WCAG_obowiazuje_od_12.12.2024.pdf",
+        "wcag": true,
+        "from_date": "2024-12-12",
+        "to_date": null
+    },
+    {
+        "name": "Wymagania na budowę i integrację z siecią teletransmisyjną PKP Polskie Linie Kolejowe S.A. sieci transmisji danych systemów CSDIP, SMW, SPA",
+        "number": "Ie-122",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-122_wersja_jednolita_obowiazuje_od_12.12.2024.pdf",
+        "wcag": false,
+        "from_date": "2024-12-12",
+        "to_date": null
+    },
+    {
+        "name": "Wymagania dla układów nieżarowego źródła światła latarń sygnałowych sygnalizatorów kolejowych",
+        "number": "Ie-123",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-123_WCAG.pdf",
+        "wcag": true,
+        "from_date": "2018-12-18",
+        "to_date": null
+    },
+    {
+        "name": "Wymagania dla układów nieżarowego źródła światła latarń sygnałowy",
+        "number": "Ie-123",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie_123_Wymagania_dla_ukladow_niezarowego_zrodla_swiatla_latarn_sygnalowy....pdf",
+        "wcag": false,
+        "from_date": "2018-12-18",
+        "to_date": null
+    },
+    {
+        "name": "Regulamin świadczenia usług telekomunikacyjnych oraz zasady zarządzania kartami SIM systemu GSM-R PKP Polskie Linie Kolejowe S.A.",
+        "number": "Ie-124",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/01._Ie-124_WCAG__od_22.06.2025.zip",
+        "wcag": true,
+        "from_date": null,
+        "to_date": null
+    },
+    {
+        "name": "Regulamin świadczenia usług telekomunikacyjnych oraz zasady zarządzania kartami SIM systemu GSM-R PKP Polskie Linie Kolejowe S.A.",
+        "number": "Ie-124",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/01._Ie-124__od_22.06.2025.zip",
+        "wcag": false,
+        "from_date": "2025-06-22",
+        "to_date": null
+    },
+    {
+        "name": "Regulamin wydawania kluczy kryptograficznych do urządzeń ERTMS/ETCS poziomu 2",
+        "number": "Ie-125",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-125_obowiazuje_od_2025-08-13__uz_658_25__WCAG.pdf",
+        "wcag": true,
+        "from_date": "2025-08-13",
+        "to_date": null
+    },
+    {
+        "name": "Regulamin wydawania kluczy kryptograficznych do urządzeń ERTMS/ETCS poziomu 2",
+        "number": "Ie-125",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-125_obowiazuje_od_2025-08-13__uz_658_25_.pdf",
+        "wcag": false,
+        "from_date": "2025-08-13",
+        "to_date": null
+    },
+    {
+        "name": "Procedura przeprowadzania kontroli kompatybilności systemu ETCS (ESC)",
+        "number": "Ie-128",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Procedura__ESC__Ie-128__WCAG.PDF",
+        "wcag": true,
+        "from_date": "2022-10-19",
+        "to_date": null
+    },
+    {
+        "name": "Procedura przeprowadzania kontroli kompatybilności systemu ETCS (ESC)",
+        "number": "Ie-128",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Procedura__ESC__Ie-128.pdf",
+        "wcag": false,
+        "from_date": "2022-10-19",
+        "to_date": null
+    },
+    {
+        "name": "Procedura przeprowadzania kontroli zgodności systemu radiowego GSM-R (RSC)",
+        "number": "Ie-129",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-129_obowiazuje_od_2025-04-09__uz_271_25__WCAG.pdf",
+        "wcag": true,
+        "from_date": "2025-04-09",
+        "to_date": null
+    },
+    {
+        "name": "Procedura przeprowadzania kontroli zgodności systemu radiowego GSM-R (RSC)",
+        "number": "Ie-129",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-129_obowiazuje_od_2025-04-09__uz_271_25_.pdf",
+        "wcag": false,
+        "from_date": "2025-04-09",
+        "to_date": null
+    },
+    {
+        "name": "Wytyczne implementacji i zasady realizacji wspomaganego sygnału zastępczego (WSz)",
+        "number": "Ie-130",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-130_2025_WCAG.pdf",
+        "wcag": true,
+        "from_date": "2025-02-19",
+        "to_date": null
+    },
+    {
+        "name": "Wytyczne implementacji i zasady realizacji wspomaganego sygnału zastępczego (WSz)",
+        "number": "Ie-130",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-130_2025.pdf",
+        "wcag": false,
+        "from_date": "2025-02-19",
+        "to_date": null
+    },
+    {
+        "name": "Wymagania na realizację ochrony bocznej w stacyjnych komputerowych systemach sterowania ruchem kolejowym",
+        "number": "Ie-133",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-133_obowiazuje_od_2025-06-05__uz_447_25__WCAG.pdf",
+        "wcag": true,
+        "from_date": "2025-06-05",
+        "to_date": null
+    },
+    {
+        "name": "Wymagania na realizację ochrony bocznej w stacyjnych komputerowych systemach sterowania ruchem kolejowym",
+        "number": "Ie-133",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-133_obowiazuje_od_2025-06-05__uz_447_25_.pdf",
+        "wcag": false,
+        "from_date": "2025-06-05",
+        "to_date": null
+    },
+    {
+        "name": "Wymagania dla odcinków zbliżania w komputerowych stacyjnych systemach SRK",
+        "number": "Ie-135",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-135_obowiazuje_od_2025-06-05__uz_448_25__WCAG.pdf",
+        "wcag": true,
+        "from_date": "2025-06-05",
+        "to_date": null
+    },
+    {
+        "name": "Wymagania dla odcinków zbliżania w komputerowych stacyjnych systemach SRK",
+        "number": "Ie-135",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-135_obowiazuje_od_2025-06-05__uz_448_25_.pdf",
+        "wcag": false,
+        "from_date": "2025-06-05",
+        "to_date": null
+    },
+    {
+        "name": "Wytyczne techniczno-eksploatacyjne na system sterowania hamulców torowych",
+        "number": "Ie-160",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-160.pdf",
+        "wcag": false,
+        "from_date": null,
+        "to_date": null
+    },
+    {
+        "name": "Wymagania na rejestrator zdarzeń techniczno-ruchowych dla systemu i podsystemów automatycznego sterowania rozrządzaniem na górkach rozrządowych",
+        "number": "Ie-166",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-166_obowiazuje_od_2025-07-31__uz_607_25__WCAG.pdf",
+        "wcag": true,
+        "from_date": "2025-07-31",
+        "to_date": null
+    },
+    {
+        "name": "Wymagania na rejestrator zdarzeń techniczno-ruchowych dla systemu i podsystemów automatycznego sterowania rozrządzaniem na górkach rozrządowych",
+        "number": "Ie-166",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-166_obowiazuje_od_2025-07-31__uz_607_25_.pdf",
+        "wcag": false,
+        "from_date": "2025-07-31",
+        "to_date": null
+    },
+    {
+        "name": "Wymagania funkcjonalne na układ sterująco-kontrolny tarczy rozrządowej",
+        "number": "Ie-167",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-167_obowiazuje_od_2025-07-31__uz_609_25__WCAG.pdf",
+        "wcag": true,
+        "from_date": "2025-07-31",
+        "to_date": null
+    },
+    {
+        "name": "Wymagania funkcjonalne na układ sterująco-kontrolny tarczy rozrządowej",
+        "number": "Ie-167",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-167_obowiazuje_od_2025-07-31__uz_609_25_.pdf",
+        "wcag": false,
+        "from_date": "2025-07-31",
+        "to_date": null
+    },
+    {
+        "name": "Wytyczne techniczno-eksploatacyjne na układ sterowania lokomotywą rozrządową (manewrową)",
+        "number": "Ie-168",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Wytyczne_techniczno-eksploatacyjne_na_uklad_sterowania_lokomotywa_rozrzadowa_Ie_168.pdf",
+        "wcag": false,
+        "from_date": null,
+        "to_date": null
+    },
+    {
+        "name": "Wytyczne w zakresie sposobu prezentacji stanu urządzeń automatycznego sterowania rozrządzaniem na monitorach ekranowych stanowiska operatorskiego",
+        "number": "Ie-170",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-170.pdf",
+        "wcag": false,
+        "from_date": null,
+        "to_date": null
+    },
+    {
+        "name": "Wymagania na stanowisko utrzymania i diagnostyki urządzeń asr na górkach rozrządowych",
+        "number": "Ie-171",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-171_obowiazuje_od_2025-07-31__uz_608_25__WCAG.pdf",
+        "wcag": true,
+        "from_date": "2025-07-31",
+        "to_date": null
+    },
+    {
+        "name": "Wymagania na stanowisko utrzymania i diagnostyki urządzeń asr na górkach rozrządowych",
+        "number": "Ie-171",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-171_obowiazuje_od_2025-07-31__uz_608_25_.pdf",
+        "wcag": false,
+        "from_date": "2025-07-31",
+        "to_date": null
+    },
+    {
+        "name": "Procedura zmiany wartości progów temperatury hamulców dla wybranych pojazdów kolejowych",
+        "number": "Ie-301",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-301_obowiazjue_od_2025-05-31__uz_322_25__WCAG.pdf",
+        "wcag": true,
+        "from_date": "2025-05-31",
+        "to_date": null
+    }
+]
