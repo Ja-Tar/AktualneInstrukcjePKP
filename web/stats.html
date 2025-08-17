@@ -7,10 +7,13 @@
     <title>Statystyki instrukcji</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="stats-extra.css">
+    <link rel="stylesheet" href="darkmode.css">
 </head>
 <body>
     <div class="container">
+        <button id="toggle-darkmode" style="position:absolute;top:18px;right:24px;z-index:20;min-width:44px;min-height:44px;font-size:1.1em;cursor:pointer;">🌙</button>
         <h1>Statystyki instrukcji</h1>
+        <a href="index.html" class="back-link top">&larr; Wróć do wyszukiwarki</a>
 
         <section>
             <h2>Ostatnie aktualizacje</h2>
@@ -28,6 +31,21 @@
     </div>
 
     <script src="utils.js"></script>
+    <script>
+    // DARK MODE obsługa na wszystkich stronach
+    function setDarkMode(on) {
+        document.body.classList.toggle('dark-mode', on);
+        localStorage.setItem('darkMode', on ? '1' : '0');
+        document.getElementById('toggle-darkmode').textContent = on ? '☀️' : '🌙';
+    }
+    function initDarkMode() {
+        const btn = document.getElementById('toggle-darkmode');
+        const dark = localStorage.getItem('darkMode') === '1';
+        setDarkMode(dark);
+        btn.onclick = () => setDarkMode(!document.body.classList.contains('dark-mode'));
+    }
+    window.addEventListener('DOMContentLoaded', initDarkMode);
+    </script>
     <script>
     const statsUrls = [
         "https://raw.githubusercontent.com/Ja-Tar/AktualneInstrukcjePKP/refs/heads/main/allFiles/automatyka-i-telekomunikacja.json",

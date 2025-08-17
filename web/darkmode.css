@@ -1,0 +1,77 @@
+/* Nakładka dark mode dla całej aplikacji */
+body.dark-mode {
+  background: linear-gradient(120deg, #23272f 0%, #181a20 100%) !important;
+  color: #e3e3e3;
+}
+body.dark-mode .container {
+  background: #23272f !important;
+  color: #e3e3e3;
+  box-shadow: 0 6px 32px rgba(10, 20, 40, 0.25);
+}
+body.dark-mode h1, body.dark-mode h2, body.dark-mode .instr-title, body.dark-mode .instr-number {
+  color: #90caf9 !important;
+}
+body.dark-mode .back-link, body.dark-mode .stats-link {
+  color: #90caf9 !important;
+}
+body.dark-mode .back-link:hover, body.dark-mode .stats-link:hover {
+  color: #e3f2fd !important;
+}
+body.dark-mode .open-instr-btn {
+  background: linear-gradient(90deg, #1976d2 0%, #43ea7b 100%) !important;
+  color: #fff !important;
+}
+body.dark-mode .open-instr-btn:hover {
+  background: linear-gradient(90deg, #43ea7b 0%, #1976d2 100%) !important;
+}
+body.dark-mode .stats-list li {
+  background: #23272f !important;
+  border-left: 3px solid #90caf9 !important;
+  color: #e3e3e3 !important;
+}
+body.dark-mode .stats-list li:hover {
+  background: #1a1c22 !important;
+}
+body.dark-mode section {
+  background: #181a20 !important;
+}
+body.dark-mode table {
+  background: #23272f !important;
+}
+body.dark-mode th {
+  background: #181a20 !important;
+  color: #90caf9 !important;
+}
+body.dark-mode td {
+  color: #e3e3e3 !important;
+}
+body.dark-mode input[type="text"] {
+  background: #23272f !important;
+  color: #e3e3e3 !important;
+  border-color: #90caf9 !important;
+}
+body.dark-mode input[type="text"]:focus {
+  background: #181a20 !important;
+  border-color: #1976d2 !important;
+}
+body.dark-mode .autocomplete-list {
+  background: #23272f !important;
+  color: #e3e3e3 !important;
+  border-color: #181a20 !important;
+}
+body.dark-mode .autocomplete-item {
+  background: #23272f !important;
+  color: #e3e3e3 !important;
+}
+body.dark-mode .autocomplete-item:hover, body.dark-mode .autocomplete-item.active {
+  background: #181a20 !important;
+}
+body.dark-mode .wcag-tag {
+  color: #43ea7b !important;
+}
+body.dark-mode .wcag-info {
+  color: #43ea7b !important;
+}
+body.dark-mode .date {
+  color: #90caf9 !important;
+}

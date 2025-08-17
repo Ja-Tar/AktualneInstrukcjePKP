@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Znajdź najnowszą instrukcję</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="darkmode.css">
 </head>
 <body>
     <div class="container">
+        <button id="toggle-darkmode" style="position:absolute;top:18px;right:24px;z-index:20;min-width:44px;min-height:44px;font-size:1.1em;cursor:pointer;">🌙</button>
         <h1>Znajdź najnowszą instrukcję</h1>
         <div class="search-box">
             <input type="text" id="search-input" autocomplete="off" />
@@ -20,6 +22,21 @@
         <a href="stats.html" class="stats-link">Zobacz statystyki instrukcji &rarr;</a>
     </div>
     <script src="utils.js"></script>
+    <script>
+    // DARK MODE obsługa na wszystkich stronach
+    function setDarkMode(on) {
+        document.body.classList.toggle('dark-mode', on);
+        localStorage.setItem('darkMode', on ? '1' : '0');
+        document.getElementById('toggle-darkmode').textContent = on ? '☀️' : '🌙';
+    }
+    function initDarkMode() {
+        const btn = document.getElementById('toggle-darkmode');
+        const dark = localStorage.getItem('darkMode') === '1';
+        setDarkMode(dark);
+        btn.onclick = () => setDarkMode(!document.body.classList.contains('dark-mode'));
+    }
+    window.addEventListener('DOMContentLoaded', initDarkMode);
+    </script>
     <script>
     function updateActiveItem(items) {
         items.forEach((el, i) => {
