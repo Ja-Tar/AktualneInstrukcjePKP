@@ -82,6 +82,7 @@ let activeIndex = 0;
 
         const infoFade = document.getElementById('info-fade');
         infoFade.classList.remove('visible');
+        infoFade.innerHTML = '';
         const val = this.value.trim().toLowerCase();
         if (!val || instructions.length === 0) {
             autocompleteList.style.display = 'none';

@@ -1,0 +1,216 @@
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statystyki instrukcji</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="stats-extra.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Statystyki instrukcji</h1>
+
+        <section>
+            <h2>Ostatnie aktualizacje</h2>
+            <ul id="recent-updates" class="stats-list"></ul>
+            <button id="show-all-updates" style="display:none">Pokaż wszystkie</button>
+        </section>
+
+        <section>
+            <h2>Najczęściej aktualizowane instrukcje</h2>
+            <ol id="most-updated" class="stats-list"></ol>
+            <button id="show-more-most-updated" style="display:none">Pokaż więcej</button>
+        </section>
+
+        <a href="index.html" class="back-link">&larr; Wróć do wyszukiwarki</a>
+    </div>
+
+    <script src="utils.js"></script>
+    <script>
+    const statsUrls = [
+        "https://raw.githubusercontent.com/Ja-Tar/AktualneInstrukcjePKP/refs/heads/main/allFiles/automatyka-i-telekomunikacja.json",
+        "https://raw.githubusercontent.com/Ja-Tar/AktualneInstrukcjePKP/refs/heads/main/allFiles/ruch-i-przewozy-kolejowe.json"
+    ];
+
+    // Pomocnicze funkcje do pobierania i przetwarzania danych
+    async function fetchAllInstructions(urls) {
+        const all = [];
+        for (const url of urls) {
+            try {
+                const res = await fetch(url);
+                const data = await res.json();
+                for (const instr of data) {
+                    all.push({
+                        file: url.split('/').pop(),
+                        number: instr.number,
+                        versions: instr.versions || []
+                    });
+                }
+            } catch (e) { /* pomiń błędy */ }
+        }
+        return all;
+    }
+
+    function flattenVersions(instructions) {
+        // Zwraca tablicę {number, file, from_date, to_date, name}
+        const arr = [];
+        for (const instr of instructions) {
+            for (const v of instr.versions) {
+                arr.push({
+                    number: instr.number,
+                    file: instr.file,
+                    from_date: v.from_date,
+                    to_date: v.to_date,
+                    name: v.name || instr.number,
+                    wcag: v.wcag || false,
+                });
+            }
+        }
+        return arr;
+    }
+
+    function parseDate(d) {
+        if (!d) return null;
+        // yyyy-mm-dd lub yyyy-mm-ddTHH:MM:SS
+        const m = d.match(/\d{4}-\d{2}-\d{2}/);
+        return m ? new Date(m[0]) : null;
+    }
+
+    function sortByDateDesc(arr, field) {
+        return arr.slice().sort((a, b) => {
+            const da = parseDate(a[field]);
+            const db = parseDate(b[field]);
+            if (!da && !db) return 0;
+            if (!da) return 1;
+            if (!db) return -1;
+            return db - da;
+        });
+    }
+
+    function groupByNumber(arr) {
+        // Zwraca mapę: number -> {number, file, updates: liczba, ostatniaData}
+        const map = new Map();
+        for (const v of arr) {
+            if (!map.has(v.number)) {
+                map.set(v.number, {number: v.number, file: v.file, updates: 0, last: null});
+            }
+            const entry = map.get(v.number);
+            entry.updates++;
+            const d = parseDate(v.from_date);
+            if (d && (!entry.last || d > entry.last)) entry.last = d;
+        }
+        return Array.from(map.values());
+    }
+
+    function polishEndForNr(n) {
+        if (n === 1) return "a";
+        if (n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20)) return "y";
+        return "";
+    }
+
+    async function renderStats() {
+        const instructions = await fetchAllInstructions(statsUrls);
+        const allVersions = flattenVersions(instructions);
+
+        // Ostatnie aktualizacje (tylko po from_date)
+        const updates = allVersions
+            .filter(v => v.from_date)
+            .map(v => ({
+                ...v,
+                date: parseDate(v.from_date)
+            }))
+            .filter(v => v.date)
+            .sort((a, b) => b.date - a.date);
+
+        const recentCount = 5;
+        const recentList = document.getElementById('recent-updates');
+        const showAllBtn = document.getElementById('show-all-updates');
+        function renderRecent(limit) {
+            // Deduplicate: dla tej samej instrukcji i daty wyświetl tylko jeden wpis
+            const deduped = [];
+            const seen = new Set();
+            for (const u of updates) {
+                const key = u.number + '|' + u.date.getTime();
+                if (seen.has(key)) continue;
+                // Zbierz wszystkie wersje tej instrukcji i daty
+                const sameDate = updates.filter(x => x.number === u.number && x.date.getTime() === u.date.getTime());
+                let wcagInfo = '';
+                if (sameDate.length > 1) {
+                    const hasWcag = sameDate.some(x => x.wcag);
+                    const hasNorm = sameDate.some(x => !x.wcag);
+                    if (hasWcag && hasNorm) wcagInfo = ' <span class="wcag-tag">(norm. + WCAG)</span>';
+                    else if (hasWcag) wcagInfo = ' <span class="wcag-tag">(WCAG)</span>';
+                } else if (u.wcag) {
+                    wcagInfo = ' <span class="wcag-tag">(WCAG)</span>';
+                }
+                deduped.push(`<li><b>${u.number}${wcagInfo}</b> – ${u.name || ''} <span class="date">${u.date.toLocaleDateString('pl-PL')}</span></li>`);
+                seen.add(key);
+            }
+            recentList.innerHTML = deduped.slice(0, limit).join('');
+        }
+        renderRecent(recentCount);
+        if (updates.length > recentCount) {
+            showAllBtn.style.display = '';
+            let expanded = false;
+            showAllBtn.onclick = () => {
+                expanded = !expanded;
+                renderRecent(expanded ? updates.length : recentCount);
+                showAllBtn.textContent = expanded ? 'Pokaż mniej' : 'Pokaż wszystkie';
+            };
+        }
+
+        // Najczęściej aktualizowane instrukcje (ostatnia aktualizacja po największym from_date)
+        function groupByNumberFromDate(arr) {
+            // Zwraca mapę: number -> {number, file, updates: liczba, last: największy from_date}
+            const map = new Map();
+            for (const v of arr) {
+                if (!map.has(v.number)) {
+                    map.set(v.number, {number: v.number, file: v.file, updates: 0, last: null, wcag: false});
+                }
+                const entry = map.get(v.number);
+                if (v.from_date) {
+                    entry.updates++;
+                    const d = parseDate(v.from_date);
+                    if (d && (!entry.last || d > entry.last)) entry.last = d;
+                    // Jeśli którakolwiek wersja ma wcag: true, oznacz całą instrukcję jako WCAG
+                    if (v.wcag) entry.wcag = true;
+                }
+            }
+            return Array.from(map.values());
+        }
+        const grouped = groupByNumberFromDate(allVersions).filter(g => g.updates > 0); // Tylko te z aktualizacjamigrouped
+        grouped.sort((a, b) => b.updates - a.updates);
+        const mostCount = 3;
+        const mostList = document.getElementById('most-updated');
+        const showMoreBtn = document.getElementById('show-more-most-updated');
+        function renderMost(limit) {
+            mostList.innerHTML = grouped.slice(0, limit).map(g =>
+                `<li><b>${g.number}</b> – ${g.updates} zmian${polishEndForNr(g.updates)}${g.last ? `, ostatnia: <span class="date">${g.last.toLocaleDateString('pl-PL')}</span>` : ''}</li>`
+            ).join('');
+        }
+        renderMost(mostCount);
+        if (grouped.length > mostCount) {
+            showMoreBtn.style.display = '';
+            let expanded = false;
+            showMoreBtn.onclick = () => {
+                expanded = !expanded;
+                renderMost(expanded ? grouped.length : mostCount);
+                showMoreBtn.textContent = expanded ? 'Pokaż mniej' : 'Pokaż więcej';
+            };
+        }
+    }
+    renderStats();
+</script>
+<style>
+.wcag-tag {
+    color: #1ecb4f;
+    font-weight: 600;
+    font-size: 0.98em;
+    margin-left: 2px;
+}
+</style>
+    </script>
+</body>
+</html>
