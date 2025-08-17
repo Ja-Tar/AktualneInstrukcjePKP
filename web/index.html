@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Znajdź najnowszą instrukcję</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Znajdź najnowszą instrukcję</h1>
+        <div class="search-box">
+            <input type="text" id="search-input" autocomplete="off" />
+            <div class="typing-demo" id="typing-demo" aria-hidden="true"></div>
+            <div class="autocomplete-list" id="autocomplete-list" style="display:none;"></div>
+        </div>
+    <div id="instruction-info">
+            <div id="info-fade"></div>
+        </div>
+        <a href="stats.html" class="stats-link">Zobacz statystyki instrukcji &rarr;</a>
+    </div>
+    <script src="utils.js"></script>
+    <script>
+    function updateActiveItem(items) {
+        items.forEach((el, i) => {
+            if (i === activeIndex) {
+                el.classList.add('active');
+                el.scrollIntoView({block:'nearest'});
+            } else {
+                el.classList.remove('active');
+            }
+        });
+    }
+    // Typing demo jako osobny element nad polem
+    const examples = ["Ie-1", "Ir-1", "sygnalizacji", "automatycznego", "przesyłek", "GSM-R"];
+    let typingIndex = 0, charIndex = 0, isDeleting = false, typingActive = true;
+    const typingDemo = document.getElementById('typing-demo');
+    const searchInput = document.getElementById('search-input');
+    const autocompleteList = document.getElementById('autocomplete-list');
+    let instructions = [];
+let activeIndex = 0;
+    // Ładowanie instrukcji z plików JSON
+    const instructionUrls = [
+        "https://raw.githubusercontent.com/Ja-Tar/AktualneInstrukcjePKP/refs/heads/main/currentFiles/ruch-i-przewozy-kolejowe.json",
+        "https://raw.githubusercontent.com/Ja-Tar/AktualneInstrukcjePKP/refs/heads/main/currentFiles/automatyka-i-telekomunikacja.json"
+    ];
+    async function setupInstructions() {
+        instructions = await fetchInstructionsFromUrls(instructionUrls);
+    }
+    setupInstructions();
+
+    function typeExample() {
+        if (!typingActive) return;
+        const current = examples[typingIndex];
+        if (!isDeleting) {
+            typingDemo.textContent = current.substring(0, charIndex + 1);
+            charIndex++;
+            if (charIndex === current.length) {
+                setTimeout(() => { isDeleting = true; typeExample(); }, 1200);
+                return;
+            }
+        } else {
+            typingDemo.textContent = current.substring(0, charIndex - 1);
+            charIndex--;
+            if (charIndex === 0) {
+                isDeleting = false;
+                typingIndex = (typingIndex + 1) % examples.length;
+                setTimeout(typeExample, 600);
+                return;
+            }
+        }
+        setTimeout(typeExample, isDeleting ? 40 : 90);
+    }
+    typeExample();
+
+    // Ukryj typing demo po wpisaniu czegokolwiek
+    searchInput.addEventListener('input', function() {
+        typingDemo.style.display = 'none';
+
+    // Reset aktywnego indeksu przy nowym wpisie
+    activeIndex = 0;
+
+        const infoFade = document.getElementById('info-fade');
+        infoFade.classList.remove('visible');
+        const val = this.value.trim().toLowerCase();
+        if (!val || instructions.length === 0) {
+            autocompleteList.style.display = 'none';
+            autocompleteList.innerHTML = '';
+            return;
+        }
+
+        // 1. Filtrowanie i scoring
+        function getScore(instr) {
+            const num = (instr.number || '').toLowerCase();
+            const name = (instr.name || '').toLowerCase();
+            if (!num && !name) return 0;
+            // Najwyższy priorytet: pełne dopasowanie numeru
+            if (num === val) return 10000;
+            // Numer zaczyna się od zapytania (np. "Ir-1" dla "Ir-" lub "Ir")
+            if (num.startsWith(val)) return 9000;
+            // Numer zawiera zapytanie
+            if (num.includes(val)) return 7000;
+            // Nazwa zaczyna się od zapytania
+            if (name.startsWith(val)) return 5000;
+            // Nazwa zawiera zapytanie
+            if (name.includes(val)) return 4000;
+            // Szukaj w całości (np. "sygnalizacji")
+            if ((num + ' ' + name).includes(val)) return 2000;
+            return 0;
+        }
+
+        // 2. Dodaj score i filtruj
+        let filtered = instructions.map(instr => ({...instr, _score: getScore(instr)}))
+            .filter(instr => instr._score > 0);
+
+        // 3. Grupowanie po numerze i nazwie (ignorując WCAG)
+        function groupKey(instr) {
+            return (instr.number || '___brak___') + '|' + (instr.name || '');
+        }
+        const groupMap = new Map();
+        for (const instr of filtered) {
+            const key = groupKey(instr);
+            if (!groupMap.has(key)) groupMap.set(key, []);
+            groupMap.get(key).push(instr);
+        }
+        let groups = Array.from(groupMap.values());
+
+        // 4. Sortowanie grup:
+        // Jeśli zapytanie wygląda na prefiks numeru instrukcji (np. Ir, Ir-), sortuj naturalnie po numerze
+        function naturalCompare(a, b) {
+            function chunkify(t) {
+                return (t || '').match(/(\d+|\D+)/g)?.map(x => (isNaN(x) ? x : parseInt(x, 10))) || [];
+            }
+            const ac = chunkify(a);
+            const bc = chunkify(b);
+            for (let i = 0; i < Math.max(ac.length, bc.length); i++) {
+                if (ac[i] === undefined) return -1;
+                if (bc[i] === undefined) return 1;
+                if (typeof ac[i] === 'number' && typeof bc[i] === 'number') {
+                    if (ac[i] !== bc[i]) return ac[i] - bc[i];
+                } else {
+                    const cmp = String(ac[i]).localeCompare(String(bc[i]));
+                    if (cmp !== 0) return cmp;
+                }
+            }
+            return 0;
+        }
+        const isNumPrefix = /^ir-?$/i.test(val);
+        groups.sort((a, b) => {
+            const scoreA = Math.max(...a.map(x=>x._score));
+            const scoreB = Math.max(...b.map(x=>x._score));
+            if (isNumPrefix) {
+                // Dla zapytań typu Ir lub Ir- sortuj tylko naturalnie po numerze
+                const cmp = naturalCompare(a[0].number, b[0].number);
+                if (cmp !== 0) return cmp;
+                return (a[0].name || '').localeCompare(b[0].name || '');
+            }
+            // Domyślnie: najpierw po score, potem naturalnie po numerze
+            if (scoreA !== scoreB) return scoreB - scoreA;
+            const cmp = naturalCompare(a[0].number, b[0].number);
+            if (cmp !== 0) return cmp;
+            return (a[0].name || '').localeCompare(b[0].name || '');
+        });
+
+        // 5. Instrukcje bez numeru na końcu
+        groups = groups.filter(g => g[0].number).concat(groups.filter(g => !g[0].number));
+
+        // 6. Budowanie HTML (normal + WCAG)
+        autocompleteList.innerHTML = groups.map(group => {
+            const normal = group.find(inst => !inst.wcag);
+            const wcag = group.find(inst => inst.wcag);
+            let html = '';
+            if (normal) {
+                html += `<div class="autocomplete-item" data-num="${normal.number || ''}" data-name="${normal.name || ''}" data-wcag="0">` +
+                    (normal.number ? `${normal.number} – ` : '') +
+                    `${normal.name || ''}</div>`;
+            }
+            if (wcag) {
+                html += `<div class="autocomplete-item" data-num="${wcag.number || ''}" data-name="${wcag.name || ''}" data-wcag="1">` +
+                    (wcag.number ? `${wcag.number} – ` : '') +
+                    `${wcag.name || ''} <span style="color:#1ecb4f;font-weight:600;">- wersja dostosowana do WCAG</span></div>`;
+            }
+            return html;
+        }).join('');
+        autocompleteList.style.display = 'block';
+    updateActiveItem(Array.from(autocompleteList.querySelectorAll('.autocomplete-item')));
+    });
+
+    autocompleteList.addEventListener('mousedown', function(e) {
+        let item = e.target.closest('.autocomplete-item');
+        if (item && autocompleteList.contains(item)) {
+            // Pobierz dane z atrybutów
+            const num = item.getAttribute('data-num') || '';
+            const name = item.getAttribute('data-name') || '';
+            const wcag = item.getAttribute('data-wcag') === '1';
+            // Jeśli kliknięto na wersję WCAG, wybierz najnowszą wersję z wcag=true
+            let found;
+            if (wcag) {
+                found = instructions.filter(inst => (inst.number || '') === num && (inst.name || '') === name && inst.wcag === true)
+                    .sort((a, b) => (new Date(b.from_date || b.to_date || 0)) - (new Date(a.from_date || a.to_date || 0)))[0];
+            } else {
+                found = instructions.find(inst => (inst.number || '') === num && (inst.name || '') === name && (!inst.wcag || inst.wcag === false));
+                if (!found) found = instructions.find(inst => (inst.number || '') === num && (inst.name || '') === name);
+            }
+            if (found) {
+                showInstructionInfo(found);
+            }
+            searchInput.value = '';
+            autocompleteList.style.display = 'none';
+            typingDemo.style.display = 'flex';
+        }
+    });
+
+    document.addEventListener('click', function(e) {
+        if (!autocompleteList.contains(e.target) && e.target !== searchInput) {
+            autocompleteList.style.display = 'none';
+            // Jeśli pole jest puste, wznow typing demo
+            if (searchInput.value.trim() === '') {
+                typingDemo.style.display = 'flex';
+            }
+        }
+    });
+
+    // Obsługa klawiatury: strzałki, enter, esc
+    searchInput.addEventListener('keydown', function(e) {
+        const items = Array.from(autocompleteList.querySelectorAll('.autocomplete-item'));
+        if (!items.length || autocompleteList.style.display === 'none') return;
+        if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            activeIndex = (activeIndex + 1) % items.length;
+            updateActiveItem(items);
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            activeIndex = (activeIndex - 1 + items.length) % items.length;
+            updateActiveItem(items);
+        } else if (e.key === 'Enter') {
+            e.preventDefault();
+            if (items[activeIndex]) {
+                items[activeIndex].dispatchEvent(new MouseEvent('mousedown', {bubbles:true}));
+            }
+        } else if (e.key === 'Escape') {
+            autocompleteList.style.display = 'none';
+        }
+    });
+
+    // Pokazywanie info o instrukcji
+    function showInstructionInfo(inst) {
+        const infoFade = document.getElementById('info-fade');
+        let dateStr = inst.from_date || inst.to_date || null;
+        let daysAgo = '';
+        let dateDisplay = '';
+        let addedStyle = '';
+        if (dateStr) {
+            const date = new Date(dateStr);
+            const now = new Date();
+            date.setHours(0,0,0,0);
+            now.setHours(0,0,0,0);
+            const diff = Math.floor((now - date) / (1000*60*60*24));
+            daysAgo = diff >= 0 ? `${diff} dni temu` : 'w przyszłości';
+            dateDisplay = `(${dateStr.replace(/-/g, '.')})`;
+        } else {
+            daysAgo = 'brak danych';
+            dateDisplay = '';
+            addedStyle = ' style="color:red;"';
+        }
+        let btn = '';
+        if (inst.resource_url) {
+            let url = inst.resource_url;
+            if (!/^https?:/.test(url)) {
+                url = 'https://www.plk-sa.pl' + url;
+            }
+            btn = `<a href="${url}" target="_blank" class="open-instr-btn">Otwórz instrukcję</a>`;
+        }
+        const wcagInfo = inst.wcag ? '<span class="wcag-info">(wersja dostosowana do WCAG)</span>' : '';
+        infoFade.innerHTML = `
+            <div class="instr-title">
+                <span class="instr-number">${inst.number || ''}</span>
+                ${inst.name || ''}
+            </div>
+            ${wcagInfo ? `<div class="wcag-info-wrap">${wcagInfo}</div>` : ''}
+            <div class="instr-date">ostatnio aktualizowano: <b${addedStyle}>${daysAgo}</b> ${dateDisplay}</div>
+            ${btn}
+        `;
+        setTimeout(() => infoFade.classList.add('visible'), 10);
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,179 @@
+/* Styl dla kontenera info o instrukcji */
+#instruction-info {
+    /* margin-top: 40px; */
+}
+.instr-title {
+    font-size: 1.35em;
+    font-weight: 700;
+    margin-top: 40px;
+}
+.instr-number {
+    color: #1976d2;
+    font-weight: 600;
+}
+.wcag-info-wrap {
+    margin-bottom: 8px;
+    margin-top: 2px;
+}
+.wcag-info {
+    color: #1ecb4f;
+    font-size: 0.98em;
+    font-weight: 500;
+}
+.instr-date {
+    font-size: 1.15em;
+    margin-bottom: 18px;
+    margin-top: 10px;
+}
+/* Duży zielony przycisk do otwierania instrukcji */
+.open-instr-btn {
+    display: inline-block;
+    background: linear-gradient(90deg, #43ea7b 0%, #1ecb4f 100%);
+    color: #fff;
+    font-size: 1.35rem;
+    font-weight: 700;
+    padding: 18px 44px;
+    border: none;
+    border-radius: 12px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    box-shadow: 0 2px 12px rgba(30, 175, 64, 0.10);
+    transition: background 0.2s, transform 0.1s;
+    cursor: pointer;
+}
+.open-instr-btn:hover {
+    background: linear-gradient(90deg, #1ecb4f 0%, #43ea7b 100%);
+    transform: translateY(-2px) scale(1.03);
+    color: #fff;
+}
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(120deg, #e3f2fd 0%, #f6f8fa 100%);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+.container {
+    max-width: 650px;
+    margin: 60px auto 0 auto;
+    background: #fff;
+    border-radius: 22px;
+    box-shadow: 0 6px 32px rgba(30, 64, 175, 0.10);
+    padding: 56px 36px 36px 36px;
+    text-align: center;
+}
+h1 {
+    font-size: 2.8rem;
+    margin-bottom: 36px;
+    color: #0d47a1;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+.search-box {
+    position: relative;
+}
+input[type="text"] {
+    width: 100%;
+    padding: 18px 22px;
+    font-size: 1.25rem;
+    border: 2px solid #90caf9;
+    border-radius: 10px;
+    outline: none;
+    transition: border 0.2s;
+    background: #f6f8fa;
+    box-sizing: border-box;
+}
+input[type="text"]:focus {
+    border-color: #1976d2;
+    background: #fff;
+}
+.autocomplete-list {
+    position: absolute;
+    left: 0; right: 0;
+    top: 100%;
+    background: #fff;
+    border: 1px solid #e3e3e3;
+    border-top: none;
+    z-index: 10;
+    max-height: 220px;
+    overflow-y: auto;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 2px 12px rgba(30, 64, 175, 0.07);
+}
+.autocomplete-item {
+    padding: 14px 22px;
+    cursor: pointer;
+    text-align: left;
+    font-size: 1.08rem;
+}
+.autocomplete-item:hover, .autocomplete-item.active {
+    background: #e3f2fd;
+}
+#typing-demo {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  padding-left: 25px;
+  color: rgb(117, 117, 117);
+  opacity: 0.8;
+  font-size: 1.3em;
+}
+.stats-link, .back-link {
+    display: inline-block;
+    margin-top: 28px;
+    color: #1976d2;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.13rem;
+    transition: color 0.2s;
+}
+.stats-link:hover, .back-link:hover {
+    color: #0d47a1;
+    text-decoration: underline;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 28px 0;
+    background: #f6f8fa;
+    border-radius: 10px;
+    overflow: hidden;
+}
+th, td {
+    padding: 14px 12px;
+    border-bottom: 1px solid #e3e3e3;
+    text-align: left;
+}
+th {
+    background: #e3f2fd;
+    color: #1976d2;
+    font-size: 1.08rem;
+}
+tr:last-child td {
+    border-bottom: none;
+}
+#info-fade {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.35s cubic-bezier(.4,0,.2,1), transform 0.35s cubic-bezier(.4,0,.2,1);
+    pointer-events: none;
+    will-change: opacity, transform;
+}
+#info-fade.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+@media (max-width: 700px) {
+    .container { padding: 24px 6vw; }
+    h1 { font-size: 2rem; }
+    input[type="text"] { font-size: 1rem; }
+    .autocomplete-item { font-size: 0.98rem; }
+    th, td { font-size: 0.98rem; }
+}
