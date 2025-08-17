@@ -1,4 +1,4 @@
-name: Run Python Script and Push Changes
+name: Sprawdź zmiany
 
 on:
   schedule:
@@ -6,7 +6,7 @@ on:
   workflow_dispatch:  # Allows manual triggering
 
 jobs:
-  run-and-push:
+  run-py-and-push:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
