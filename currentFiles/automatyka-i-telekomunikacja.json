@@ -18,9 +18,9 @@
     {
         "name": "Instrukcja o telefonicznej przewodowej łączności ruchowej",
         "number": "Ie-2",
-        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/INSTRUKCJA_o_telefonicznej_przewodowej_lacznosci_ruchowej_Ie-2__E-3_.pdf",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Wytyczne_Ie-2_lacznosc_ruchowa_UCHWALONA_26.08.25_WCAG.pdf",
         "wcag": true,
-        "from_date": null,
+        "from_date": "2025-08-27",
         "to_date": null
     },
     {
@@ -264,19 +264,19 @@
         "to_date": null
     },
     {
-        "name": "Warunki bezpiecznej instalacji i eksploatacji urządzeń sterowania ruchem kolejowym na liniach kolejowych zarządzanych przez PKP Polskie Linie Kolejowe S.A.",
+        "name": "Warunki bezpiecznej instalacji i eksploatacji urządzeń sterowania ruchem kolejowym",
         "number": "",
-        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/07_Instrukcja_Ie-100a-od_2025.05.16_WCAG.pdf",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-100a_obowiazuje_od_2025-08-25__uz_681_25__WCAG.pdf",
         "wcag": true,
-        "from_date": "2025-05-16",
+        "from_date": "2025-08-25",
         "to_date": null
     },
     {
-        "name": "Warunki bezpiecznej instalacji i eksploatacji urządzeń sterowania ruchem kolejowym na liniach kolejowych zarządzanych przez PKP Polskie Linie Kolejowe S.A.",
+        "name": "Warunki bezpiecznej instalacji i eksploatacji urządzeń sterowania ruchem kolejowym",
         "number": "",
-        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/07_Instrukcja_Ie-100a-od_2025.05.16.pdf",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-100a_obowiazuje_od_2025-08-25__uz_681_25_.pdf",
         "wcag": false,
-        "from_date": "2025-05-16",
+        "from_date": "2025-08-25",
         "to_date": null
     },
     {
@@ -370,17 +370,17 @@
     {
         "name": "Wytyczne dla projektowania i budowy linii optotelekomunikacyjnych",
         "number": "Ie-108",
-        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-108_2023_WCAG.pdf",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-108_obowiazuje_od_2025-08-27__uz_699_25__WCAG.pdf",
         "wcag": true,
-        "from_date": "2023-03-02",
+        "from_date": "2025-08-27",
         "to_date": null
     },
     {
         "name": "Wytyczne dla projektowania i budowy linii optotelekomunikacyjnych",
         "number": "Ie-108",
-        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-108_2023.pdf",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-108_obowiazuje_od_2025-08-27__uz_699_25_.pdf",
         "wcag": false,
-        "from_date": "2023-03-02",
+        "from_date": "2025-08-27",
         "to_date": null
     },
     {
