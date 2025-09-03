@@ -114,6 +114,14 @@
             {
                 "name": "Instrukcja o telefonicznej przewodowej łączności ruchowej",
                 "number": "Ie-2",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Wytyczne_Ie-2_lacznosc_ruchowa_UCHWALONA_26.08.25.pdf",
+                "wcag": false,
+                "from_date": "2025-08-27",
+                "to_date": null
+            },
+            {
+                "name": "Instrukcja o telefonicznej przewodowej łączności ruchowej",
+                "number": "Ie-2",
                 "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/INSTRUKCJA_o_telefonicznej_przewodowej_lacznosci_ruchowej_Ie-2__E-3_.pdf",
                 "wcag": true,
                 "from_date": null,
