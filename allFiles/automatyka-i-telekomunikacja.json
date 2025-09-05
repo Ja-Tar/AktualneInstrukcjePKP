@@ -756,10 +756,26 @@
             {
                 "name": "Wymagania techniczno-eksploatacyjne dla radiotelefonu stacjonarnego/przewoźnego dla sieci radiotelefonicznych z selektywnym wywołaniem grupowym",
                 "number": "Ie-105",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-105_obowiazuje_od_2025-09-03__uz_712_25__WCAG.pdf",
+                "wcag": true,
+                "from_date": "2025-09-03",
+                "to_date": null
+            },
+            {
+                "name": "Wymagania techniczno-eksploatacyjne dla radiotelefonu stacjonarnego/przewoźnego dla sieci radiotelefonicznych z selektywnym wywołaniem grupowym",
+                "number": "Ie-105",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-105_obowiazuje_od_2025-09-03__uz_712_25_.pdf",
+                "wcag": false,
+                "from_date": "2025-09-03",
+                "to_date": null
+            },
+            {
+                "name": "Wymagania techniczno-eksploatacyjne dla radiotelefonu stacjonarnego/przewoźnego dla sieci radiotelefonicznych z selektywnym wywołaniem grupowym",
+                "number": "Ie-105",
                 "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-105_04-2018.pdf",
                 "wcag": false,
                 "from_date": null,
-                "to_date": null
+                "to_date": "2025-09-02"
             }
         ]
     },
