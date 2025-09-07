@@ -138,7 +138,7 @@
     {
         "name": "Instrukcja o organizacji i użytkowaniu sieci GSM-R",
         "number": "Ie-16",
-        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/WCAG_IST4__Instrukcja_Ie-16__2__obowiazuje_od_18.05.2025.pdf",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Instrukcja_Ie-16_obowiazuje_od_18.05.25__uz_306_2025__WCAG.pdf",
         "wcag": true,
         "from_date": "2025-05-18",
         "to_date": null
@@ -148,7 +148,7 @@
         "number": "Ie-16",
         "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/IST4__Instrukcja_Ie-16__2__obowiazuje_od_18.05.2025.pdf",
         "wcag": false,
-        "from_date": "2025-05-18",
+        "from_date": "2025-05-17",
         "to_date": null
     },
     {
@@ -186,7 +186,7 @@
     {
         "name": "Wytyczne instalacji i eksploatacji cyfrowych rejestratorów rozmów telefonicznych",
         "number": "Ie-21",
-        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Podglad/Ie/Wytyczne_Ie-21_instalacja_cyfrowych_rejestratorow_rozmow_telefonicznych_UCHWALONA_WCAG.pdf",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Wytyczne_Ie-21_obowiazuja_od_31-07-2025__uz_611_2025__WCAG.pdf",
         "wcag": true,
         "from_date": "2025-07-31",
         "to_date": null
@@ -242,7 +242,7 @@
     {
         "name": "Wytyczne do projektowania systemu łączności awaryjnej dla służb ratunkowych w tunelach kolejowych",
         "number": "Ie-33",
-        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/01_Wytyczne_Ie-33__WCAG-od_16.05.2025.pdf",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Wytyczne_Ie-33_obowiazuja_od_16-05-2025__uz_370_2025__WCAG.pdf",
         "wcag": true,
         "from_date": "2025-05-16",
         "to_date": null
