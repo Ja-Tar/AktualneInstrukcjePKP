@@ -87,6 +87,8 @@ input[type="text"] {
 input[type="text"]:focus {
     border-color: #1976d2;
     background: #fff;
+    outline: 2px solid rgba(25, 118, 210, 0.3);
+    outline-offset: 2px;
 }
 .autocomplete-list {
     position: absolute;
@@ -227,6 +229,22 @@ tr:last-child td {
         margin: 16px 0;
         width: 100%;
         box-sizing: border-box;
+    }
+    
+    /* Better focus states for mobile accessibility */
+    input[type="text"]:focus {
+        outline: 3px solid rgba(25, 118, 210, 0.4);
+        outline-offset: 2px;
+    }
+    
+    .autocomplete-item:focus {
+        outline: 2px solid #1976d2;
+        outline-offset: 1px;
+    }
+    
+    button:focus, .stats-link:focus, .back-link:focus {
+        outline: 2px solid #1976d2;
+        outline-offset: 2px;
     }
 }
 
