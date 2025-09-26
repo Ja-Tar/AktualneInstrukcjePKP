@@ -84,8 +84,8 @@ section h2 {
 
 @media (max-width: 700px) {
   section { 
-    padding: 16px 3vw; 
-    margin: 20px 0 24px 0;
+    padding: 16px 4vw; 
+    margin: 16px 0 20px 0;
     border-radius: 12px;
   }
   .stats-list { 
@@ -105,8 +105,10 @@ section h2 {
   }
   
   .container {
-    padding: 16px 4vw;
-    margin: 16px auto;
+    padding: 16px 5vw;
+    margin: 10px 3vw;
+    max-width: none;
+    width: auto;
   }
   
   h1 {
@@ -133,8 +135,10 @@ section h2 {
 /* Additional optimizations for very small screens */
 @media (max-width: 480px) {
   .container {
-    padding: 12px 3vw;
-    margin: 10px auto;
+    padding: 12px 4vw;
+    margin: 8px 2vw;
+    max-width: none;
+    width: auto;
   }
   
   h1 {
