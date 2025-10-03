@@ -330,10 +330,18 @@
     {
         "name": "Wytyczne w zakresie zobrazowania, wprowadzania poleceń oraz rejestracji zdarzeń dla komputerowych stanowisk obsługi urządzeń sterowania ruchem kolejowym",
         "number": "Ie-104",
-        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-104_2012_p.pdf",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-104_obowiazuje_od_2025-10-02__uz_810_25__WCAG.pdf",
+        "wcag": true,
+        "from_date": "2025-10-02",
+        "to_date": null
+    },
+    {
+        "name": "Wytyczne w zakresie zobrazowania, wprowadzania poleceń oraz rejestracji zdarzeń dla komputerowych stanowisk obsługi urządzeń sterowania ruchem kolejowym",
+        "number": "Ie-104",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-104_obowiazuje_od_2025-10-02__uz_810_25_.pdf",
         "wcag": false,
-        "from_date": null,
-        "to_date": "2028-02-19"
+        "from_date": "2025-10-02",
+        "to_date": null
     },
     {
         "name": "Wytyczne w zakresie zobrazowania, wprowadzania poleceń oraz rejestracji zdarzeń dla komputerowych stanowisk obsługi urządzeń sterowania ruchem kolejowym",
@@ -690,9 +698,17 @@
     {
         "name": "Wytyczne techniczno-eksploatacyjne na system sterowania hamulców torowych",
         "number": "Ie-160",
-        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-160.pdf",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-160_obowiazuje_od_2025-10-02__uz_811_25__WCAG.pdf",
+        "wcag": true,
+        "from_date": "2025-10-02",
+        "to_date": null
+    },
+    {
+        "name": "Wytyczne techniczno-eksploatacyjne na system sterowania hamulców torowych",
+        "number": "Ie-160",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-160_obowiazuje_od_2025-10-02__uz_811_25_.pdf",
         "wcag": false,
-        "from_date": null,
+        "from_date": "2025-10-02",
         "to_date": null
     },
     {
