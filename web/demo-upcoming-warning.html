@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo - Upcoming Version Warning</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="darkmode.css">
+</head>
+<body>
+    <div class="container">
+        <button id="toggle-darkmode" style="position:absolute;top:18px;right:24px;z-index:20;min-width:44px;min-height:44px;font-size:1.1em;cursor:pointer;">🌙</button>
+        <h1>Demo: Ostrzeżenie o nadchodzącej wersji</h1>
+        <p style="color: #666; font-size: 0.95em; margin-bottom: 30px;">
+            To jest demo funkcji ostrzeżenia o nadchodzącej wersji instrukcji. 
+            Pokazuje jak będzie wyglądać gdy instrukcja ma planowaną aktualizację.
+        </p>
+        
+        <div id="instruction-info">
+            <div id="info-fade" class="visible">
+                <div class="instr-title">
+                    <span class="instr-number">Ie-1</span>
+                    Instrukcja sygnalizacji
+                </div>
+                <div class="wcag-info-wrap"><span class="wcag-info">(wersja dostosowana do WCAG)</span></div>
+                <div class="instr-date">ostatnio aktualizowano: <b>97 dni temu</b> (2024.11.24)</div>
+                <a href="https://www.plk-sa.pl/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-1_wersja_WCAG_obowiazuje_od_24.11.2024.pdf" target="_blank" class="open-instr-btn">Otwórz instrukcję</a>
+                
+                <div class="upcoming-version-warning">
+                    <div class="warning-icon">⚠️</div>
+                    <div class="warning-content">
+                        <div class="warning-text">Nowa wersja instrukcji wchodzi w życie</div>
+                        <div class="warning-details">Aktualizacja za 21 dni (2025.03.22)</div>
+                        <a href="https://www.plk-sa.pl/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-1_wersja_obowiazujaca_od_2025-03-22_WCAG.pdf" target="_blank" class="warning-btn">Zobacz nową wersję</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div style="margin-top: 40px; padding: 20px; background: #e3f2fd; border-radius: 10px; text-align: left;">
+            <h3 style="margin-top: 0;">Jak to działa?</h3>
+            <ul style="color: #333; line-height: 1.8;">
+                <li>System automatycznie wykrywa nadchodzące wersje instrukcji</li>
+                <li>Ostrzeżenie pojawia się gdy nowa wersja ma datę wejścia w życie w przyszłości</li>
+                <li>Pokazuje liczbę dni do aktualizacji</li>
+                <li>Umożliwia podgląd nowej wersji przed jej wejściem w życie</li>
+                <li>Stylizacja przypomina ostrzeżenia z Wikipedii</li>
+                <li>Wspiera tryb ciemny i jest responsywna dla urządzeń mobilnych</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script>
+    function setDarkMode(on) {
+        document.body.classList.toggle('dark-mode', on);
+        localStorage.setItem('darkMode', on ? '1' : '0');
+        document.getElementById('toggle-darkmode').textContent = on ? '☀️' : '🌙';
+    }
+    function initDarkMode() {
+        const btn = document.getElementById('toggle-darkmode');
+        const dark = localStorage.getItem('darkMode') === '1';
+        setDarkMode(dark);
+        btn.onclick = () => setDarkMode(!document.body.classList.contains('dark-mode'));
+    }
+    window.addEventListener('DOMContentLoaded', initDarkMode);
+    </script>
+</body>
+</html>

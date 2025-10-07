@@ -75,3 +75,20 @@ body.dark-mode .wcag-info {
 body.dark-mode .date {
   color: #90caf9 !important;
 }
+body.dark-mode .upcoming-version-warning {
+  background: #2e1f0f !important;
+  border-color: #ff9800 !important;
+}
+body.dark-mode .upcoming-version-warning .warning-text {
+  color: #ffb74d !important;
+}
+body.dark-mode .upcoming-version-warning .warning-details {
+  color: #d7ccc8 !important;
+}
+body.dark-mode .upcoming-version-warning .warning-btn {
+  background: linear-gradient(90deg, #f57c00 0%, #ef6c00 100%) !important;
+  color: #fff !important;
+}
+body.dark-mode .upcoming-version-warning .warning-btn:hover {
+  background: linear-gradient(90deg, #ef6c00 0%, #e65100 100%) !important;
+}
