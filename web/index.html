@@ -55,16 +55,43 @@
     const searchInput = document.getElementById('search-input');
     const autocompleteList = document.getElementById('autocomplete-list');
     let instructions = [];
+    let allVersions = []; // All versions including future ones
 let activeIndex = 0;
     // Ładowanie instrukcji z plików JSON
     const instructionUrls = [
         "https://raw.githubusercontent.com/Ja-Tar/AktualneInstrukcjePKP/refs/heads/main/currentFiles/ruch-i-przewozy-kolejowe.json",
         "https://raw.githubusercontent.com/Ja-Tar/AktualneInstrukcjePKP/refs/heads/main/currentFiles/automatyka-i-telekomunikacja.json"
     ];
+    const allFilesUrls = [
+        "https://raw.githubusercontent.com/Ja-Tar/AktualneInstrukcjePKP/refs/heads/main/allFiles/ruch-i-przewozy-kolejowe.json",
+        "https://raw.githubusercontent.com/Ja-Tar/AktualneInstrukcjePKP/refs/heads/main/allFiles/automatyka-i-telekomunikacja.json"
+    ];
     async function setupInstructions() {
         instructions = await fetchInstructionsFromUrls(instructionUrls);
+        allVersions = await fetchAllFilesFromUrls(allFilesUrls);
     }
     setupInstructions();
+
+    // Fetch all versions (including future) from allFiles
+    async function fetchAllFilesFromUrls(urls) {
+        let all = [];
+        for (const url of urls) {
+            try {
+                const res = await fetch(url);
+                if (!res.ok) continue;
+                const data = await res.json();
+                // allFiles contains File objects with versions array
+                if (Array.isArray(data)) {
+                    for (const file of data) {
+                        if (file.versions && Array.isArray(file.versions)) {
+                            all = all.concat(file.versions);
+                        }
+                    }
+                }
+            } catch (e) { /* pomiń błędy */ }
+        }
+        return all;
+    }
 
     function typeExample() {
         if (!typingActive) return;
@@ -290,6 +317,36 @@ let activeIndex = 0;
             btn = `<a href="${url}" target="_blank" class="open-instr-btn">Otwórz instrukcję</a>`;
         }
         const wcagInfo = inst.wcag ? '<span class="wcag-info">(wersja dostosowana do WCAG)</span>' : '';
+        
+        // Check for upcoming versions
+        let upcomingWarning = '';
+        const upcomingVersion = findUpcomingVersion(inst);
+        if (upcomingVersion) {
+            const fromDate = new Date(upcomingVersion.from_date);
+            const now = new Date();
+            fromDate.setHours(0,0,0,0);
+            now.setHours(0,0,0,0);
+            const daysUntil = Math.ceil((fromDate - now) / (1000*60*60*24));
+            const daysText = daysUntil === 1 ? '1 dzień' : (daysUntil >= 2 && daysUntil <= 4) ? `${daysUntil} dni` : `${daysUntil} dni`;
+            
+            let upcomingUrl = upcomingVersion.resource_url;
+            if (upcomingUrl && !/^https?:/.test(upcomingUrl)) {
+                upcomingUrl = 'https://www.plk-sa.pl' + upcomingUrl;
+            }
+            const upcomingBtn = upcomingUrl ? `<a href="${upcomingUrl}" target="_blank" class="warning-btn">Zobacz nową wersję</a>` : '';
+            
+            upcomingWarning = `
+                <div class="upcoming-version-warning">
+                    <div class="warning-icon">⚠️</div>
+                    <div class="warning-content">
+                        <div class="warning-text">Nowa wersja instrukcji wchodzi w życie</div>
+                        <div class="warning-details">Aktualizacja za ${daysText} (${upcomingVersion.from_date.replace(/-/g, '.')})</div>
+                        ${upcomingBtn}
+                    </div>
+                </div>
+            `;
+        }
+        
         infoFade.innerHTML = `
             <div class="instr-title">
                 <span class="instr-number">${inst.number || ''}</span>
@@ -298,8 +355,29 @@ let activeIndex = 0;
             ${wcagInfo ? `<div class="wcag-info-wrap">${wcagInfo}</div>` : ''}
             <div class="instr-date">ostatnio aktualizowano: <b${addedStyle}>${daysAgo}</b> ${dateDisplay}</div>
             ${btn}
+            ${upcomingWarning}
         `;
         setTimeout(() => infoFade.classList.add('visible'), 10);
+    }
+    
+    // Find upcoming version for the current instruction
+    function findUpcomingVersion(currentInst) {
+        const today = new Date();
+        today.setHours(0,0,0,0);
+        
+        // Find all versions with same number and wcag status, with future from_date
+        const upcomingVersions = allVersions.filter(v => 
+            v.number === currentInst.number && 
+            v.wcag === currentInst.wcag &&
+            v.from_date && 
+            new Date(v.from_date) > today
+        );
+        
+        if (upcomingVersions.length === 0) return null;
+        
+        // Return the nearest upcoming version
+        upcomingVersions.sort((a, b) => new Date(a.from_date) - new Date(b.from_date));
+        return upcomingVersions[0];
     }
     </script>
 </body>
