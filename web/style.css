@@ -340,6 +340,8 @@ tr:last-child td {
     
     .stats-link, .back-link {
         font-size: 0.95rem;
+    }
+    
     .upcoming-version-warning {
         flex-direction: column;
         gap: 12px;
