@@ -342,7 +342,7 @@
                 "number": "Ie-16",
                 "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/IST4__Instrukcja_Ie-16__2__obowiazuje_od_18.05.2025.pdf",
                 "wcag": false,
-                "from_date": "2025-05-17",
+                "from_date": "2025-05-18",
                 "to_date": null
             },
             {
@@ -351,7 +351,7 @@
                 "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Podglad/Ie/Ie-16_od_11.12.2016.pdf",
                 "wcag": false,
                 "from_date": "2016-12-11",
-                "to_date": null
+                "to_date": "2025-05-17"
             }
         ]
     },
@@ -678,19 +678,19 @@
         "number": "Ie-103",
         "versions": [
             {
-                "name": "Warunki Techniczne Odbioru Żarówki sygnałowe kolejowe",
-                "number": "Ie-103",
-                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-103_obowiazuje_od_2025-08-07__uz_633_25_.pdf",
-                "wcag": false,
-                "from_date": null,
-                "to_date": null
-            },
-            {
-                "name": "Warunki Techniczne Odbioru Żarówki sygnałowe kolejowe",
+                "name": "Warunki techniczne odbioru dla żarówek sygnałowych kolejowych",
                 "number": "Ie-103",
                 "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-103_obowiazuje_od_2025-08-07__uz_633_25__WCAG.pdf",
                 "wcag": true,
-                "from_date": null,
+                "from_date": "2025-08-07",
+                "to_date": null
+            },
+            {
+                "name": "Warunki techniczne odbioru dla żarówek sygnałowych kolejowych",
+                "number": "Ie-103",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-103_obowiazuje_od_2025-08-07__uz_633_25_.pdf",
+                "wcag": false,
+                "from_date": "2025-08-07",
                 "to_date": null
             }
         ]
@@ -942,7 +942,7 @@
                 "number": "Ie-116",
                 "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-116_-_WCAG.pdf",
                 "wcag": true,
-                "from_date": null,
+                "from_date": "2025-01-27",
                 "to_date": null
             },
             {
@@ -950,7 +950,7 @@
                 "number": "Ie-116",
                 "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-116.pdf",
                 "wcag": false,
-                "from_date": null,
+                "from_date": "2025-01-27",
                 "to_date": null
             },
             {
@@ -959,7 +959,7 @@
                 "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Podglad/Ie/Ie-116_Wymagania_na_system_teleinformatyczny_do_prowadzenia_ruchu_pociag....pdf",
                 "wcag": false,
                 "from_date": null,
-                "to_date": null
+                "to_date": "2025-01-26"
             }
         ]
     },
