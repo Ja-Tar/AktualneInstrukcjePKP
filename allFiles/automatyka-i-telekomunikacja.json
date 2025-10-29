@@ -340,7 +340,7 @@
             {
                 "name": "Instrukcja o organizacji i użytkowaniu sieci GSM-R",
                 "number": "Ie-16",
-                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/IST4__Instrukcja_Ie-16__2__obowiazuje_od_18.05.2025.pdf",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-16_obowiazuje_od_2025-05-18__uz_306_25_.pdf",
                 "wcag": false,
                 "from_date": "2025-05-18",
                 "to_date": null
@@ -403,7 +403,7 @@
             {
                 "name": "Wytyczne instalacji i eksploatacji cyfrowych rejestratorów rozmów telefonicznych",
                 "number": "Ie-21",
-                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Wytyczne_Ie-21_obowiazuja_od_31-07-2025__uz_611_2025__WCAG.pdf",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-21_obowiazuje_od_2025-07-31__uz_611_25__WCAG.pdf",
                 "wcag": true,
                 "from_date": "2025-07-31",
                 "to_date": null
@@ -411,7 +411,7 @@
             {
                 "name": "Wytyczne instalacji i eksploatacji cyfrowych rejestratorów rozmów telefonicznych",
                 "number": "Ie-21",
-                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Podglad/Ie/Wytyczne_Ie-21_instalacja_cyfrowych_rejestratorow_rozmow_telefonicznych_UCHWALONA.pdf",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-21_obowiazuje_od_2025-07-31__uz_611_25_.pdf",
                 "wcag": false,
                 "from_date": "2025-07-31",
                 "to_date": null
@@ -524,7 +524,7 @@
             {
                 "name": "Standard oznaczeń elementów sieci transmisyjnej oraz sieci GSM-R",
                 "number": "Ie-50",
-                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-125_obowiazuje_od_2025-08-13__uz_658_25_.pdf",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-50z1.3_obowiazuje_od_2025-08-13__uz_659_25_.pdf",
                 "wcag": false,
                 "from_date": "2025-08-13",
                 "to_date": null
@@ -704,7 +704,7 @@
                 "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-104_obowiazuje_od_2025-10-02__uz_810_25__WCAG.pdf",
                 "wcag": true,
                 "from_date": "2025-10-02",
-                "to_date": null
+                "to_date": "2028-02-19"
             },
             {
                 "name": "Wytyczne w zakresie zobrazowania, wprowadzania poleceń oraz rejestracji zdarzeń dla komputerowych stanowisk obsługi urządzeń sterowania ruchem kolejowym",
@@ -712,7 +712,7 @@
                 "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-104_obowiazuje_od_2025-10-02__uz_810_25_.pdf",
                 "wcag": false,
                 "from_date": "2025-10-02",
-                "to_date": null
+                "to_date": "2028-02-19"
             },
             {
                 "name": "Wytyczne w zakresie zobrazowania, wprowadzania poleceń oraz rejestracji zdarzeń dla komputerowych stanowisk obsługi urządzeń sterowania ruchem kolejowym",
@@ -1012,18 +1012,18 @@
         "number": "Ie-118",
         "versions": [
             {
-                "name": "Wymagania na systemy telewizji użytkowej stosowane na przejazdach kolejowo-drogowych kategorii A, F i przejściach, obsługiwanych z odległości oraz innych posterunkach związanych z prowadzeniem ruchu kolejowego",
+                "name": "Wymagania na systemy telewizji użytkowej stosowane na przejazdach kolejowo-drogowych kategorii A i F, na przejściach obsługiwanych z odległości oraz na innych posterunkach związanych z prowadzeniem ruchu kolejowego",
                 "number": "Ie-118",
-                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-118_obowiazuje_od_2025-08-07__uz_634_25_.pdf",
-                "wcag": false,
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-118_obowiazuje_od_2025-08-07__uz_634_25__WCAG.pdf",
+                "wcag": true,
                 "from_date": "2025-08-07",
                 "to_date": null
             },
             {
-                "name": "Wymagania na systemy telewizji użytkowej stosowane na przejazdach kolejowo-drogowych kategorii A, F i przejściach, obsługiwanych z odległości oraz innych posterunkach związanych z prowadzeniem ruchu kolejowego",
+                "name": "Wymagania na systemy telewizji użytkowej stosowane na przejazdach kolejowo-drogowych kategorii A i F, na przejściach obsługiwanych z odległości oraz na innych posterunkach związanych z prowadzeniem ruchu kolejowego",
                 "number": "Ie-118",
-                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-118_obowiazuje_od_2025-08-07__uz_634_25__WCAG.pdf",
-                "wcag": true,
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-118_obowiazuje_od_2025-08-07__uz_634_25_.pdf",
+                "wcag": false,
                 "from_date": "2025-08-07",
                 "to_date": null
             }
@@ -1174,7 +1174,7 @@
                 "number": "Ie-124",
                 "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/01._Ie-124_WCAG__od_22.06.2025.zip",
                 "wcag": true,
-                "from_date": null,
+                "from_date": "2025-06-22",
                 "to_date": null
             },
             {
@@ -1607,6 +1607,14 @@
                 "number": "Ie-301",
                 "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-301_obowiazjue_od_2025-05-31__uz_322_25__WCAG.pdf",
                 "wcag": true,
+                "from_date": "2025-05-31",
+                "to_date": null
+            },
+            {
+                "name": "Procedura zmiany wartości progów temperatury hamulców dla wybranych pojazdów kolejowych",
+                "number": "Ie-301",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-301_obowiazjue_od_2025-05-31__uz_322_2025_.pdf",
+                "wcag": false,
                 "from_date": "2025-05-31",
                 "to_date": null
             }

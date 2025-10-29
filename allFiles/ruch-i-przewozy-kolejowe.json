@@ -111,6 +111,14 @@
             {
                 "name": "Instrukcja o prowadzeniu ruchu pociągów z wykorzystaniem systemu ERTMS/ETCS poziomu 2",
                 "number": "Ir-1b",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Instrukcja_Ir-1b.pdf",
+                "wcag": false,
+                "from_date": "2025-12-14",
+                "to_date": null
+            },
+            {
+                "name": "Instrukcja o prowadzeniu ruchu pociągów z wykorzystaniem systemu ERTMS/ETCS poziomu 2",
+                "number": "Ir-1b",
                 "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Instrukcja_Ir-1b_20.12.2023.pdf",
                 "wcag": true,
                 "from_date": "2023-12-20",
