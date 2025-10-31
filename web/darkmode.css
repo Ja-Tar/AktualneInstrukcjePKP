@@ -32,6 +32,13 @@ body.dark-mode .stats-list li {
 body.dark-mode .stats-list li:hover {
   background: #1a1c22 !important;
 }
+body.dark-mode .stats-list li.new-instruction {
+  background: #2e1f0f !important;
+  border-left-color: #ff9800 !important;
+}
+body.dark-mode .stats-list li.new-instruction:hover {
+  background: #3d2812 !important;
+}
 body.dark-mode section {
   background: #181a20 !important;
 }
@@ -91,11 +98,4 @@ body.dark-mode .upcoming-version-warning .warning-btn {
 }
 body.dark-mode .upcoming-version-warning .warning-btn:hover {
   background: linear-gradient(90deg, #ef6c00 0%, #e65100 100%) !important;
-}
-body.dark-mode .new-instruction {
-  background: #2e1f0f !important;
-  border-left-color: #ff9800 !important;
-}
-body.dark-mode .new-instruction:hover {
-  background: #3d2812 !important;
 }
