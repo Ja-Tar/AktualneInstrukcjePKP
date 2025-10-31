@@ -99,8 +99,26 @@ let activeIndex = 0;
         
         const today = normalizeDate(new Date());
         
+        // Group versions by instruction number and WCAG status to determine uniqueness
+        const versionsByKey = new Map();
+        allVersions.forEach(version => {
+            const key = `${version.number}_${version.wcag ? 'wcag' : 'normal'}`;
+            if (!versionsByKey.has(key)) {
+                versionsByKey.set(key, []);
+            }
+            versionsByKey.get(key).push(version);
+        });
+        
         return allVersions.filter(version => {
-            // Skip versions without from_date as they cannot be date-filtered
+            const key = `${version.number}_${version.wcag ? 'wcag' : 'normal'}`;
+            const versionsForThisKey = versionsByKey.get(key) || [];
+            
+            // If there's only one version for this instruction+wcag combo and it has no from_date, keep it
+            if (versionsForThisKey.length === 1 && !version.from_date) {
+                return true;
+            }
+            
+            // Skip versions without from_date (unless they're the only one, handled above)
             if (!version.from_date) return false;
             
             const fromDate = normalizeDate(version.from_date);
