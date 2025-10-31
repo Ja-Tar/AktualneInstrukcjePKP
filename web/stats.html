@@ -128,6 +128,15 @@
         return "";
     }
 
+    function isNewInstruction(date) {
+        // Check if instruction is new (updated within last 30 days)
+        if (!date) return false;
+        const now = new Date();
+        now.setHours(0, 0, 0, 0);
+        const daysDiff = Math.floor((now - date) / (1000 * 60 * 60 * 24));
+        return daysDiff >= 0 && daysDiff <= 30;
+    }
+
     async function renderStats() {
         const instructions = await fetchAllInstructions(statsUrls);
         const allVersions = flattenVersions(instructions);
@@ -163,7 +172,9 @@
                 } else if (u.wcag) {
                     wcagInfo = ' <span class="wcag-tag">(WCAG)</span>';
                 }
-                deduped.push(`<li><b>${u.number}${wcagInfo}</b> – ${u.name || ''} <span class="date">${u.date.toLocaleDateString('pl-PL')}</span></li>`);
+                const isNew = isNewInstruction(u.date);
+                const newClass = isNew ? ' class="new-instruction"' : '';
+                deduped.push(`<li${newClass}><b>${u.number}${wcagInfo}</b> – ${u.name || ''} <span class="date">od ${u.date.toLocaleDateString('pl-PL')}</span></li>`);
                 seen.add(key);
             }
             recentList.innerHTML = deduped.slice(0, limit).join('');
@@ -204,9 +215,11 @@
         const mostList = document.getElementById('most-updated');
         const showMoreBtn = document.getElementById('show-more-most-updated');
         function renderMost(limit) {
-            mostList.innerHTML = grouped.slice(0, limit).map(g =>
-                `<li><b>${g.number}</b> – ${g.updates} zmian${polishEndForNr(g.updates)}${g.last ? `, ostatnia: <span class="date">${g.last.toLocaleDateString('pl-PL')}</span>` : ''}</li>`
-            ).join('');
+            mostList.innerHTML = grouped.slice(0, limit).map(g => {
+                const isNew = isNewInstruction(g.last);
+                const newClass = isNew ? ' class="new-instruction"' : '';
+                return `<li${newClass}><b>${g.number}</b> – ${g.updates} zmian${polishEndForNr(g.updates)}${g.last ? `, ostatnia: <span class="date">od ${g.last.toLocaleDateString('pl-PL')}</span>` : ''}</li>`;
+            }).join('');
         }
         renderMost(mostCount);
         if (grouped.length > mostCount) {
@@ -227,6 +240,13 @@
     font-weight: 600;
     font-size: 0.98em;
     margin-left: 2px;
+}
+.new-instruction {
+    border-left-color: #ff9800 !important;
+    background: #fff3e0 !important;
+}
+.new-instruction:hover {
+    background: #ffe0b2 !important;
 }
 </style>
     </script>
