@@ -390,13 +390,22 @@ let activeIndex = 0;
         const today = new Date();
         today.setHours(0,0,0,0);
         
-        // Find all versions with same number and wcag status, with future from_date
-        const upcomingVersions = allVersions.filter(v => 
+        // Find all versions with same number and matching wcag status, with future from_date
+        let upcomingVersions = allVersions.filter(v => 
             v.number === currentInst.number && 
             v.wcag === currentInst.wcag &&
             v.from_date && 
             new Date(v.from_date) > today
         );
+        
+        // If no matching WCAG version found, look for any upcoming version with same number
+        if (upcomingVersions.length === 0) {
+            upcomingVersions = allVersions.filter(v => 
+                v.number === currentInst.number && 
+                v.from_date && 
+                new Date(v.from_date) > today
+            );
+        }
         
         if (upcomingVersions.length === 0) return null;
         
