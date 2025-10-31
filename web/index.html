@@ -91,23 +91,26 @@ let activeIndex = 0;
 
     // Get current instructions from all versions based on date ranges
     function getCurrentInstructionsFromAllVersions(allVersions) {
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
+        function normalizeDate(dateStr) {
+            const date = new Date(dateStr);
+            date.setHours(0, 0, 0, 0);
+            return date;
+        }
+        
+        const today = normalizeDate(new Date());
         
         return allVersions.filter(version => {
-            // Must have a from_date
+            // Skip versions without from_date as they cannot be date-filtered
             if (!version.from_date) return false;
             
-            const fromDate = new Date(version.from_date);
-            fromDate.setHours(0, 0, 0, 0);
+            const fromDate = normalizeDate(version.from_date);
             
             // from_date must be today or in the past
             if (fromDate > today) return false;
             
             // If to_date exists, today must be <= to_date
             if (version.to_date) {
-                const toDate = new Date(version.to_date);
-                toDate.setHours(0, 0, 0, 0);
+                const toDate = normalizeDate(version.to_date);
                 if (today > toDate) return false;
             }
             
