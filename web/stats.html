@@ -176,7 +176,7 @@
                 }
                 const isNew = isNewInstruction(u.date);
                 const newClass = isNew ? ' class="new-instruction"' : '';
-                deduped.push(`<li${newClass}><b>${u.number}${wcagInfo}</b> – ${u.name || ''} <span class="date">od ${u.date.toLocaleDateString('pl-PL')}</span></li>`);
+                deduped.push(`<li${newClass}><b>${u.number}${wcagInfo}</b> – ${u.name || ''} <span class="date">${u.date.toLocaleDateString('pl-PL')}</span></li>`);
                 seen.add(key);
             }
             recentList.innerHTML = deduped.slice(0, limit).join('');
@@ -220,7 +220,7 @@
             mostList.innerHTML = grouped.slice(0, limit).map(g => {
                 const isNew = isNewInstruction(g.last);
                 const newClass = isNew ? ' class="new-instruction"' : '';
-                return `<li${newClass}><b>${g.number}</b> – ${g.updates} zmian${polishEndForNr(g.updates)}${g.last ? `, ostatnia: <span class="date">od ${g.last.toLocaleDateString('pl-PL')}</span>` : ''}</li>`;
+                return `<li${newClass}><b>${g.number}</b> – ${g.updates} zmian${polishEndForNr(g.updates)}${g.last ? `, ostatnia: <span class="date">${g.last.toLocaleDateString('pl-PL')}</span>` : ''}</li>`;
             }).join('');
         }
         renderMost(mostCount);
