@@ -621,7 +621,7 @@
         "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Procedura__ESC__Ie-128__WCAG.PDF",
         "wcag": true,
         "from_date": "2022-10-19",
-        "to_date": null
+        "to_date": "2025-11-29"
     },
     {
         "name": "Procedura przeprowadzania kontroli kompatybilności systemu ETCS (ESC)",
@@ -629,7 +629,7 @@
         "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Procedura__ESC__Ie-128.pdf",
         "wcag": false,
         "from_date": "2022-10-19",
-        "to_date": null
+        "to_date": "2025-11-29"
     },
     {
         "name": "Procedura przeprowadzania kontroli zgodności systemu radiowego GSM-R (RSC)",
