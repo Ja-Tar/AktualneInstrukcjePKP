@@ -58,17 +58,13 @@
     let allVersions = []; // All versions including future ones
 let activeIndex = 0;
     // Ładowanie instrukcji z plików JSON
-    const instructionUrls = [
-        "https://raw.githubusercontent.com/Ja-Tar/AktualneInstrukcjePKP/refs/heads/main/currentFiles/ruch-i-przewozy-kolejowe.json",
-        "https://raw.githubusercontent.com/Ja-Tar/AktualneInstrukcjePKP/refs/heads/main/currentFiles/automatyka-i-telekomunikacja.json"
-    ];
     const allFilesUrls = [
         "https://raw.githubusercontent.com/Ja-Tar/AktualneInstrukcjePKP/refs/heads/main/allFiles/ruch-i-przewozy-kolejowe.json",
         "https://raw.githubusercontent.com/Ja-Tar/AktualneInstrukcjePKP/refs/heads/main/allFiles/automatyka-i-telekomunikacja.json"
     ];
     async function setupInstructions() {
-        instructions = await fetchInstructionsFromUrls(instructionUrls);
         allVersions = await fetchAllFilesFromUrls(allFilesUrls);
+        instructions = getCurrentInstructionsFromAllVersions(allVersions);
     }
     setupInstructions();
 
@@ -91,6 +87,32 @@ let activeIndex = 0;
             } catch (e) { /* pomiń błędy */ }
         }
         return all;
+    }
+
+    // Get current instructions from all versions based on date ranges
+    function getCurrentInstructionsFromAllVersions(allVersions) {
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        
+        return allVersions.filter(version => {
+            // Must have a from_date
+            if (!version.from_date) return false;
+            
+            const fromDate = new Date(version.from_date);
+            fromDate.setHours(0, 0, 0, 0);
+            
+            // from_date must be today or in the past
+            if (fromDate > today) return false;
+            
+            // If to_date exists, today must be <= to_date
+            if (version.to_date) {
+                const toDate = new Date(version.to_date);
+                toDate.setHours(0, 0, 0, 0);
+                if (today > toDate) return false;
+            }
+            
+            return true;
+        });
     }
 
     function typeExample() {
