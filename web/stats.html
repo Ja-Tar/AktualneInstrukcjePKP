@@ -211,7 +211,7 @@
             }
             return Array.from(map.values());
         }
-        const grouped = groupByNumberFromDate(allVersions).filter(g => g.updates > 0); // Tylko te z aktualizacjamigrouped
+        const grouped = groupByNumberFromDate(allVersions).filter(g => g.updates > 0); // Tylko te z aktualizacjami
         grouped.sort((a, b) => b.updates - a.updates);
         const mostCount = 3;
         const mostList = document.getElementById('most-updated');
