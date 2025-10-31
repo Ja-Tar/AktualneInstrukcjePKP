@@ -149,6 +149,10 @@
             // Deduplicate: dla tej samej instrukcji i daty wyświetl tylko jeden wpis
             const deduped = [];
             const seen = new Set();
+            const now = new Date();
+            now.setHours(0, 0, 0, 0);
+            const thirtyDaysAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
+            
             for (const u of updates) {
                 const key = u.number + '|' + u.date.getTime();
                 if (seen.has(key)) continue;
@@ -163,7 +167,12 @@
                 } else if (u.wcag) {
                     wcagInfo = ' <span class="wcag-tag">(WCAG)</span>';
                 }
-                deduped.push(`<li><b>${u.number}${wcagInfo}</b> – ${u.name || ''} <span class="date">${u.date.toLocaleDateString('pl-PL')}</span></li>`);
+                
+                // Check if instruction is new (within last 30 days, not in future)
+                const isNew = u.date >= thirtyDaysAgo && u.date <= now;
+                const newClass = isNew ? ' class="new-instruction"' : '';
+                
+                deduped.push(`<li${newClass}><b>${u.number}${wcagInfo}</b> – ${u.name || ''} <span class="date">od: ${u.date.toLocaleDateString('pl-PL')}</span></li>`);
                 seen.add(key);
             }
             recentList.innerHTML = deduped.slice(0, limit).join('');
@@ -205,7 +214,7 @@
         const showMoreBtn = document.getElementById('show-more-most-updated');
         function renderMost(limit) {
             mostList.innerHTML = grouped.slice(0, limit).map(g =>
-                `<li><b>${g.number}</b> – ${g.updates} zmian${polishEndForNr(g.updates)}${g.last ? `, ostatnia: <span class="date">${g.last.toLocaleDateString('pl-PL')}</span>` : ''}</li>`
+                `<li><b>${g.number}</b> – ${g.updates} zmian${polishEndForNr(g.updates)}${g.last ? `, ostatnia od: <span class="date">${g.last.toLocaleDateString('pl-PL')}</span>` : ''}</li>`
             ).join('');
         }
         renderMost(mostCount);
@@ -227,6 +236,13 @@
     font-weight: 600;
     font-size: 0.98em;
     margin-left: 2px;
+}
+.new-instruction {
+    border-left-color: #ff9800 !important;
+    background: #fff3e0 !important;
+}
+.new-instruction:hover {
+    background: #ffe0b2 !important;
 }
 </style>
     </script>
