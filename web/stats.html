@@ -133,7 +133,9 @@
         if (!date) return false;
         const now = new Date();
         now.setHours(0, 0, 0, 0);
-        const daysDiff = Math.floor((now - date) / (1000 * 60 * 60 * 24));
+        const instrDate = new Date(date);
+        instrDate.setHours(0, 0, 0, 0);
+        const daysDiff = Math.floor((now - instrDate) / (1000 * 60 * 60 * 24));
         return daysDiff >= 0 && daysDiff <= 30;
     }
 
@@ -241,12 +243,12 @@
     font-size: 0.98em;
     margin-left: 2px;
 }
-.new-instruction {
-    border-left-color: #ff9800 !important;
-    background: #fff3e0 !important;
+.stats-list li.new-instruction {
+    border-left-color: #ff9800;
+    background: #fff3e0;
 }
-.new-instruction:hover {
-    background: #ffe0b2 !important;
+.stats-list li.new-instruction:hover {
+    background: #ffe0b2;
 }
 </style>
     </script>
