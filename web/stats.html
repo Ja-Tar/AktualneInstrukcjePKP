@@ -129,14 +129,14 @@
     }
 
     function isNewInstruction(date) {
-        // Check if instruction is new (updated within last 30 days)
+        // Check if instruction is upcoming (from_date is in the future)
         if (!date) return false;
         const now = new Date();
         now.setHours(0, 0, 0, 0);
         const instrDate = new Date(date);
         instrDate.setHours(0, 0, 0, 0);
-        const daysDiff = Math.floor((now - instrDate) / (1000 * 60 * 60 * 24));
-        return daysDiff >= 0 && daysDiff <= 30;
+        // Return true if the instruction's from_date is in the future
+        return instrDate > now;
     }
 
     async function renderStats() {
