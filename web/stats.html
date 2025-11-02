@@ -296,7 +296,8 @@
         const now = new Date();
         now.setHours(0, 0, 0, 0);
         
-        const matchingVersions = statsAllVersions.filter(v => {
+        // First try: match both number and wcag status
+        let matchingVersions = statsAllVersions.filter(v => {
             if (v.number !== number) return false;
             if (v.wcag !== wcag) return false;
             if (!v.from_date) return false;
@@ -316,6 +317,29 @@
             
             return true;
         });
+        
+        // If no matching version found with same WCAG status, try without WCAG filter
+        if (matchingVersions.length === 0) {
+            matchingVersions = statsAllVersions.filter(v => {
+                if (v.number !== number) return false;
+                if (!v.from_date) return false;
+                
+                const fromDate = new Date(v.from_date);
+                fromDate.setHours(0, 0, 0, 0);
+                
+                // Must be in effect (from_date <= now)
+                if (fromDate > now) return false;
+                
+                // Check to_date if it exists
+                if (v.to_date) {
+                    const toDate = new Date(v.to_date);
+                    toDate.setHours(0, 0, 0, 0);
+                    if (now > toDate) return false;
+                }
+                
+                return true;
+            });
+        }
         
         if (matchingVersions.length === 0) return null;
         
