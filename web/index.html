@@ -65,6 +65,29 @@ let activeIndex = 0;
     async function setupInstructions() {
         allVersions = await fetchAllFilesFromUrls(allFilesUrls);
         instructions = getCurrentInstructionsFromAllVersions(allVersions);
+        
+        // Check if there's a selected instruction from stats page
+        const selectedInstrData = sessionStorage.getItem('selectedInstruction');
+        if (selectedInstrData) {
+            sessionStorage.removeItem('selectedInstruction');
+            try {
+                const instrData = JSON.parse(selectedInstrData);
+                // Find the matching instruction in our current instructions
+                const matchingInstr = instructions.find(inst => 
+                    inst.number === instrData.number && 
+                    inst.wcag === instrData.wcag &&
+                    inst.from_date === instrData.from_date
+                );
+                if (matchingInstr) {
+                    showInstructionInfo(matchingInstr);
+                } else {
+                    // If not found in current, use the data we have
+                    showInstructionInfo(instrData);
+                }
+            } catch (e) {
+                console.error('Error parsing selected instruction:', e);
+            }
+        }
     }
     setupInstructions();
 

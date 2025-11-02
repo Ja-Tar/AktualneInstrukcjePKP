@@ -175,11 +175,14 @@
                     wcagInfo = ' <span class="wcag-tag">(WCAG)</span>';
                 }
                 const isNew = isNewInstruction(u.date);
-                const newClass = isNew ? ' class="new-instruction"' : '';
-                deduped.push(`<li${newClass}><b>${u.number}${wcagInfo}</b> – ${u.name || ''} <span class="date">${u.date.toLocaleDateString('pl-PL')}</span></li>`);
+                const newClass = isNew ? ' class="new-instruction clickable"' : ' class="clickable"';
+                const instrData = JSON.stringify({number: u.number, name: u.name, from_date: u.from_date, to_date: u.to_date, wcag: u.wcag, resource_url: u.resource_url}).replace(/"/g, '&quot;');
+                deduped.push(`<li${newClass} data-instr="${instrData}"><b>${u.number}${wcagInfo}</b> – ${u.name || ''} <span class="date">${u.date.toLocaleDateString('pl-PL')}</span></li>`);
                 seen.add(key);
             }
             recentList.innerHTML = deduped.slice(0, limit).join('');
+            // Re-attach click handlers after render
+            setTimeout(attachClickHandlers, 0);
         }
         renderRecent(recentCount);
         if (updates.length > recentCount) {
@@ -194,17 +197,24 @@
 
         // Najczęściej aktualizowane instrukcje (ostatnia aktualizacja po największym from_date)
         function groupByNumberFromDate(arr) {
-            // Zwraca mapę: number -> {number, file, updates: liczba, last: największy from_date}
+            // Zwraca mapę: number -> {number, file, updates: liczba, last: największy from_date, name, wcag, resource_url, from_date, to_date}
             const map = new Map();
             for (const v of arr) {
                 if (!map.has(v.number)) {
-                    map.set(v.number, {number: v.number, file: v.file, updates: 0, last: null, wcag: false});
+                    map.set(v.number, {number: v.number, file: v.file, updates: 0, last: null, wcag: false, name: v.name, resource_url: v.resource_url, from_date: v.from_date, to_date: v.to_date});
                 }
                 const entry = map.get(v.number);
                 if (v.from_date) {
                     entry.updates++;
                     const d = parseDate(v.from_date);
-                    if (d && (!entry.last || d > entry.last)) entry.last = d;
+                    if (d && (!entry.last || d > entry.last)) {
+                        entry.last = d;
+                        // Update to the latest version's data
+                        entry.name = v.name;
+                        entry.resource_url = v.resource_url;
+                        entry.from_date = v.from_date;
+                        entry.to_date = v.to_date;
+                    }
                     // Jeśli którakolwiek wersja ma wcag: true, oznacz całą instrukcję jako WCAG
                     if (v.wcag) entry.wcag = true;
                 }
@@ -219,8 +229,9 @@
         function renderMost(limit) {
             mostList.innerHTML = grouped.slice(0, limit).map(g => {
                 const isNew = isNewInstruction(g.last);
-                const newClass = isNew ? ' class="new-instruction"' : '';
-                return `<li${newClass}><b>${g.number}</b> – ${g.updates} zmian${polishEndForNr(g.updates)}${g.last ? `, ostatnia: <span class="date">${g.last.toLocaleDateString('pl-PL')}</span>` : ''}</li>`;
+                const newClass = isNew ? ' class="new-instruction clickable"' : ' class="clickable"';
+                const instrData = JSON.stringify({number: g.number, name: g.name, from_date: g.from_date, to_date: g.to_date, wcag: g.wcag, resource_url: g.resource_url}).replace(/"/g, '&quot;');
+                return `<li${newClass} data-instr="${instrData}"><b>${g.number}</b> – ${g.updates} zmian${polishEndForNr(g.updates)}${g.last ? `, ostatnia: <span class="date">${g.last.toLocaleDateString('pl-PL')}</span>` : ''}</li>`;
             }).join('');
         }
         renderMost(mostCount);
@@ -231,9 +242,27 @@
                 expanded = !expanded;
                 renderMost(expanded ? grouped.length : mostCount);
                 showMoreBtn.textContent = expanded ? 'Pokaż mniej' : 'Pokaż więcej';
+                // Re-attach click handlers after re-render
+                attachClickHandlers();
             };
         }
+        
+        // Attach click handlers to all instruction items
+        attachClickHandlers();
     }
+    
+    function attachClickHandlers() {
+        document.querySelectorAll('.stats-list li.clickable').forEach(item => {
+            item.onclick = () => {
+                const instrData = item.getAttribute('data-instr');
+                if (instrData) {
+                    sessionStorage.setItem('selectedInstruction', instrData);
+                    window.location.href = 'index.html';
+                }
+            };
+        });
+    }
+    
     renderStats();
 </script>
 <style>
@@ -249,6 +278,14 @@
 }
 .stats-list li.new-instruction:hover {
     background: #ffe0b2;
+}
+.stats-list li.clickable {
+    cursor: pointer;
+    transition: transform 0.1s, box-shadow 0.2s;
+}
+.stats-list li.clickable:hover {
+    transform: translateX(4px);
+    box-shadow: 0 2px 8px rgba(30, 64, 175, 0.15);
 }
 </style>
     </script>
