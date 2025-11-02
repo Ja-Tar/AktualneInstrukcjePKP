@@ -128,9 +128,23 @@
         return "";
     }
 
+    function isNewInstruction(date) {
+        // Check if instruction is upcoming (from_date is in the future)
+        if (!date) return false;
+        const now = new Date();
+        now.setHours(0, 0, 0, 0);
+        const instrDate = new Date(date);
+        instrDate.setHours(0, 0, 0, 0);
+        // Return true if the instruction's from_date is in the future
+        return instrDate > now;
+    }
+
+    let statsAllVersions = []; // Global variable to store all versions
+
     async function renderStats() {
         const instructions = await fetchAllInstructions(statsUrls);
-        const allVersions = flattenVersions(instructions);
+        statsAllVersions = flattenVersions(instructions); // Store for click handlers
+        const allVersions = statsAllVersions;
 
         // Ostatnie aktualizacje (tylko po from_date)
         const updates = allVersions
@@ -163,10 +177,15 @@
                 } else if (u.wcag) {
                     wcagInfo = ' <span class="wcag-tag">(WCAG)</span>';
                 }
-                deduped.push(`<li><b>${u.number}${wcagInfo}</b> – ${u.name || ''} <span class="date">${u.date.toLocaleDateString('pl-PL')}</span></li>`);
+                const isNew = isNewInstruction(u.date);
+                const newClass = isNew ? ' class="new-instruction clickable"' : ' class="clickable"';
+                const instrData = JSON.stringify({number: u.number, name: u.name, from_date: u.from_date, to_date: u.to_date, wcag: u.wcag, resource_url: u.resource_url}).replace(/"/g, '&quot;');
+                deduped.push(`<li${newClass} data-instr="${instrData}"><b>${u.number}${wcagInfo}</b> – ${u.name || ''} <span class="date">${u.date.toLocaleDateString('pl-PL')}</span></li>`);
                 seen.add(key);
             }
             recentList.innerHTML = deduped.slice(0, limit).join('');
+            // Re-attach click handlers after render
+            setTimeout(attachClickHandlers, 0);
         }
         renderRecent(recentCount);
         if (updates.length > recentCount) {
@@ -181,32 +200,42 @@
 
         // Najczęściej aktualizowane instrukcje (ostatnia aktualizacja po największym from_date)
         function groupByNumberFromDate(arr) {
-            // Zwraca mapę: number -> {number, file, updates: liczba, last: największy from_date}
+            // Zwraca mapę: number -> {number, file, updates: liczba, last: największy from_date, name, wcag, resource_url, from_date, to_date}
             const map = new Map();
             for (const v of arr) {
                 if (!map.has(v.number)) {
-                    map.set(v.number, {number: v.number, file: v.file, updates: 0, last: null, wcag: false});
+                    map.set(v.number, {number: v.number, file: v.file, updates: 0, last: null, wcag: false, name: v.name, resource_url: v.resource_url, from_date: v.from_date, to_date: v.to_date});
                 }
                 const entry = map.get(v.number);
                 if (v.from_date) {
                     entry.updates++;
                     const d = parseDate(v.from_date);
-                    if (d && (!entry.last || d > entry.last)) entry.last = d;
+                    if (d && (!entry.last || d > entry.last)) {
+                        entry.last = d;
+                        // Update to the latest version's data
+                        entry.name = v.name;
+                        entry.resource_url = v.resource_url;
+                        entry.from_date = v.from_date;
+                        entry.to_date = v.to_date;
+                    }
                     // Jeśli którakolwiek wersja ma wcag: true, oznacz całą instrukcję jako WCAG
                     if (v.wcag) entry.wcag = true;
                 }
             }
             return Array.from(map.values());
         }
-        const grouped = groupByNumberFromDate(allVersions).filter(g => g.updates > 0); // Tylko te z aktualizacjamigrouped
+        const grouped = groupByNumberFromDate(allVersions).filter(g => g.updates > 0); // Tylko te z aktualizacjami
         grouped.sort((a, b) => b.updates - a.updates);
         const mostCount = 3;
         const mostList = document.getElementById('most-updated');
         const showMoreBtn = document.getElementById('show-more-most-updated');
         function renderMost(limit) {
-            mostList.innerHTML = grouped.slice(0, limit).map(g =>
-                `<li><b>${g.number}</b> – ${g.updates} zmian${polishEndForNr(g.updates)}${g.last ? `, ostatnia: <span class="date">${g.last.toLocaleDateString('pl-PL')}</span>` : ''}</li>`
-            ).join('');
+            mostList.innerHTML = grouped.slice(0, limit).map(g => {
+                const isNew = isNewInstruction(g.last);
+                const newClass = isNew ? ' class="new-instruction clickable"' : ' class="clickable"';
+                const instrData = JSON.stringify({number: g.number, name: g.name, from_date: g.from_date, to_date: g.to_date, wcag: g.wcag, resource_url: g.resource_url}).replace(/"/g, '&quot;');
+                return `<li${newClass} data-instr="${instrData}"><b>${g.number}</b> – ${g.updates} zmian${polishEndForNr(g.updates)}${g.last ? `, ostatnia: <span class="date">${g.last.toLocaleDateString('pl-PL')}</span>` : ''}</li>`;
+            }).join('');
         }
         renderMost(mostCount);
         if (grouped.length > mostCount) {
@@ -216,9 +245,114 @@
                 expanded = !expanded;
                 renderMost(expanded ? grouped.length : mostCount);
                 showMoreBtn.textContent = expanded ? 'Pokaż mniej' : 'Pokaż więcej';
+                // Re-attach click handlers after re-render
+                attachClickHandlers();
             };
         }
+        
+        // Attach click handlers to all instruction items
+        attachClickHandlers();
     }
+    
+    function attachClickHandlers() {
+        document.querySelectorAll('.stats-list li.clickable').forEach(item => {
+            item.onclick = () => {
+                const instrData = item.getAttribute('data-instr');
+                if (instrData) {
+                    try {
+                        const instr = JSON.parse(instrData);
+                        
+                        // Check if this is a future instruction
+                        if (instr.from_date) {
+                            const now = new Date();
+                            now.setHours(0, 0, 0, 0);
+                            const fromDate = new Date(instr.from_date);
+                            fromDate.setHours(0, 0, 0, 0);
+                            
+                            if (fromDate > now) {
+                                // This is a future instruction, find the current one
+                                const currentVersion = findCurrentVersion(instr.number, instr.wcag);
+                                if (currentVersion) {
+                                    sessionStorage.setItem('selectedInstruction', JSON.stringify(currentVersion));
+                                    window.location.href = 'index.html';
+                                    return;
+                                }
+                            }
+                        }
+                        
+                        // Default behavior: navigate to the clicked instruction
+                        sessionStorage.setItem('selectedInstruction', instrData);
+                        window.location.href = 'index.html';
+                    } catch (e) {
+                        console.error('Error parsing instruction data:', e);
+                    }
+                }
+            };
+        });
+    }
+    
+    function findCurrentVersion(number, wcag) {
+        // Find the current version of this instruction
+        const now = new Date();
+        now.setHours(0, 0, 0, 0);
+        
+        // First try: match both number and wcag status
+        let matchingVersions = statsAllVersions.filter(v => {
+            if (v.number !== number) return false;
+            if (v.wcag !== wcag) return false;
+            if (!v.from_date) return false;
+            
+            const fromDate = new Date(v.from_date);
+            fromDate.setHours(0, 0, 0, 0);
+            
+            // Must be in effect (from_date <= now)
+            if (fromDate > now) return false;
+            
+            // Check to_date if it exists
+            if (v.to_date) {
+                const toDate = new Date(v.to_date);
+                toDate.setHours(0, 0, 0, 0);
+                if (now > toDate) return false;
+            }
+            
+            return true;
+        });
+        
+        // If no matching version found with same WCAG status, try without WCAG filter
+        if (matchingVersions.length === 0) {
+            matchingVersions = statsAllVersions.filter(v => {
+                if (v.number !== number) return false;
+                if (!v.from_date) return false;
+                
+                const fromDate = new Date(v.from_date);
+                fromDate.setHours(0, 0, 0, 0);
+                
+                // Must be in effect (from_date <= now)
+                if (fromDate > now) return false;
+                
+                // Check to_date if it exists
+                if (v.to_date) {
+                    const toDate = new Date(v.to_date);
+                    toDate.setHours(0, 0, 0, 0);
+                    if (now > toDate) return false;
+                }
+                
+                return true;
+            });
+        }
+        
+        if (matchingVersions.length === 0) return null;
+        
+        // Return the one with the most recent from_date
+        matchingVersions.sort((a, b) => {
+            const dateA = new Date(a.from_date);
+            const dateB = new Date(b.from_date);
+            return dateB - dateA;
+        });
+        
+        return matchingVersions[0];
+    }
+    
     renderStats();
 </script>
 <style>
@@ -227,6 +361,21 @@
     font-weight: 600;
     font-size: 0.98em;
     margin-left: 2px;
+}
+.stats-list li.new-instruction {
+    border-left: 3px solid #ff9800;
+    background: #fff3e0;
+}
+.stats-list li.new-instruction:hover {
+    background: #ffe0b2;
+}
+.stats-list li.clickable {
+    cursor: pointer;
+    transition: transform 0.1s, box-shadow 0.2s;
+}
+.stats-list li.clickable:hover {
+    transform: translateX(4px);
+    box-shadow: 0 2px 8px rgba(30, 64, 175, 0.15);
 }
 </style>
     </script>
