@@ -172,10 +172,26 @@
             {
                 "name": "Wytyczne techniczne budowy urządzeń sterowania ruchem kolejowym",
                 "number": "Ie-4",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-4_obowiazuje_od_2025-11-05__uz_903_25__WCAG.pdf",
+                "wcag": true,
+                "from_date": "2025-11-05",
+                "to_date": null
+            },
+            {
+                "name": "Wytyczne techniczne budowy urządzeń sterowania ruchem kolejowym",
+                "number": "Ie-4",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-4_obowiazuje_od_2025-11-05__uz_903_25_.pdf",
+                "wcag": false,
+                "from_date": "2025-11-05",
+                "to_date": null
+            },
+            {
+                "name": "Wytyczne techniczne budowy urządzeń sterowania ruchem kolejowym",
+                "number": "Ie-4",
                 "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-4__WTB-E10__WCAG.pdf",
                 "wcag": true,
                 "from_date": "2020-01-01",
-                "to_date": null
+                "to_date": "2025-11-04"
             },
             {
                 "name": "Wytyczne techniczne budowy urządzeń sterowania ruchem kolejowym",
@@ -183,15 +199,7 @@
                 "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie_4_2019_p.pdf",
                 "wcag": false,
                 "from_date": "2020-01-01",
-                "to_date": null
-            },
-            {
-                "name": "Wytyczne techniczne budowy urządzeń sterowania ruchem kolejowym",
-                "number": "Ie-4",
-                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-4_18.07.18_-31.12.19.pdf",
-                "wcag": false,
-                "from_date": "2018-07-18",
-                "to_date": "2019-12-31"
+                "to_date": "2025-11-04"
             }
         ]
     },
@@ -609,7 +617,7 @@
                 "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Podglad/Ie/Ie-101.pdf",
                 "wcag": false,
                 "from_date": null,
-                "to_date": null
+                "to_date": "2025-09-04"
             }
         ]
     },

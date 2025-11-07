@@ -50,17 +50,17 @@
     {
         "name": "Wytyczne techniczne budowy urządzeń sterowania ruchem kolejowym",
         "number": "Ie-4",
-        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-4__WTB-E10__WCAG.pdf",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-4_obowiazuje_od_2025-11-05__uz_903_25__WCAG.pdf",
         "wcag": true,
-        "from_date": "2020-01-01",
+        "from_date": "2025-11-05",
         "to_date": null
     },
     {
         "name": "Wytyczne techniczne budowy urządzeń sterowania ruchem kolejowym",
         "number": "Ie-4",
-        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie_4_2019_p.pdf",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-4_obowiazuje_od_2025-11-05__uz_903_25_.pdf",
         "wcag": false,
-        "from_date": "2020-01-01",
+        "from_date": "2025-11-05",
         "to_date": null
     },
     {
@@ -285,14 +285,6 @@
         "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-100a_obowiazuje_od_2025-08-25__uz_681_25_.pdf",
         "wcag": false,
         "from_date": "2025-08-25",
-        "to_date": null
-    },
-    {
-        "name": "Wymagania techniczno-eksploatacyjne dla radiotelefonu stacjonarnego/przewoźnego dla sieci radiotelefonicznych bez selektywnego wywołania grupowego",
-        "number": "Ie-101",
-        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Podglad/Ie/Ie-101.pdf",
-        "wcag": false,
-        "from_date": null,
         "to_date": null
     },
     {
