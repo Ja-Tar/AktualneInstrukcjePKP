@@ -738,9 +738,17 @@
     {
         "name": "Wytyczne techniczno-eksploatacyjne na układ sterowania lokomotywą rozrządową (manewrową)",
         "number": "Ie-168",
-        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Wytyczne_techniczno-eksploatacyjne_na_uklad_sterowania_lokomotywa_rozrzadowa_Ie_168.pdf",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-168_obowiazuje_od_2025-11-21__uz_917_25__WCAG.pdf",
+        "wcag": true,
+        "from_date": "2025-11-21",
+        "to_date": null
+    },
+    {
+        "name": "Wytyczne techniczno-eksploatacyjne na układ sterowania lokomotywą rozrządową (manewrową)",
+        "number": "Ie-168",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-168_obowiazuje_od_2025-11-21__uz_917_25_.pdf",
         "wcag": false,
-        "from_date": null,
+        "from_date": "2025-11-21",
         "to_date": null
     },
     {

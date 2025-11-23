@@ -429,6 +429,14 @@
             {
                 "name": "Instrukcja o postępowaniu przy przewozie koleją towarów niebezpiecznych",
                 "number": "Ir-16",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Instrukcja_Ir-16_obowiazuje_od_14.12.2025.pdf",
+                "wcag": true,
+                "from_date": "2025-12-14",
+                "to_date": null
+            },
+            {
+                "name": "Instrukcja o postępowaniu przy przewozie koleją towarów niebezpiecznych",
+                "number": "Ir-16",
                 "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir-16__2023_WCAG.pdf",
                 "wcag": true,
                 "from_date": "2023-06-19",
