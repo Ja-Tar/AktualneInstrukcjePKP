@@ -608,20 +608,20 @@
         "to_date": null
     },
     {
-        "name": "Procedura przeprowadzania kontroli kompatybilności systemu ETCS (ESC)",
+        "name": "Procedura przeprowadzania kontroli zgodności systemu ETCS (ESC)",
         "number": "Ie-128",
-        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Procedura__ESC__Ie-128__WCAG.PDF",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-128-WCAG_obowiazuje_od_2025-11-30__uz_880_25_.pdf",
         "wcag": true,
-        "from_date": "2022-10-19",
-        "to_date": "2025-11-29"
+        "from_date": "2025-11-30",
+        "to_date": null
     },
     {
-        "name": "Procedura przeprowadzania kontroli kompatybilności systemu ETCS (ESC)",
+        "name": "Procedura przeprowadzania kontroli zgodności systemu ETCS (ESC)",
         "number": "Ie-128",
-        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Procedura__ESC__Ie-128.pdf",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-128_obowiazuje_od_2025-11-30__uz_880_25_.pdf",
         "wcag": false,
-        "from_date": "2022-10-19",
-        "to_date": "2025-11-29"
+        "from_date": "2025-11-30",
+        "to_date": null
     },
     {
         "name": "Procedura przeprowadzania kontroli zgodności systemu radiowego GSM-R (RSC)",
