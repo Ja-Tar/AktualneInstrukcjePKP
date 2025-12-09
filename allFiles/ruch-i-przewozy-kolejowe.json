@@ -303,6 +303,14 @@
             {
                 "name": "Instrukcja o przewozie przesyłek nadzwyczajnych po torze 1435 mm",
                 "number": "Ir-10",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir-10__po_torze_1435_mm__ujednolicona__obowiazuje_od_14.12.2025.pdf",
+                "wcag": false,
+                "from_date": "2025-12-14",
+                "to_date": null
+            },
+            {
+                "name": "Instrukcja o przewozie przesyłek nadzwyczajnych po torze 1435 mm",
+                "number": "Ir-10",
                 "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/WCAG_Ir-10_instrukcja_o_przewozie_przesylek_nadzwyczajnych_po_torze_1435_mm.pdf",
                 "wcag": true,
                 "from_date": "2022-03-01",
@@ -329,6 +337,14 @@
     {
         "number": "Ir-10a",
         "versions": [
+            {
+                "name": "Instrukcja o przewozie przesyłek nadzwyczajnych po torze 1520 mm",
+                "number": "",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir-10a__po_torze_1520_mm__ujednolicona__obowiazuje_od_14.12.2025.pdf",
+                "wcag": false,
+                "from_date": "2025-12-14",
+                "to_date": null
+            },
             {
                 "name": "Instrukcja o przewozie przesyłek nadzwyczajnych po torze 1520 mm",
                 "number": "",
