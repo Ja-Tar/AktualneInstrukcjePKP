@@ -7,7 +7,7 @@
                 "number": "Ir-1",
                 "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Instrukcja_Ir-1_po_zm_18__od_14_12_25_WCAG.pdf",
                 "wcag": true,
-                "from_date": "2025-12-14",
+                "from_date": "2026-07-01",
                 "to_date": null
             },
             {
@@ -98,6 +98,14 @@
             {
                 "name": "Instrukcja o prowadzeniu ruchu pociągów z wykorzystaniem systemu ERTMS/ETCS poziomu 1",
                 "number": "Ir-1a",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Instrukcja_Ir-1a_obowiazuje_od_1_lipca_2026.pdf",
+                "wcag": true,
+                "from_date": "2026-07-01",
+                "to_date": null
+            },
+            {
+                "name": "Instrukcja o prowadzeniu ruchu pociągów z wykorzystaniem systemu ERTMS/ETCS poziomu 1",
+                "number": "Ir-1a",
                 "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Instrukcja_Ir-1a_06_08_2025.pdf",
                 "wcag": true,
                 "from_date": "2025-08-07",
@@ -113,7 +121,7 @@
                 "number": "Ir-1b",
                 "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Instrukcja_Ir-1b.pdf",
                 "wcag": false,
-                "from_date": "2025-12-14",
+                "from_date": "2026-07-01",
                 "to_date": null
             },
             {
@@ -390,10 +398,18 @@
             {
                 "name": "Instrukcja dla dyspozytora zarządcy infrastruktury kolejowej",
                 "number": "Ir-13",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir-13_obowiazujaca_od_10.12.2025_WCAG__uz_1032_25_.pdf",
+                "wcag": true,
+                "from_date": "2025-12-10",
+                "to_date": null
+            },
+            {
+                "name": "Instrukcja dla dyspozytora zarządcy infrastruktury kolejowej",
+                "number": "Ir-13",
                 "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir_-13_1_03_2015.pdf",
                 "wcag": false,
                 "from_date": null,
-                "to_date": null
+                "to_date": "2025-12-09"
             }
         ]
     },

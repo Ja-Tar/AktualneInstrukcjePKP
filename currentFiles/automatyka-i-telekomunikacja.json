@@ -141,7 +141,7 @@
         "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Instrukcja_Ie-16_obowiazuje_od_18.05.25__uz_306_2025__WCAG.pdf",
         "wcag": true,
         "from_date": "2025-05-18",
-        "to_date": null
+        "to_date": "2025-12-13"
     },
     {
         "name": "Instrukcja o organizacji i użytkowaniu sieci GSM-R",
@@ -149,7 +149,7 @@
         "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-16_obowiazuje_od_2025-05-18__uz_306_25_.pdf",
         "wcag": false,
         "from_date": "2025-05-18",
-        "to_date": null
+        "to_date": "2025-12-13"
     },
     {
         "name": "Instrukcja obsługi komputerowych urządzeń sterowania ruchem kolejowym w PKP Polskie Linie Kolejowe S.A.",

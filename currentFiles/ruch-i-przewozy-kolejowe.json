@@ -154,9 +154,9 @@
     {
         "name": "Instrukcja dla dyspozytora zarządcy infrastruktury kolejowej",
         "number": "Ir-13",
-        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir_-13_1_03_2015.pdf",
-        "wcag": false,
-        "from_date": null,
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir-13_obowiazujaca_od_10.12.2025_WCAG__uz_1032_25_.pdf",
+        "wcag": true,
+        "from_date": "2025-12-10",
         "to_date": null
     },
     {
