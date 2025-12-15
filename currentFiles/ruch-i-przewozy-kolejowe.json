@@ -56,20 +56,20 @@
         "to_date": null
     },
     {
-        "name": "Instrukcja o użytkowaniu urządzeń radiołączności w sieci GSM-R",
+        "name": "Instrukcja o użytkowaniu urządzeń łączności w sieci GSM-R",
         "number": "Ir-5a",
-        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir-5a_WCAG_-_obowiazuje_od_31.03.2025.pdf",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir-5a_WCAG_obowiazuje_od_14.12.2025_r..pdf",
         "wcag": true,
-        "from_date": null,
-        "to_date": "2025-12-13"
+        "from_date": "2025-12-14",
+        "to_date": null
     },
     {
-        "name": "Instrukcja o użytkowaniu urządzeń radiołączności w sieci GSM-R",
+        "name": "Instrukcja o użytkowaniu urządzeń łączności w sieci GSM-R",
         "number": "Ir-5a",
-        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir-5a_-_obowiazuje_od_31.03.2025.pdf",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir-5a_obowiazuje_od_14.12.2025_r..pdf",
         "wcag": false,
-        "from_date": null,
-        "to_date": "2025-12-13"
+        "from_date": "2025-12-14",
+        "to_date": null
     },
     {
         "name": "Instrukcja obsługi przejazdów kolejowo-drogowych i przejść",
@@ -122,9 +122,9 @@
     {
         "name": "Instrukcja o przewozie przesyłek nadzwyczajnych po torze 1435 mm",
         "number": "Ir-10",
-        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir-10_instrukcja_o_przewozie_przesylek_nadzwyczajnych_po_torze_1435_mm.pdf",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir-10__po_torze_1435_mm__ujednolicona__obowiazuje_od_14.12.2025.pdf",
         "wcag": false,
-        "from_date": "2022-03-01",
+        "from_date": "2025-12-14",
         "to_date": null
     },
     {
@@ -138,9 +138,9 @@
     {
         "name": "Instrukcja o przewozie przesyłek nadzwyczajnych po torze 1520 mm",
         "number": "",
-        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir-10a_instrukcja_o_przewozie_przesylek_nadzwyczajnych_po_torze_1520_mm.pdf",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir-10a__po_torze_1520_mm__ujednolicona__obowiazuje_od_14.12.2025.pdf",
         "wcag": false,
-        "from_date": "2022-03-01",
+        "from_date": "2025-12-14",
         "to_date": null
     },
     {
@@ -186,9 +186,9 @@
     {
         "name": "Instrukcja o postępowaniu przy przewozie koleją towarów niebezpiecznych",
         "number": "Ir-16",
-        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Instrukcja_Ir-16_WCAG_od_01.07.2025.pdf",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Instrukcja_Ir-16_obowiazuje_od_14.12.2025.pdf",
         "wcag": true,
-        "from_date": "2025-07-01",
+        "from_date": "2025-12-14",
         "to_date": null
     },
     {
