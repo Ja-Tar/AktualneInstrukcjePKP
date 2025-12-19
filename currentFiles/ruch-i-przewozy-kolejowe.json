@@ -242,9 +242,17 @@
     {
         "name": "Instrukcja sporządzania, wydawania i prowadzenia Dodatku 1 do wewnętrznego rozkładu jazdy",
         "number": "Ir-23",
-        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/A4_Ir-23_2023_wcag.pdf",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Instrukcja_sporzadzania__wydawania_i_prowadzenia_Dodatku_1_do_wewnetrznego_rozkladu_jazdy_Ir-23-_wersja_dostosowana_do_zasad_WCAG-_obowiazuje_od_17.12.2025_r..pdf",
         "wcag": true,
-        "from_date": "2023-09-05",
+        "from_date": "2025-12-17",
+        "to_date": null
+    },
+    {
+        "name": "Instrukcja sporządzania, wydawania i prowadzenia Dodatku 1 do wewnętrznego rozkładu jazdy",
+        "number": "Ir-23",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Instrukcja_sporzadzania__wydawania_i_prowadzenia_Dodatku_1_do_wewnetrznego_rozkladu_jazdy_Ir-23.pdf",
+        "wcag": false,
+        "from_date": "2025-12-17",
         "to_date": null
     },
     {
