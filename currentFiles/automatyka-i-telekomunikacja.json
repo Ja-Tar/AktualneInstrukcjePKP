@@ -218,17 +218,17 @@
     {
         "name": "Wytyczne sporządzania regulaminów obsługi terminala urządzeń do wykrywania stanów awaryjnych w taborze podczas jazdy",
         "number": "Ie-31",
-        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-31_WCAG.pdf",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Wytyczne_Ie-31_obowiazuja_od_2026-01-09__uz_7_26__WCAG.pdf",
         "wcag": true,
-        "from_date": "2020-05-03",
+        "from_date": "2026-01-09",
         "to_date": null
     },
     {
         "name": "Wytyczne sporządzania regulaminów obsługi terminala urządzeń do wykrywania stanów awaryjnych w taborze podczas jazdy",
         "number": "Ie-31",
-        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Instrukcja_Ie_31_2020.pdf",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Wytyczne_Ie-31_obowiazuja_od_2026-01-09__uz_7_26_.pdf",
         "wcag": false,
-        "from_date": "2020-05-03",
+        "from_date": "2026-01-09",
         "to_date": null
     },
     {
