@@ -178,9 +178,9 @@
     {
         "name": "Instrukcja o kolejowym ratownictwie technicznym",
         "number": "Ir-15",
-        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir_-15_WCAG_.PDF",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir-15_wersja_jednolita.pdf",
         "wcag": true,
-        "from_date": null,
+        "from_date": "2026-01-12",
         "to_date": null
     },
     {
