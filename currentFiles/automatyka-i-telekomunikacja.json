@@ -2,18 +2,18 @@
     {
         "name": "Instrukcja sygnalizacji",
         "number": "Ie-1",
-        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/05_Instrukcja_Ie-1-od_2025-05-20_WCAG.pdf",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-1_obowiazuje_od_2026-01-17__uz_1041_25__WCAG.pdf",
         "wcag": true,
-        "from_date": "2025-05-20",
-        "to_date": "2026-01-16"
+        "from_date": "2026-01-17",
+        "to_date": null
     },
     {
         "name": "Instrukcja sygnalizacji",
         "number": "Ie-1",
-        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/05_Instrukcja_Ie-1-od_2025-05-20.pdf",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-1_obowiazuje_od_2026-01-17__uz_1041_25_.pdf",
         "wcag": false,
-        "from_date": "2025-05-20",
-        "to_date": "2026-01-16"
+        "from_date": "2026-01-17",
+        "to_date": null
     },
     {
         "name": "Instrukcja o telefonicznej przewodowej łączności ruchowej",
@@ -34,18 +34,18 @@
     {
         "name": "Wytyczne techniczno-eksploatacyjne urządzeń do wykrywania stanów awaryjnych taboru",
         "number": "Ie-3",
-        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Wytyczne_Ie-3_wersja_jednolita_od_13.06.2024_WCAG.pdf",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-3_obowiazuje_od_2026-01-17__uz_1040_25__WCAG.pdf",
         "wcag": true,
-        "from_date": "2024-06-13",
-        "to_date": "2026-01-16"
+        "from_date": "2026-01-17",
+        "to_date": null
     },
     {
         "name": "Wytyczne techniczno-eksploatacyjne urządzeń do wykrywania stanów awaryjnych taboru",
         "number": "Ie-3",
-        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Wytyczne_Ie-3_wersja_jednolita_od_13.06.2024.pdf",
+        "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-3_obowiazuje_od_2026-01-17__uz_1040_25_.pdf",
         "wcag": false,
-        "from_date": "2024-06-13",
-        "to_date": "2026-01-16"
+        "from_date": "2026-01-17",
+        "to_date": null
     },
     {
         "name": "Wytyczne techniczne budowy urządzeń sterowania ruchem kolejowym",
