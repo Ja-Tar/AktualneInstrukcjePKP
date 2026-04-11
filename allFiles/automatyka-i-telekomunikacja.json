@@ -303,6 +303,14 @@
                 "wcag": true,
                 "from_date": null,
                 "to_date": null
+            },
+            {
+                "name": "Instrukcja diagnostyki technicznej i kontroli okresowych urządzeń sterowania ruchem kolejowym",
+                "number": "Ie-7",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Ie-7_Instrukcja_diagnostyki_technicznej_i_kontroli_okresowych_urzadzen_sterow....pdf",
+                "wcag": false,
+                "from_date": null,
+                "to_date": "2026-04-06"
             }
         ]
     },
