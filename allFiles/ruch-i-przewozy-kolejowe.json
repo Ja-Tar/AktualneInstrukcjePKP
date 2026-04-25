@@ -98,8 +98,8 @@
             {
                 "name": "Instrukcja o prowadzeniu ruchu pociągów z wykorzystaniem systemu ERTMS/ETCS poziomu 1",
                 "number": "Ir-1a",
-                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Instrukcja_Ir-1a_obowiazuje_od_1_lipca_2026.pdf",
-                "wcag": true,
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Instrukcja_Ir-1a_-_obowiazuje_od_01.07.2026.pdf",
+                "wcag": false,
                 "from_date": "2026-07-01",
                 "to_date": null
             },
@@ -119,7 +119,7 @@
             {
                 "name": "Instrukcja o prowadzeniu ruchu pociągów z wykorzystaniem systemu ERTMS/ETCS poziomu 2",
                 "number": "Ir-1b",
-                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Instrukcja_Ir-1b.pdf",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Instrukcja_Ir-1b_-_obowiazuje_od_01.07.2026.pdf",
                 "wcag": false,
                 "from_date": "2026-07-01",
                 "to_date": null
@@ -274,6 +274,22 @@
     {
         "number": "Ir-8",
         "versions": [
+            {
+                "name": "Instrukcja o postępowaniu w sprawach poważnych wypadków, wypadków i incydentów w transporcie kolejowym",
+                "number": "Ir-8",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir-8_2026__od_01.06.2026_nr_uch_WCAG.pdf",
+                "wcag": true,
+                "from_date": null,
+                "to_date": null
+            },
+            {
+                "name": "Instrukcja o postępowaniu w sprawach poważnych wypadków, wypadków i incydentów w transporcie kolejowym",
+                "number": "Ir-8",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir-8_2026__od_01.06.2026_nr_uch.pdf",
+                "wcag": false,
+                "from_date": null,
+                "to_date": null
+            },
             {
                 "name": "Instrukcja o postępowaniu w sprawach poważnych wypadków, wypadków i incydentów w transporcie kolejowym",
                 "number": "Ir-8",
