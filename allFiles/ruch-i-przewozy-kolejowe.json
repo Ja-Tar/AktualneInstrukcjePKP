@@ -256,6 +256,14 @@
             {
                 "name": "Instrukcja obsługi przejazdów kolejowo-drogowych i przejść",
                 "number": "Ir-7",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir-7_wersja_jednolita_WCAG_-_obowiazuje_od_01.07.2026.pdf",
+                "wcag": true,
+                "from_date": "2026-07-01",
+                "to_date": null
+            },
+            {
+                "name": "Instrukcja obsługi przejazdów kolejowo-drogowych i przejść",
+                "number": "Ir-7",
                 "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir-7_ujednolicony__2024_WCAG_05.12.2024.pdf",
                 "wcag": true,
                 "from_date": "2024-12-01",
