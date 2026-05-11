@@ -346,10 +346,26 @@
             {
                 "name": "Instrukcja o zasadach wykonywania obsługi technicznej urządzeń telekomunikacji kolejowej oraz urządzeń GSM-R",
                 "number": "Ie-13",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Instrukcja_Ie-13_obowiazuje_od_2026-05-20__uz_381_2026__WCAG.pdf",
+                "wcag": true,
+                "from_date": "2026-05-20",
+                "to_date": null
+            },
+            {
+                "name": "Instrukcja o zasadach wykonywania obsługi technicznej urządzeń telekomunikacji kolejowej oraz urządzeń GSM-R",
+                "number": "Ie-13",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/Instrukcja_Ie-13_obowiazuje_od_2026-05-20__uz_381_2026_.pdf",
+                "wcag": false,
+                "from_date": "2026-05-20",
+                "to_date": null
+            },
+            {
+                "name": "Instrukcja o zasadach wykonywania obsługi technicznej urządzeń telekomunikacji kolejowej oraz urządzeń GSM-R",
+                "number": "Ie-13",
                 "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/02._Ie-13_2025_WCAG_od_22.05.2025.pdf",
                 "wcag": true,
                 "from_date": "2025-05-22",
-                "to_date": null
+                "to_date": "2026-05-19"
             },
             {
                 "name": "Instrukcja o zasadach wykonywania obsługi technicznej urządzeń telekomunikacji kolejowej oraz urządzeń GSM-R",
@@ -357,7 +373,7 @@
                 "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/02._Ie-13_2025_od_22.05.2025.pdf",
                 "wcag": false,
                 "from_date": "2025-05-22",
-                "to_date": null
+                "to_date": "2026-05-19"
             },
             {
                 "name": "Instrukcja o zasadach wykonywania obsługi technicznej urządzeń telekomunikacji kolejowej",
