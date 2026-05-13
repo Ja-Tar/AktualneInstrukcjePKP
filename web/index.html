@@ -1,18 +1,47 @@
 <!DOCTYPE html>
 <html lang="pl">
     <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Znajdź instrukcję PKP PLK</title>
+        <meta name="description" content="Poszukaj według tytułu lub skrótu numerowego. Szybko zobacz najnowszą instrukcję i jej zmiany. Sprawdź kiedy wchodzi kolejna zmiana!">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="colors.css">
+        <link rel="stylesheet" href="index.css">
     </head>
     <body>
         <div id="info-box">
+            <p>Aktualnie strona zbiera dane o tylko o instrukcjach ▶ <b>Ir, Ie</b></p>
+            <div id="close-info-box" class="small-button">✕</div>
         </div>
         <div id="main-box" class="section">
+            <h1>Znajdź instrukcję:</h1>
+            <div id="search-box">
+                <input type="text" id="search" autocomplete="off"> <!-- TODO: short number detection -->
+                <div id="custom-autocomplete"></div>
+            </div>
         </div>
         <div id="stat-box" class="section">
             <div id="number-stats-box">
+                <div id="inst-sum-box">
+                    <div id="inst-sum" class="number-stat"></div>
+                    <h4>łącznie instrukcji</h4>
                 </div>
+                <div id="inst-update-box">
+                    <div id="inst-update" class="number-stat"></div>
+                    <h4>łącznie zaktualizowanych w tym roku</h4>
+                </div>
+                <div id="inst-new-box">
+                    <div id="inst-new" class="number-stat"></div>
+                    <h4>opublikowanych, nie obowiązujących</h4>
+                </div>
+            </div>
             <div id="last-updated-box">
+                <h2>Ostatnio zaktualizowane:</h2>
+                <div id="last-updated-list" class="instruction-stat-list"></div>
             </div>
         </div>
 
+        <script src="index.js" async defer></script>
     </body>
 </html>

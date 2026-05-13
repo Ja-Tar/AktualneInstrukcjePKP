@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'Roboto';
+    font-stretch: 100%;
+    font-style: normal;
+    font-weight: 100..900;
+    font-optical-sizing: auto;
+    src: url(/static/Roboto-VariableFont.ttf) format('ttf');
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    
+}
