@@ -9,5 +9,17 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    
+    background-color: var(--background);
+    color: var(--text);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em
+}
+
+.section {
+    background-color: var(--secondary);
+    border-radius: 1em;
+    padding: 0.3em 1em;
 }
