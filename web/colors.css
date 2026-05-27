@@ -1,6 +1,6 @@
 :root[data-theme="light"] {
   --text: #0b0d0f;
-  --background: #f5f7fa;
+  --borders: #bebebe;
   --primary: #004680;
   --secondary: #7ab5e6;
   --accent: #1185e4;
@@ -8,6 +8,7 @@
 
 :root[data-theme="dark"] {
   --text: #f0f2f4;
+  --borders: #1e1e1e;
   --background: #05070a;
   --primary: #80c6ff;
   --secondary: #195485;
