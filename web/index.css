@@ -21,7 +21,6 @@ body {
     background-color: var(--secondary);
     border: 4px solid var(--borders);
     border-radius: 1em;
-    box-shadow: 0.3em 0.3em 0.5em color(from var(--primary) srgb r g b / 0.2);
     gap: 0.5em;
     padding: 0.3em 0.7em;
     display: flex;
