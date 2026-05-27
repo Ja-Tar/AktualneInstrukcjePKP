@@ -42,7 +42,6 @@ body {
 
 .small-button {
     margin-left: 0.1em;
-    
     line-height: 1em;
     border: 2px solid var(--primary);
     font-size: 1em;
@@ -50,24 +49,34 @@ body {
 
 #change-theme-box {
     position: absolute;
-    padding: 1em;
+    margin: 0.5em;
     top: 0;
     right: 0;
 }
 
-#theme-switch {
+.switch {
+    box-sizing: content-box;
+    border: 3px solid var(--text);
+    margin: 0;
+    border-radius: 1em;
     appearance: none;
     aspect-ratio: 2/1;
-    height: 2.5rem;
+    height: 2rem;
+    width: auto;
     background: var(--secondary);
 }
 
-#theme-switch::before {
+.switch::before {
+    border-radius: 50%;
     display: block;
     content: " ";
     aspect-ratio: 1/1;
-    width: 50%;
+    width: 40%;
+    height: auto;
+    margin: 5%;
     background: var(--primary);
 }
 
-#t
+.switch:checked::before {
+    margin-left: 55%;
+}
