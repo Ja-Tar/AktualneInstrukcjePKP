@@ -80,3 +80,11 @@ body {
 .switch:checked::before {
     margin-left: 55%;
 }
+
+#theme-switch::before {
+    background-color: #eee31b;
+}
+
+#theme-switch:checked::before {
+    background-color: #787864;
+}
