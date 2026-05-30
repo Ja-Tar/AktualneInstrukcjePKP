@@ -1,38 +1,73 @@
-// ==== DARK THEME ====
-const themeButton = document.getElementById("theme-switch")
 
+// ==== DARK THEME ====
+const themeButton = document.getElementById("theme-switch");
 if (window.matchMedia?.("(prefers-color-scheme: dark)").matches) {
-    document.documentElement.dataset["theme"] = "dark";
+    document.documentElement.dataset.theme = "dark";
     themeButton.checked = true;
 } else {
-    document.documentElement.dataset["theme"] = "light";
+    document.documentElement.dataset.theme = "light";
     themeButton.checked = false;
 }
 
 window
     .matchMedia("(prefers-color-scheme: dark)")
     .addEventListener("change", (ev) => {
-        document.documentElement.dataset["theme"] = ev.matches
-            ? "dark"
-            : "light";
+        document.documentElement.dataset.theme = ev.matches ? "dark" : "light";
     });
 
-themeButton.addEventListener("change", toggleTheme);
-
-function toggleTheme() {
-    if (document.documentElement.dataset["theme"] === "light") {
-        document.documentElement.dataset["theme"] = "dark";
-    } else {
-        document.documentElement.dataset["theme"] = "light";
-    }
-}
-
 // ==== SETTINGS ====
-const settingsButton = document.getElementById("settings-button");
-const settingsBox = document.getElementById("settings-box");
-
 function toggleSettings() {
+    const settingsBox = document.getElementById("settings-box");
     settingsBox.classList.toggle("hide");
 }
 
+const settingsButton = document.getElementById("settings-button");
 settingsButton.addEventListener("click", toggleSettings);
+
+// -- Settings saving --
+
+const savedSettings = [
+    toggleTheme,
+];
+
+/**
+ * @param fun {function}
+ */
+function saveSetting(fun) {
+    const funName = fun.name;
+    const funValue = fun();
+    if (funName && savedSettings.includes(fun) && funValue) {
+        localStorage.setItem(funName, funValue);
+    }
+}
+
+function loadSettings() {
+    for (const fun of savedSettings) {
+        const savedData = localStorage.getItem(fun.name);
+        fun(savedData);
+    }
+}
+
+// -- Settings functions --
+
+/**
+ * @param [savedSetting] {string}
+ */
+function toggleTheme(savedSetting) {
+    const documentDataset = document.documentElement.dataset;
+    let theme = documentDataset.theme === "light" ? "dark" : "light";
+    if (savedSetting) {
+        theme = savedSetting;
+    }
+
+    documentDataset.theme = theme;
+    return theme;
+}
+
+themeButton.addEventListener("change", () => {
+    saveSetting(toggleTheme);
+});
+
+// ==== LOAD WEBSITE ====
+
+loadSettings();
