@@ -46,14 +46,56 @@ body {
     font-size: 1em;
 }
 
-#change-theme-box {
+.hide {
+    display: none;
+}
+
+#settings-button-box {
     position: absolute;
-    margin: 0.5em;
+    margin: 2dvw;
     top: 0;
     right: 0;
 }
 
+#settings-box h3 {
+    margin: 0.5em 0;
+    align-self: center;
+}
+
+#settings-list {
+
+}
+
+.button {
+    display: flex;
+    background-color: var(--secondary);
+    border: 0.25em solid var(--borders);
+    outline: 0.25em solid var(--borders);
+    outline-offset: 1px;
+    border-radius: 100%;
+    aspect-ratio: 1/1;
+    align-items: center;
+}
+
+.button img {
+    height: 2.5em
+}
+
+:root[data-theme="dark"] .button img {
+    filter: invert(100%);
+}
+
+.button:hover {
+    border-color: var(--borders-hover);
+}
+
+.button:active {
+    border-color: var(--borders-clicked);
+    background-color: var(--primary);
+}
+
 .switch {
+    position: relative;
     box-sizing: content-box;
     border: 3px solid var(--borders);
     margin: 0;
@@ -62,7 +104,7 @@ body {
     aspect-ratio: 2/1;
     height: 2rem;
     width: auto;
-    background: var(--secondary);
+    background: var(--primary);
 }
 
 .switch::before {
@@ -73,7 +115,6 @@ body {
     width: 40%;
     height: auto;
     margin: 5%;
-    background: var(--primary);
 }
 
 .switch:checked::before {
@@ -81,9 +122,9 @@ body {
 }
 
 #theme-switch::before {
-    background-color: #eee31b;
+    background-color: darkgray;
 }
 
 #theme-switch:checked::before {
-    background-color: #787864;
+    background-color: #eee31b;
 }

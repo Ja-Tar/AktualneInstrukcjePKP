@@ -26,3 +26,13 @@ function toggleTheme() {
         document.documentElement.dataset["theme"] = "light";
     }
 }
+
+// ==== SETTINGS ====
+const settingsButton = document.getElementById("settings-button");
+const settingsBox = document.getElementById("settings-box");
+
+function toggleSettings() {
+    settingsBox.classList.toggle("hide");
+}
+
+settingsButton.addEventListener("click", toggleSettings);

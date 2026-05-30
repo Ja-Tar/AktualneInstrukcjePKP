@@ -1,7 +1,9 @@
 :root[data-theme="light"] {
   --text: #0b0d0f;
   --borders: #bebebe;
-  --primary: #004680;
+  --borders-hover: #646464;
+  --borders-clicked: #1e1e1e;
+  --primary: #0065b9;
   --secondary: #7ab5e6;
   --accent: #1185e4;
 }
@@ -9,8 +11,10 @@
 :root[data-theme="dark"] {
   --text: #f0f2f4;
   --borders: #1e1e1e;
+  --borders-hover: #646464;
+  --borders-clicked: #bebebe;
   --background: #05070a;
-  --primary: #80c6ff;
+  --primary: rgb(128 198 255 / 0.7);
   --secondary: #195485;
   --accent: #1b8fee;
 }
