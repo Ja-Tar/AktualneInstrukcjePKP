@@ -1,10 +1,10 @@
 :root[data-theme="light"] {
   --text: #0b0d0f;
-  --borders: #bebebe;
-  --borders-hover: #646464;
-  --borders-clicked: #1e1e1e;
-  --primary: #0065b9;
-  --secondary: #7ab5e6;
+  --borders: #dcdcdc;
+  --borders-hover: #969696;
+  --borders-clicked: #323232;
+  --primary: #398ed6;
+  --secondary: #a3d1f8;
   --accent: #1185e4;
 }
 
