@@ -5,7 +5,7 @@
             {
                 "name": "Instrukcja o prowadzeniu ruchu pociągów",
                 "number": "Ir-1",
-                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Instrukcja_Ir-1_po_zm_18__od_14_12_25_WCAG.pdf",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Instrukcja_Ir-1_po_zm_19__od_01_07_26_WCAG.pdf",
                 "wcag": true,
                 "from_date": "2026-07-01",
                 "to_date": null
@@ -13,82 +13,10 @@
             {
                 "name": "Instrukcja o prowadzeniu ruchu pociągów",
                 "number": "Ir-1",
-                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Instrukcja_Ir-1_od_29_05_2025_WCAG..pdf",
-                "wcag": true,
-                "from_date": "2025-05-29",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Instrukcja_Ir-1_po_zm_19__od_01_07_26.pdf",
+                "wcag": false,
+                "from_date": "2026-07-01",
                 "to_date": null
-            },
-            {
-                "name": "Instrukcja o prowadzeniu ruchu pociągów",
-                "number": "Ir-1",
-                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/02_Instrukcja_Ir-1_WCAG-od_20.05.2025.pdf",
-                "wcag": true,
-                "from_date": "2025-05-20",
-                "to_date": "2025-05-28"
-            },
-            {
-                "name": "Instrukcja o prowadzeniu ruchu pociągów",
-                "number": "Ir-1",
-                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir-1_format_A4__ze_egz_porown_09.04.pdf",
-                "wcag": true,
-                "from_date": "2025-05-10",
-                "to_date": "2025-05-19"
-            },
-            {
-                "name": "Instrukcja o prowadzeniu ruchu pociągów",
-                "number": "Ir-1",
-                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir-1_format_A4__zm._14.pdf",
-                "wcag": true,
-                "from_date": "2024-12-01",
-                "to_date": "2025-05-09"
-            },
-            {
-                "name": "Instrukcja o prowadzeniu ruchu pociągów",
-                "number": "Ir-1",
-                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir-1_format_A4__zm._13_-_obowiazuje_od_2024-09-12.pdf",
-                "wcag": true,
-                "from_date": "2024-09-12",
-                "to_date": "2024-11-30"
-            },
-            {
-                "name": "Instrukcja o prowadzeniu ruchu pociągów",
-                "number": "Ir-1",
-                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir-1_format_A4__zm._12_od_29.11.2023.pdf",
-                "wcag": true,
-                "from_date": "2023-11-29",
-                "to_date": "2024-09-11"
-            },
-            {
-                "name": "Instrukcja o prowadzeniu ruchu pociągów",
-                "number": "Ir-1",
-                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir-1_format_A4__zm._11.pdf",
-                "wcag": true,
-                "from_date": "2024-01-01",
-                "to_date": "2024-09-11"
-            },
-            {
-                "name": "Instrukcja o prowadzeniu ruchu pociągów",
-                "number": "Ir-1",
-                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Instrukcja_Ir-1_-_obowiazuje_od_01.08.2023_r..pdf",
-                "wcag": true,
-                "from_date": "2023-08-01",
-                "to_date": "2023-12-31"
-            },
-            {
-                "name": "Instrukcja o prowadzeniu ruchu pociągów",
-                "number": "Ir-1",
-                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir-1_format_A4__zm._9_-_wchodzi_w_zycie_z_dniem_1_lutego_2023.pdf",
-                "wcag": true,
-                "from_date": "2023-02-01",
-                "to_date": "2023-07-31"
-            },
-            {
-                "name": "Instrukcja o prowadzeniu ruchu pociągów",
-                "number": "Ir-1",
-                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir-1_format_A4__zm._VIII.pdf",
-                "wcag": true,
-                "from_date": "2022-10-31",
-                "to_date": "2023-01-31"
             }
         ]
     },
