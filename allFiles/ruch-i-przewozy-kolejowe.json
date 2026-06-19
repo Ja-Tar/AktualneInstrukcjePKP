@@ -242,6 +242,22 @@
             {
                 "name": "Instrukcja o technice wykonywania manewrów",
                 "number": "Ir-9",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir-9_zm._6_obowiazuje_od_19.07.2026_r._WCAG.pdf",
+                "wcag": true,
+                "from_date": "2026-07-19",
+                "to_date": null
+            },
+            {
+                "name": "Instrukcja o technice wykonywania manewrów",
+                "number": "Ir-9",
+                "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir-9_zm._6_obowiazuje_od_19.07.2026_r.pdf",
+                "wcag": false,
+                "from_date": "2026-07-19",
+                "to_date": null
+            },
+            {
+                "name": "Instrukcja o technice wykonywania manewrów",
+                "number": "Ir-9",
                 "resource_url": "/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ir/Ir-9_zm._5_format_A4.pdf",
                 "wcag": true,
                 "from_date": "2025-05-20",
