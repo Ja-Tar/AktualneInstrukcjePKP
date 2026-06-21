@@ -68,3 +68,5 @@ themeButton.addEventListener("change", () => {
 // ==== LOAD WEBSITE ====
 
 loadSettings();
+// TODO: Add autocomplete
+// TODO: Add hints
