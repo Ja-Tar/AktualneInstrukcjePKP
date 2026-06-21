@@ -3,6 +3,7 @@ body {
     background-color: var(--background);
     color: var(--text);
 
+    overscroll-behavior: contain;
     font-size: 25px;
     margin: 0;
     padding: 0;
@@ -13,6 +14,7 @@ body {
 
 h1 {
     margin: 0.5em 0;
+    text-align: center;
 }
 
 .hidden {
@@ -30,6 +32,7 @@ h1 {
     appearance: none;
     aspect-ratio: 1/1;
     width: 2em;
+    height: 2em;
 }
 
 #theme-button-label {
@@ -137,6 +140,7 @@ h1 {
     border-right: dimgray dashed 1px;
     width: fit-content;
     align-items: center;
+    white-space: nowrap;
 }
 
 .full-name {
@@ -202,4 +206,27 @@ h1 {
 .number-stat {
     font-size: 2em;
     font-weight: bold;
+}
+
+/* MOBILE COMPATIBILITY */
+
+@media only screen and (max-width: 525px) {
+    body {
+        font-size: 1.3em;
+    }
+
+    #centering-box {
+        grid-template:
+        "." 1fr
+        "main" 1fr
+        "." minmax(0, 2em)
+        "stats" auto
+        "." 9fr / auto;
+    }
+}
+
+@media only screen and (max-width: 435px) {
+    #number-stats-box {
+        border-radius: 0;
+    }
 }
