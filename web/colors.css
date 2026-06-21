@@ -1,6 +1,6 @@
 :root[data-theme="light"] {
   --text: #0b0d0f;
-  --borders: #dcdcdc;
+  --borders: rgb(0 19 34 / 0.7);
   --borders-hover: #969696;
   --borders-clicked: #323232;
   --primary: #398ed6;
