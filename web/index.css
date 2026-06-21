@@ -27,7 +27,24 @@ h1 {
     right: 0;
     display: flex;
     padding: 1em;
-    /* TODO: Make it look OK */
+    appearance: none;
+    aspect-ratio: 1/1;
+    width: 2em;
+}
+
+#theme-button-label {
+    content: url("./static/icons/dark_mode.svg");
+    background-color: lightslategray;
+    border-radius: 1em;
+    aspect-ratio: 1/1;
+    width: 100%;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+#theme-button-label:has(:checked) {
+    content: url("./static/icons/light_mode.svg");
+    padding: 0.2em;
 }
 
 /* MAIN LAYOUT */

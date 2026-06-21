@@ -1,6 +1,6 @@
 
 // ==== DARK THEME ====
-const themeButton = document.getElementById("theme-switch");
+const themeButton = document.getElementById("theme-button");
 if (window.matchMedia?.("(prefers-color-scheme: dark)").matches) {
     document.documentElement.dataset.theme = "dark";
     themeButton.checked = false;
