@@ -7,15 +7,20 @@
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: system-ui, sans-serif;
     background-color: var(--background);
     color: var(--text);
 
-    font-size: 18px;
+    font-size: 25px;
     margin: 0;
     padding: 0;
     height: 100dvh;
+    width: 100dvw;
     gap: 1em
+}
+
+h1 {
+    margin: 0.5em 0;
 }
 
 .hidden {
@@ -36,15 +41,14 @@ body {
 /* MAIN LAYOUT */
 
 #centering-box {
-    padding: 1em 2em;
     height: 100%;
     display: grid;
     grid-template:
-    "." 2fr
+    "." 10fr
     "main" 1fr
+    "." minmax(0, 1em)
     "stats" auto
-    "." 2fr / auto;
-    gap: 2em;
+    "." 9fr / auto;
 }
 
 .section-column {
@@ -70,3 +74,44 @@ body {
 
 /* STATISTICS */
 
+.section-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+#number-stats-box {
+    display: grid;
+    grid-template:
+    "sum . update . old" auto / 1fr minmax(0, 1em) 1fr minmax(0, 1em) 1fr;
+    background: var(--primary);
+    color: var(--text-light);
+    padding: 0.5em;
+    border-radius: 0.4em;
+    align-items: start;
+    justify-items: center;
+}
+
+#inst-sum-box {
+    grid-area: sum;
+}
+
+#inst-update-box {
+    grid-area: update;
+}
+
+#inst-old-box {
+    grid-area: old;
+}
+
+.stat {
+    font-size: 0.7em;
+    gap: 0.2em;
+    text-align: center;
+}
+
+.number-stat {
+    font-size: 2em;
+    font-weight: bold;
+}

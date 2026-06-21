@@ -1,6 +1,8 @@
 :root[data-theme="light"] {
     --text: black;
+    --text-light: seashell;
     --background: #f0f0f0;
+    --primary: #004683;
 }
 
 /*:root[data-theme="dark"] {*/
