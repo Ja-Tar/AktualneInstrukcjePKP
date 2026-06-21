@@ -44,6 +44,8 @@ h1 {
 
 #theme-button-label:has(:checked) {
     content: url("./static/icons/light_mode.svg");
+    filter: invert(100%);
+    background-color: #349dff;
     padding: 0.2em;
 }
 
@@ -91,14 +93,16 @@ h1 {
     width: 90%;
 }
 
-#search-box input {
+#search {
+    font-family: system-ui, sans-serif;
     padding: 0.3em 0.6em;
     font-size: 0.8em;
     appearance: none;
     width: 100%;
     border: var(--secondary) solid 2px;
     border-radius: 0.5em;
-    text-overflow: fade;
+    background-color: var(--background-field);
+    color: var(--text-field);
 }
 
 #custom-autocomplete {
@@ -118,7 +122,8 @@ h1 {
 
 .autocomplete {
     display: flex;
-    background: white;
+    background: var(--autocomplete);
+    color: var(--text-field);
     border: dimgray solid 1px;
     border-bottom: none;
 }
@@ -151,7 +156,7 @@ h1 {
 
 .autocomplete:hover {
     cursor: pointer;
-    background-color: antiquewhite;
+    background-color: var(--hover);
 }
 
 

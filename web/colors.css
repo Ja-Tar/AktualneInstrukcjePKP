@@ -1,18 +1,23 @@
 :root[data-theme="light"] {
     --text: black;
     --text-light: seashell;
+    --text-field: black;
     --background: #f0f0f0;
+    --background-field: white;
     --primary: #004683;
     --secondary: royalblue;
+    --autocomplete: white;
+    --hover: antiquewhite;
 }
 
-/*:root[data-theme="dark"] {*/
-/*    --text: #f0f2f4;*/
-/*    --borders: #1e1e1e;*/
-/*    --borders-hover: #646464;*/
-/*    --borders-clicked: #bebebe;*/
-/*    --background: #05070a;*/
-/*    --primary: rgb(128 198 255 / 0.7);*/
-/*    --secondary: #195485;*/
-/*    --accent: #1b8fee;*/
-/*}*/
+:root[data-theme="dark"] {
+    --text: #50aaec;
+    --text-light: rgb(255 245 238 / 0.9);
+    --text-field: white;
+    --background: #191919;
+    --background-field: #464646;
+    --primary: #002a4e;
+    --secondary: dodgerblue;
+    --autocomplete: #001428;
+    --hover: #00434c;
+}
