@@ -38,9 +38,10 @@ h1 {
     grid-template:
     "." 10fr
     "main" 1fr
-    "." minmax(0, 1em)
+    "." minmax(0, 2em)
     "stats" auto
     "." 9fr / auto;
+    justify-content: center;
 }
 
 .section-column {
@@ -62,7 +63,23 @@ h1 {
 
 /* MAIN SEARCH */
 
-/* TODO: Add main search box */
+#search-box {
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: center;
+}
+
+#search-box input {
+    padding: 0.3em 0.6em;
+    font-size: 0.8em;
+    appearance: none;
+    box-sizing: content-box;
+    width: 70%;
+    border: royalblue solid 2px;
+    border-radius: 0.5em;
+    text-overflow: fade;
+}
 
 /* STATISTICS */
 
