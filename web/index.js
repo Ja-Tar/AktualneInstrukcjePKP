@@ -2,17 +2,15 @@
 // ==== DARK THEME ====
 const themeButton = document.getElementById("theme-button");
 if (window.matchMedia?.("(prefers-color-scheme: dark)").matches) {
-    document.documentElement.dataset.theme = "dark";
-    themeButton.checked = false;
+    toggleTheme("dark");
 } else {
-    document.documentElement.dataset.theme = "light";
-    themeButton.checked = true;
+    toggleTheme("light");
 }
 
 window
     .matchMedia("(prefers-color-scheme: dark)")
     .addEventListener("change", (ev) => {
-        document.documentElement.dataset.theme = ev.matches ? "dark" : "light";
+        toggleTheme(ev.matches ? "dark" : "light");
     });
 
 // ==== SETTINGS ====
@@ -41,7 +39,9 @@ function saveSetting(fun) {
 function loadSettings() {
     for (const fun of savedSettings) {
         const savedData = localStorage.getItem(fun.name);
-        fun(savedData);
+        if (savedData) {
+            fun(savedData);
+        }
     }
 }
 
@@ -57,6 +57,7 @@ function toggleTheme(savedSetting) {
         theme = savedSetting;
     }
 
+    themeButton.checked = (theme === "dark");
     documentDataset.theme = theme;
     return theme;
 }
