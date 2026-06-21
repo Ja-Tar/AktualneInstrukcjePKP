@@ -16,7 +16,7 @@ h1 {
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 /* THEME BUTTON */
@@ -64,22 +64,79 @@ h1 {
 /* MAIN SEARCH */
 
 #search-box {
-    display: flex;
     width: 100%;
     box-sizing: border-box;
     justify-content: center;
+}
+
+#input-search-box {
+    position: relative;
+    width: 90%;
 }
 
 #search-box input {
     padding: 0.3em 0.6em;
     font-size: 0.8em;
     appearance: none;
-    box-sizing: content-box;
-    width: 70%;
-    border: royalblue solid 2px;
+    width: 100%;
+    border: var(--secondary) solid 2px;
     border-radius: 0.5em;
     text-overflow: fade;
 }
+
+#custom-autocomplete {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    max-height: 10em;
+    overflow-y: auto;
+    box-sizing: border-box;
+    top: 100%;
+    left: 2%;
+    width: 96%;
+    border-bottom: dimgray solid 1px;
+    border-top-width: 0;
+    font-size: 0.8em;
+}
+
+.autocomplete {
+    display: flex;
+    background: white;
+    border: dimgray solid 1px;
+    border-bottom: none;
+}
+
+.in-autocomplete {
+    padding: 0.4em 0.6em;
+}
+
+.id {
+    display: flex;
+    border-right: dimgray dashed 1px;
+    width: fit-content;
+    align-items: center;
+}
+
+.full-name {
+    display: flex;
+    align-items: center;
+    border-left: none;
+    padding-left: 0.5em;
+}
+
+.autocomplete:first-child {
+    border-top: none;
+}
+
+.autocomplete:last-child {
+    border-bottom: none;
+}
+
+.autocomplete:hover {
+    cursor: pointer;
+    background-color: antiquewhite;
+}
+
 
 /* STATISTICS */
 
