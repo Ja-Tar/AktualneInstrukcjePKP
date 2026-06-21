@@ -3,10 +3,10 @@
 const themeButton = document.getElementById("theme-switch");
 if (window.matchMedia?.("(prefers-color-scheme: dark)").matches) {
     document.documentElement.dataset.theme = "dark";
-    themeButton.checked = true;
+    themeButton.checked = false;
 } else {
     document.documentElement.dataset.theme = "light";
-    themeButton.checked = false;
+    themeButton.checked = true;
 }
 
 window
@@ -20,9 +20,6 @@ function toggleSettings() {
     const settingsBox = document.getElementById("settings-box");
     settingsBox.classList.toggle("hide");
 }
-
-const settingsButton = document.getElementById("settings-button");
-settingsButton.addEventListener("click", toggleSettings);
 
 // -- Settings saving --
 

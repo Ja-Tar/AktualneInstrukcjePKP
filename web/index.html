@@ -10,48 +10,38 @@
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
-        <div id="settings-box" class="hide section column">
-            <h2>Ustawienia</h2>
-            <div id="settings-list">
-                <label for="theme-switch"><b>Kolorystyka:</b></label>
-                <input type="checkbox" class="switch" id="theme-switch">
-            </div>
+        <div id="theme-button-box">
+            <input type="checkbox" class="switch" id="theme-switch">
         </div>
-        <div id="settings-button-box">
-            <button type="button" class="button" id="settings-button"><img src="static/icons/settings.svg" alt="settings icon"></button>
-        </div>
-        <div id="main-box" class="section column">
-            <h1>Znajdź instrukcję:</h1>
-            <div id="search-box">
-                <input type="text" id="search" autocomplete="off"> <!-- TODO: short number detection -->
-                <div id="custom-autocomplete"></div>
-            </div>
-        </div>
-        <div id="info-box" class="section">
-            <div id="info">Aktualnie strona zbiera dane tylko o instrukcjach → <b>Ir oraz Ie</b></div>
-<!--            <div id="close-info-box" class="small-button">✕</div>-->
-        </div>
-        <div id="stat-box" class="section column">
-            <div id="number-stats-box">
-                <div id="inst-sum-box">
-                    <div id="inst-sum" class="number-stat"></div>
-                    <h4>łącznie instrukcji</h4>
-                </div>
-                <div id="inst-update-box">
-                    <div id="inst-update" class="number-stat"></div>
-                    <h4>łącznie zaktualizowanych w tym roku</h4>
-                </div>
-                <div id="inst-new-box">
-                    <div id="inst-new" class="number-stat"></div>
-                    <h4>opublikowanych, nie obowiązujących</h4>
+        <div id="centering-box">
+            <div id="main-box" class="section-column">
+                <h1>Szukaj instrukcji:</h1>
+                <div id="search-box">
+                    <input type="text" id="search" autocomplete="off"> <!-- TODO: short number detection -->
+                    <div id="custom-autocomplete"></div>
                 </div>
             </div>
-            <div id="last-updated-box">
-                <h2>Ostatnio zaktualizowane:</h2>
-                <div id="last-updated-list" class="instruction-stat-list"></div>
+            <div id="stat-box" class="section-column">
+                <div id="number-stats-box">
+                    <div id="inst-sum-box">
+                        <div id="inst-sum" class="number-stat">100</div>
+                        <span>łącznie śledzonych instrukcji</span>
+                    </div>
+                    <div id="inst-update-box">
+                        <div id="inst-update" class="number-stat">111</div>
+                        <span>łącznie zaktualizowanych w tym roku</span>
+                    </div>
+                    <div id="inst-new-box">
+                        <div id="inst-new" class="number-stat">333</div>
+                        <span>opublikowanych, nie obowiązujących</span>
+                    </div>
+                </div>
+                <div id="last-updated-box" class="hidden"> <!-- TODO: add last updated list -->
+                    <h2>Ostatnio zaktualizowane:</h2>
+                    <div id="last-updated-list" class="instruction-stat-list"></div>
+                </div>
             </div>
         </div>
-
         <script src="index.js" async defer></script>
     </body>
 </html>

@@ -11,135 +11,62 @@ body {
     background-color: var(--background);
     color: var(--text);
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    font-size: 18px;
+    margin: 0;
+    padding: 0;
+    height: 100dvh;
     gap: 1em
 }
 
-h1 {
-    font-size: xx-large;
-}
-
-h2 {
-    margin: 0.5em 0;
-    align-self: center;
-}
-
-.section {
-    background-color: var(--secondary);
-    box-shadow: rgb(30 30 30 / 0.5) 2px 2px 2px;
-    border: 5px double var(--borders);
-    border-radius: 1em;
-    gap: 0.5em;
-    padding: 0.3em 0.7em;
-    display: flex;
-}
-
-.column {
-    flex-direction: column;
-}
-
-#info-box {
-    border-radius: 0.3em;
-    border-width: 3px;
-}
-
-#info {
-    align-self: center;
-}
-
-.small-button {
-    margin-left: 0.1em;
-    line-height: 1em;
-    border: 2px solid var(--primary);
-    font-size: 1em;
-}
-
-.hide {
+.hidden {
     display: none;
 }
 
-#settings-button-box {
+/* THEME BUTTON */
+
+#theme-button-box {
     position: absolute;
-    margin: 2dvw;
     top: 0;
     right: 0;
-}
-
-#settings-list {
-    display: grid;
-    column-gap: 1em;
-    row-gap: 0.2em;
-    margin-bottom: 0.7em;
-    align-items: center;
-}
-
-#settings-list input,
-#settings-list select {
-    justify-self: center;
-    grid-column: 2;
-}
-
-.button {
     display: flex;
-    background-color: var(--secondary);
-    border: 0.25em solid var(--borders);
-    outline: 0.25em solid var(--borders);
-    outline-offset: 0;
-    border-radius: 100%;
-    aspect-ratio: 1/1;
+    padding: 1em;
+    /* TODO: Make it look OK */
+}
+
+/* MAIN LAYOUT */
+
+#centering-box {
+    padding: 1em 2em;
+    height: 100%;
+    display: grid;
+    grid-template:
+    "." 2fr
+    "main" 1fr
+    "stats" auto
+    "." 2fr / auto;
+    gap: 2em;
+}
+
+.section-column {
+    display: flex;
     align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
-.button img {
-    height: 2.5em
+#main-box {
+    grid-area: main;
+    display: flex;
+    justify-content: end;
 }
 
-:root[data-theme="dark"] .button img {
-    filter: invert(100%);
+#stat-box {
+    grid-area: stats;
 }
 
-.button:hover {
-    border-color: var(--borders-hover);
-}
+/* MAIN SEARCH */
 
-.button:active {
-    border-color: var(--borders-clicked);
-    background-color: var(--primary);
-}
+/* TODO: Add main search box */
 
-.switch {
-    position: relative;
-    box-sizing: content-box;
-    border: 3px solid var(--borders);
-    margin: 0;
-    border-radius: 1em;
-    appearance: none;
-    aspect-ratio: 2/1;
-    height: 2rem;
-    width: auto;
-    background: var(--primary);
-}
+/* STATISTICS */
 
-.switch::before {
-    border-radius: 50%;
-    display: block;
-    content: " ";
-    aspect-ratio: 1/1;
-    width: 40%;
-    height: auto;
-    margin: 5%;
-}
-
-.switch:checked::before {
-    margin-left: 55%;
-}
-
-#theme-switch::before {
-    background-color: lightgrey;
-}
-
-#theme-switch:checked::before {
-    background-color: #eee31b;
-}
