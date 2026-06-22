@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Znajdź instrukcję PKP PLK</title>
         <meta name="description" content="Poszukaj według tytułu lub skrótu numerowego. Szybko zobacz najnowszą instrukcję i jej zmiany. Sprawdź kiedy wchodzi kolejna zmiana!">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=auto">
         <link rel="stylesheet" href="colors.css">
         <link rel="stylesheet" href="index.css">
     </head>
@@ -28,12 +28,18 @@
             </div>
             <div id="result-box" class="section-column hidden">
                 <div id="info-box">
-                    <h2>Ir-1</h2>
+                    <div id="info-bar">
+                        <div id="instr-last-update">Aktualizacja: 10.12.2025 </div>
+                        <h2 id="instr-id">Ir-1</h2>
+                        <div id="instr-badges-box" class="hidden">
+                            <!-- TODO: Add badges for: newest, type (ie, ir), wcag, last updated, new update coming -->
+                        </div>
+                    </div>
                     <h5>Instrukcja o sdasdas asdasd asdas asdasd asdas asdasd asdas asdasd asdas asdasd asdasd asdas asdas prowadzeniu ruchu pociągów</h5>
                 </div>
-                <div id="open-button-box">
-                    <button id="open-button">Otwórz instrukcję</button>
-                </div>
+                <button id="open-instr-button">Otwórz instrukcję</button>
+                <button id="show-versions-button" class="hidden">Stare wersje</button>
+                <!-- TODO: Add old versions page -->
             </div>
             <div id="stat-box" class="section-column">
                 <div id="number-stats-box">

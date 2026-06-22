@@ -2,6 +2,7 @@
     --text: black;
     --text-light: seashell;
     --text-field: black;
+    --text-result: black;
     --background: #f0f0f0;
     --background-field: white;
     --background-result: white;
@@ -9,16 +10,25 @@
     --secondary: royalblue;
     --autocomplete: white;
     --hover: antiquewhite;
+    --id-border: black;
+    --button-background: #45ff8f;
+    --button-border: #1dc36a;
+    --button-text: darkslategray;
 }
 
 :root[data-theme="dark"] {
     --text: #50aaec;
     --text-light: rgb(255 245 238 / 0.9);
     --text-field: white;
+    --text-result: seashell;
     --background: #191919;
     --background-field: #464646;
     --primary: #002a4e;
     --secondary: dodgerblue;
     --autocomplete: #001428;
     --hover: #00434c;
+    --id-border: steelblue;
+    --button-background: #048e6e;
+    --button-border: #2eef88;
+    --button-text: seashell;
 }

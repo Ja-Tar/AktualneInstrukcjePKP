@@ -21,6 +21,10 @@ h2 {
     margin: 0.3em 0;
 }
 
+h5 {
+    padding: 0;
+}
+
 .hidden {
     display: none !important;
 }
@@ -77,11 +81,11 @@ h2 {
     grid-template:
     "." 1.5em
     "main" auto
-    "." minmax(0, 1em)
+    "." minmax(0, 5em)
     "result" auto
-    "." minmax(0, 1em)
+    "." minmax(0, 2em)
     "stats" auto
-    "." 1fr / auto;
+    "." 2fr / auto;
 }
 
 .section-column {
@@ -230,20 +234,65 @@ h2 {
 
 #result-box {
     grid-area: result;
-    background-color: var(--background-result);
-    border-radius: 0.5em;
+    color: var(--text-result);
+    border: var(--secondary) double 5px;
+    border-right: none;
+    border-left: none;
+    padding: 0.5em 0.4em;
 }
 
 #info-box {
     max-width: 1000px;
-    padding: 0 0.4em;
+}
+
+#info-bar {
+    display: grid;
+    grid-template:
+    "update id badges" auto / 1fr auto 1fr;
+    gap: 0.5em;
+}
+
+#instr-last-update {
+    padding: 0 1em;
+    grid-area: update;
+    font-size: 0.8em;
+    align-self: center;
+    font-weight: bold;
+    text-align: center;
+    color: #009859;
+}
+
+#instr-id {
+    grid-area: id;
+    padding: 0.2em;
+    border: 5px solid var(--id-border);
+    min-height: 1.3em;
+}
+
+#instr-id:empty {
+    border-color: transparent;
+}
+
+#instr-badges-box {
+    grid-area: badges;
+}
+
+#open-instr-button {
+    margin: 0.5em 0;
+    padding: 0.2em 0.7em;
+    background-color: var(--button-background);
+    font-size: 1.15em;
+    border-radius: 0.8em;
+    font-weight: bold;
+    color: var(--button-text);
+    border: var(--button-border) solid 0.2em
 }
 
 /* MOBILE COMPATIBILITY */
 
-@media only screen and (max-width: 1025px) {
-    #result-box {
-        border-radius: 0;
+@media only screen and (min-width: 600px) and (max-height: 455px) {
+    #stat-box {
+        display: none;
     }
 }
 
@@ -253,11 +302,43 @@ h2 {
     }
 }
 
-@media only screen and (max-width: 525px) {
+@media only screen and (max-height: 620px) and (min-width: 600px) {
     body {
         font-size: 1.3em;
     }
 
+    h1 {
+        margin: 0.1em 0 0.3em 0;
+    }
+
+    #centering-box {
+        grid-template:
+        "main" auto
+        "." minmax(0, 1em)
+        "result" auto
+        "." minmax(0, 1em)
+        "stats" auto
+        "." 1fr / auto;
+    }
+
+    #centering-box:has(#result-box:not(.hidden)) {
+        grid-template:
+        "main" auto
+        "." minmax(0, 2em)
+        "result" auto
+        "." minmax(0, 2em)
+        "stats" auto
+        "." 1fr / auto;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    body {
+        font-size: 1.3em;
+    }
+}
+
+@media only screen and (max-width: 600px) and (max-height: 900px) {
     #centering-box {
         grid-template:
         "." minmax(0.8em, 1.2em)
@@ -267,6 +348,16 @@ h2 {
         "." minmax(0, 1em)
         "stats" auto
         "." 1fr / auto;
+    }
+
+    #centering-box:has(#result-box:not(.hidden)) {
+        grid-template:
+        "." minmax(0.8em, 1.2em)
+        "main" auto
+        "." minmax(0, 2em)
+        "result" auto
+        "." 1fr
+        "stats" auto / auto;
     }
 
     #theme-button-box {
