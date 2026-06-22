@@ -217,11 +217,15 @@ h1 {
 
     #centering-box {
         grid-template:
-        "." 1fr
-        "main" 1fr
+        "." 1.5em
+        "main" auto
         "." minmax(0, 2em)
         "stats" auto
-        "." 9fr / auto;
+        "." 1fr / auto;
+    }
+
+    #theme-button-box {
+        padding: 0.5em;
     }
 }
 
