@@ -247,6 +247,12 @@ h2 {
     }
 }
 
+@media only screen and (max-width: 775px) {
+    #theme-button-box {
+        padding: 0.5em;
+    }
+}
+
 @media only screen and (max-width: 525px) {
     body {
         font-size: 1.3em;
@@ -254,7 +260,7 @@ h2 {
 
     #centering-box {
         grid-template:
-        "." 1.5em
+        "." minmax(0.8em, 1.2em)
         "main" auto
         "." minmax(0, 1em)
         "result" auto
