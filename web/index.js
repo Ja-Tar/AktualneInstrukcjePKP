@@ -71,3 +71,4 @@ themeButton.addEventListener("change", () => {
 loadSettings();
 // TODO: Add autocomplete
 // TODO: Add hints
+// TODO: Add stats
