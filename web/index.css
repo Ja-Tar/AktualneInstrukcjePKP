@@ -12,9 +12,13 @@ body {
     gap: 1em
 }
 
-h1 {
+h1, h2, h3, h4, h5, h6 {
     margin: 0.5em 0;
     text-align: center;
+}
+
+h2 {
+    margin: 0.3em 0;
 }
 
 .hidden {
@@ -60,10 +64,24 @@ h1 {
     grid-template:
     "." 10fr
     "main" 1fr
-    "." minmax(0, 2em)
+    "." minmax(0, 1em)
+    "result" auto
+    "." minmax(0, 1em)
     "stats" auto
     "." 9fr / auto;
     justify-content: center;
+    justify-items: center;
+}
+
+#centering-box:has(#result-box:not(.hidden)) {
+    grid-template:
+    "." 1.5em
+    "main" auto
+    "." minmax(0, 1em)
+    "result" auto
+    "." minmax(0, 1em)
+    "stats" auto
+    "." 1fr / auto;
 }
 
 .section-column {
@@ -73,17 +91,13 @@ h1 {
     flex-direction: column;
 }
 
+/* MAIN SEARCH */
+
 #main-box {
     grid-area: main;
     display: flex;
     justify-content: end;
 }
-
-#stat-box {
-    grid-area: stats;
-}
-
-/* MAIN SEARCH */
 
 #search-box {
     width: 100%;
@@ -166,6 +180,10 @@ h1 {
 
 /* STATISTICS */
 
+#stat-box {
+    grid-area: stats;
+}
+
 .section-row {
     display: flex;
     align-items: center;
@@ -208,7 +226,26 @@ h1 {
     font-weight: bold;
 }
 
+/* RESULT WINDOW */
+
+#result-box {
+    grid-area: result;
+    background-color: var(--background-result);
+    border-radius: 0.5em;
+}
+
+#info-box {
+    max-width: 1000px;
+    padding: 0 0.4em;
+}
+
 /* MOBILE COMPATIBILITY */
+
+@media only screen and (max-width: 1025px) {
+    #result-box {
+        border-radius: 0;
+    }
+}
 
 @media only screen and (max-width: 525px) {
     body {
@@ -219,7 +256,9 @@ h1 {
         grid-template:
         "." 1.5em
         "main" auto
-        "." minmax(0, 2em)
+        "." minmax(0, 1em)
+        "result" auto
+        "." minmax(0, 1em)
         "stats" auto
         "." 1fr / auto;
     }
