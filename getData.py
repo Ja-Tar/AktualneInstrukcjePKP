@@ -188,8 +188,7 @@ if __name__ == "__main__":
         "automatyka-i-telekomunikacja": "https://www.plk-sa.pl/klienci-i-kontrahenci/akty-prawne-i-przepisy/instrukcje-pkp-polskich-linii-kolejowych-sa/automatyka-i-telekomunikacja"
     }
 
-    all_folder = "./allFiles"
-    current_folder = "./currentFiles"
+    all_folder = "./web/configs"
 
     for page, url in pages.items():
         html_document = get_html(url)
