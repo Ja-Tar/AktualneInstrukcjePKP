@@ -1,3 +1,20 @@
+// ==== DATA TYPES (jsdoc) ====
+
+/**
+ * @typedef FileVersion
+ * @property {string} name
+ * @property {string} number
+ * @property {string} resource_url
+ * @property {boolean} wcag
+ * @property {?string} from_date
+ * @property {?string} to_date
+ */
+
+/**
+ * @typedef File
+ * @property {string} number
+ * @property {FileVersion[]} versions
+ */
 
 // ==== DARK THEME ====
 const themeButton = document.getElementById("theme-button");
