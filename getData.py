@@ -6,17 +6,21 @@ import requests
 from bs4 import BeautifulSoup
 from bs4.element import Tag
 
+
 def _default(self, obj):
-    return getattr(obj.__class__, "to_json", _default.default)(obj) # type: ignore
+    return getattr(obj.__class__, "to_json", _default.default)(obj)
 
-_default.default = JSONEncoder().default # type: ignore
-JSONEncoder.default = _default # type: ignore
 
-def get_HTML(_url):
+_default.default = JSONEncoder().default
+JSONEncoder.default = _default
+
+
+def get_html(_url):
     response = requests.get(_url, headers={"User-Agent": "Mozilla/5.0"}, timeout=10)
     response.encoding = "utf-8"
     response.raise_for_status()
     return BeautifulSoup(response.text, "html.parser")
+
 
 def get_uploads(soup: BeautifulSoup):
     uploads = soup.find_all("div", class_="frame-type-uploads")
@@ -24,16 +28,18 @@ def get_uploads(soup: BeautifulSoup):
         upload.extract()
     return uploads
 
+
 def get_number_header(upload: Tag) -> str | None:
     header = upload.find("h3")
     if isinstance(header, Tag):
         return header.get_text(strip=True).split(" - ")[0]
     return None
 
+
 def get_file_versions(upload: Tag) -> list[Tag]:
-    files = upload.find_all("div", class_="file-list__item")
+    _files = upload.find_all("div", class_="file-list__item")
     processed_files: list[Tag] = []
-    for file in files:
+    for file in _files:
         if not isinstance(file, Tag):
             continue
         link = file.find("a", class_="file-list__item__link")
@@ -41,8 +47,10 @@ def get_file_versions(upload: Tag) -> list[Tag]:
             processed_files.append(link)
     return processed_files
 
+
 class FileVersion:
-    def __init__(self, name: str, number: str, resource_url: str | None, wcag: bool, from_date: date | None, to_date: date | None):
+    def __init__(self, name: str, number: str, resource_url: str | None, wcag: bool, from_date: date | None,
+                 to_date: date | None):
         self.name = name
         self.number = number
         self.resource_url = resource_url
@@ -63,6 +71,7 @@ class FileVersion:
             "to_date": self.to_date.isoformat() if self.to_date else None
         }
 
+
 class File:
     def __init__(self, number: str, versions: list[FileVersion]):
         self.number = number
@@ -74,9 +83,10 @@ class File:
             "versions": [version.to_json() for version in self.versions]
         }
 
+
 def process_file_versions(versions: list[Tag]) -> list[FileVersion]:
     # <a
-    # href="/files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/05_Instrukcja_Ie-1-od_2025-05-20_WCAG.pdf"
+    # href="/_files/public/user_upload/pdf/Akty_prawne_i_przepisy/Instrukcje/Wydruk/Ie/05_Instrukcja_Ie-1-od_2025-05-20_WCAG.pdf"
     # class="file-list__item__link" target="_blank"
     # > 
     # Instrukcja sygnalizacji <strong>Ie-1 - wersja dostosowana do zasad WCAG -</strong> obowiązuje od 20.05.2025 r. 
@@ -126,10 +136,11 @@ def process_file_versions(versions: list[Tag]) -> list[FileVersion]:
 
     return file_versions
 
-def merge_duplicate_file_versions(files: list[File]) -> list[File]:
-    '''Check for two deferent files but the same number_header and combine them'''
+
+def merge_duplicate_file_versions(_files: list[File]) -> list[File]:
+    """Check for two different _files but the same number_header and combine them"""
     file_groups: dict[str, list[File]] = {}
-    for file in files:
+    for file in _files:
         if file.number in file_groups:
             file_groups[file.number].append(file)
         else:
@@ -140,7 +151,7 @@ def merge_duplicate_file_versions(files: list[File]) -> list[File]:
             # Combine the file versions
             combined_versions = []
             for f in files_group:
-                #print("Więcej niż jedna wersja:", f.number, f.versions)
+                #print("Więcej niż jedna wersja: ", f.number, f.versions)
                 combined_versions.extend(f.versions)
             # Create a new File object with the combined versions
             combined_file = File(files_group[0].number, combined_versions)
@@ -151,9 +162,10 @@ def merge_duplicate_file_versions(files: list[File]) -> list[File]:
         unique_files.append(files_group[-1])
     return unique_files
 
-def process_HTML(soup: BeautifulSoup):
+
+def process_html(soup: BeautifulSoup):
     uploads = get_uploads(soup)
-    files: list[File] = []
+    _files: list[File] = []
 
     for upload in uploads:
         if not isinstance(upload, Tag):
@@ -165,33 +177,10 @@ def process_HTML(soup: BeautifulSoup):
 
         file_versions = process_file_versions(get_file_versions(upload))
 
-        files.append(File(number_header, file_versions))
+        _files.append(File(number_header, file_versions))
 
-    return merge_duplicate_file_versions(files)
+    return merge_duplicate_file_versions(_files)
 
-def get_current_files(_files: list[File]) -> list[FileVersion]:
-    '''Get the current file versions based on their dates'''
-    _current_files_dict: dict[str, list[FileVersion]] = {}
-    for file in _files:
-        if file.versions:
-            for version in file.versions:
-                today = datetime.now().date()
-                if (
-                    (version.to_date is None or version.to_date >= today)
-                    and (version.from_date is None or version.from_date <= today)
-                ):
-                    _current_files_dict.setdefault(file.number, []).append(version)
-
-    # get the newest from each group (check for wcag and add one wcag and one none wcag)
-    _current_files = []
-    for versions in _current_files_dict.values():
-        wcag_versions = [v for v in versions if v.wcag]
-        none_wcag_versions = [v for v in versions if not v.wcag]
-        if wcag_versions:
-            _current_files.append(max(wcag_versions, key=lambda v: v.from_date or date.min))
-        if none_wcag_versions:
-            _current_files.append(max(none_wcag_versions, key=lambda v: v.from_date or date.min))
-    return _current_files
 
 if __name__ == "__main__":
     pages = {
@@ -203,13 +192,9 @@ if __name__ == "__main__":
     current_folder = "./currentFiles"
 
     for page, url in pages.items():
-        html_document = get_HTML(url)
-        files = process_HTML(html_document)
+        html_document = get_html(url)
+        files = process_html(html_document)
 
         # make json file
         with open(f"{all_folder}/{page}.json", "w", encoding="utf-8") as json_file:
             json.dump(files, json_file, ensure_ascii=False, indent=4)
-
-        current_files = get_current_files(files)
-        with open(f"{current_folder}/{page}.json", "w", encoding="utf-8") as json_file:
-            json.dump(current_files, json_file, ensure_ascii=False, indent=4)
