@@ -14,6 +14,7 @@ window
     });
 
 // ==== SETTINGS ====
+// TODO: Maybe add settings?
 function toggleSettings() {
     const settingsBox = document.getElementById("settings-box");
     settingsBox.classList.toggle("hide");
