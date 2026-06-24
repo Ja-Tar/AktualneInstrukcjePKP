@@ -6,6 +6,7 @@
  * @property {string} number
  * @property {string} resource_url
  * @property {boolean} wcag
+ * @property {string} [found_date]
  * @property {?string} from_date
  * @property {?string} to_date
  */
@@ -116,13 +117,12 @@ async function getMainConfig() {
     return await fetchData(`${webOrigin}/configs/main.json`);
 }
 
-//let mainConfig; - future use
-/**
- * @type {InstrConfig[]}
- */
-let allInstrConfigs = [];
-
 async function getFilesInfo() {
+    /**
+     * @type {InstrConfig[]}
+     */
+    const allInstrConfigs = [];
+
     const mainConfig = await getMainConfig();
     if (!mainConfig) { throw new Error("Could not find main config!"); }
     for (const fileName in mainConfig.trackedUrls) {
@@ -136,14 +136,65 @@ async function getFilesInfo() {
             });
         }
     }
+
+    return {allInstrConfigs, mainConfig};
+}
+
+// ==== STATS ====
+
+/**
+ * @param allInstrConfigs {InstrConfig[]}
+ */
+function calculateStatistics(allInstrConfigs) {
+    // CURRENTLY COUNTED | UPDATED THIS YEAR | NO LONGER IN USE
+    let currentlyCounted = 0;
+    let updatedThisYear = 0;
+    let noLongerInUse = 0;
+
+    const allInstr = allInstrConfigs.flatMap((config) => {
+        return config.configInstrFiles.flatMap((file) => file);
+    });
+
+    for (const instr of allInstr) {
+        for (let i = 0; i < instr.versions.length; i++) {
+            const file = instr.versions[i];
+
+            currentlyCounted++;
+            if (i !== 0) {
+                noLongerInUse++;
+            }
+
+            // TODO: Add found date to main script
+            if (file?.found_date || file.from_date !== null) {
+                const today = new Date();
+                const date = new Date(file?.found_date ?? file.from_date);
+                if (today.getFullYear() === date.getFullYear()) {
+                    updatedThisYear++;
+                }
+            }
+        }
+    }
+
+    return {currentlyCounted, updatedThisYear, noLongerInUse};
+}
+
+function loadStatistics(allInstrConfigs) {
+    const instSum = document.getElementById("inst-sum");
+    const instUpdate = document.getElementById("inst-update");
+    const instOld = document.getElementById("inst-old");
+
+    const {currentlyCounted, updatedThisYear, noLongerInUse} = calculateStatistics(allInstrConfigs);
+    instSum.textContent = currentlyCounted.toString();
+    instUpdate.textContent = updatedThisYear.toString();
+    instOld.textContent = noLongerInUse.toString();
 }
 
 // ==== LOAD WEBSITE ====
 
 loadSettings();
-getFilesInfo().then(() => {
-    console.log(allInstrConfigs);
+getFilesInfo().then((configs) => {
+    console.log(configs.allInstrConfigs);
+    loadStatistics(configs.allInstrConfigs);
 });
 // TODO: Add autocomplete
 // TODO: Add hints
-// TODO: Add stats
