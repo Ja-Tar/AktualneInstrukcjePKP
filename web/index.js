@@ -1,7 +1,7 @@
 // ==== DATA TYPES (jsdoc) ====
 
 /**
- * @typedef FileVersion
+ * @typedef InstrVersion
  * @property {string} name
  * @property {string} number
  * @property {string} resource_url
@@ -11,9 +11,20 @@
  */
 
 /**
- * @typedef File
+ * @typedef InstrFile
  * @property {string} number
- * @property {FileVersion[]} versions
+ * @property {InstrVersion[]} versions
+ */
+
+/**
+ * @typedef InstrConfig
+ * @property {string} fileName
+ * @property {InstrFile[]} configInstrFiles
+ */
+
+/**
+ * @typedef Config
+ * @property {Object<string, string>} trackedUrls
  */
 
 // ==== DARK THEME ====
@@ -84,9 +95,55 @@ themeButton.addEventListener("change", () => {
     saveSetting(toggleTheme);
 });
 
+// ==== FETCH AND LOAD DATA ====
+
+// TODO: Change to prod url
+const webOrigin = "https://rewrite-noai.instrukcje-pkp.pages.dev"; //window.location.origin;
+
+async function fetchData(url) {
+    const response = await fetch(url);
+    if (response.ok) {
+        return await response.json();
+    }
+    throw new Error(response.statusText);
+}
+
+/**
+ *
+ * @return {Promise<Config | undefined>}
+ */
+async function getMainConfig() {
+    return await fetchData(`${webOrigin}/configs/main.json`);
+}
+
+//let mainConfig; - future use
+/**
+ * @type {InstrConfig[]}
+ */
+let allInstrConfigs = [];
+
+async function getFilesInfo() {
+    const mainConfig = await getMainConfig();
+    if (!mainConfig) { throw new Error("Could not find main config!"); }
+    for (const fileName in mainConfig.trackedUrls) {
+        if (Object.hasOwn(mainConfig.trackedUrls, fileName)) {
+            const webpageUrl = `${webOrigin}/configs/${fileName}.json`;
+
+            const config = await fetchData(webpageUrl);
+            allInstrConfigs.push({
+                fileName: fileName,
+                configInstrFiles: config
+            });
+        }
+    }
+}
+
 // ==== LOAD WEBSITE ====
 
 loadSettings();
+getFilesInfo().then(() => {
+    console.log(allInstrConfigs);
+});
 // TODO: Add autocomplete
 // TODO: Add hints
 // TODO: Add stats
