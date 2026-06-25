@@ -1,0 +1,16 @@
+﻿{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Checker configuration",
+  "properties": {
+    "trackedUrls": {
+      "title": "Name of file and its tracked URL",
+      "type": "object",
+      "patternProperties": {
+        "[a-z-]*": {
+          "type": "string",
+          "title": "Tracked URL"
+        }
+      }
+    }
+  }
+}
