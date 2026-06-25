@@ -1,3 +1,4 @@
+/*jshint loopfunc: true */
 // ==== DATA TYPES (jsdoc) ====
 
 /**
@@ -156,11 +157,22 @@ function calculateStatistics(allInstrConfigs) {
     });
 
     for (const instr of allInstr) {
+        console.debug(instr);
         for (let i = 0; i < instr.versions.length; i++) {
             const file = instr.versions[i];
 
             currentlyCounted++;
             if (i !== 0) {
+                const previousFile = instr.versions.at(i-1);
+                if (previousFile.wcag !== file.wcag) {
+                    if (file.from_date && previousFile.from_date === file.from_date) {
+                        console.debug(`SKIP [from date] -> index [${i}]`);
+                        continue;
+                    } else if (file.to_date && previousFile.to_date === file.to_date) {
+                        console.debug(`SKIP [to date] -> index [${i}]`);
+                        continue;
+                    }
+                }
                 noLongerInUse++;
             }
 
