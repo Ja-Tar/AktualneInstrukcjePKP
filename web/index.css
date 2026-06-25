@@ -181,6 +181,43 @@ h5 {
     background-color: var(--hover);
 }
 
+#typing-hint-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: left;
+    align-items: center;
+    pointer-events: none;
+    font-size: 0.8em;
+}
+
+#typing-hint {
+    position: relative;
+    margin-left: 0.7em;
+    color: var(--text-hint);
+}
+
+#typing-hint-indicator {
+    margin-right: 0.7em;
+    text-align: center;
+    display: inline-block;
+    background-color: var(--text-hint);
+    width: 0.05em;
+    height: 1.32em;
+    animation: 1.05s steps(1, end) blink infinite;
+}
+
+.stopped {
+    animation: none !important;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+}
 
 /* STATISTICS */
 

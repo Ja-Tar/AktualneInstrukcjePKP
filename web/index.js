@@ -201,12 +201,96 @@ function loadStatistics(allInstrConfigs) {
     instOld.textContent = noLongerInUse.toString();
 }
 
+// ==== TYPING HINTS ====
+
+const hints = [
+    "Ir-1",
+    "sygnalizacji",
+    "ładunków",
+    "Ie-1"
+];
+
+function getRandomArbitrary(min, max) {
+    return Math.random() * (max - min) + min;
+}
+
+const typingHintsElement = document.getElementById("typing-hint");
+const typingHintsAfterElement = document.getElementById("typing-hint-indicator");
+
+async function wait(time){
+    await new Promise((resolve) => {
+        setTimeout(resolve, time);
+    });
+}
+
+async function randomWait(min, max) {
+    await wait(getRandomArbitrary(min, max));
+}
+
+async function writeHint(hintString, hintsIntervalId=0, firstId=0) {
+    typingHintsAfterElement.classList.add("stopped");
+    typingHintsElement.textContent = "";
+    for (let i = 0; i < hintString.length; i++) {
+        await randomWait(150, 300);
+        if (hintsIntervalId !== firstId) {break;}
+        typingHintsElement.innerHTML += hintString.charAt(i);
+    }
+    await wait(500);
+    typingHintsAfterElement.classList.remove("stopped");
+}
+
+async function deleteHint(hintsIntervalId=0, firstId=0) {
+    typingHintsAfterElement.classList.add("stopped");
+    await wait(500);
+    for (let i = typingHintsElement.textContent.length; i >= 0; i--) {
+        await randomWait(50, 150);
+        if (hintsIntervalId !== firstId) {break;}
+        typingHintsElement.textContent = typingHintsElement.innerHTML.substring(0, i);
+    }
+    typingHintsAfterElement.classList.remove("stopped");
+}
+
+const typingHintBox = document.getElementById("typing-hint-box");
+let hintsIntervalId = 0;
+
+async function runHints() {
+    if (hintsIntervalId) {return;}
+    typingHintBox.classList.remove("hidden");
+    hintsIntervalId = Math.floor(Math.random() * 10000);
+    const firstId = hintsIntervalId;
+    //console.log(`${firstId} - ${hintsIntervalId}`);
+    while (hintsIntervalId === firstId) {
+        for (const hint of hints) {
+            if (Math.random() > 0.5) {continue;}
+            await wait(1000);
+            if (hintsIntervalId !== firstId) {return;}
+            await writeHint(hint, hintsIntervalId, firstId);
+            if (hintsIntervalId !== firstId) {return;}
+            await wait(2000);
+            if (hintsIntervalId !== firstId) {return;}
+            await deleteHint(hintsIntervalId, firstId);
+            if (hintsIntervalId !== firstId) {return;}
+        }
+    }
+}
+
+
+function stopHints() {
+    hintsIntervalId = 0;
+    typingHintBox.classList.add("hidden");
+}
+
+const searchField = document.getElementById("search");
+
+searchField.addEventListener("focusin", stopHints);
+searchField.addEventListener("focusout", runHints);
+
 // ==== LOAD WEBSITE ====
 
 loadSettings();
-getFilesInfo().then((configs) => {
+getFilesInfo().then(async (configs) => {
     console.log(configs.allInstrConfigs);
     loadStatistics(configs.allInstrConfigs);
+    runHints();
 });
 // TODO: Add autocomplete
-// TODO: Add hints
