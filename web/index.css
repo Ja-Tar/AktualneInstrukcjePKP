@@ -130,7 +130,7 @@ h5 {
     position: absolute;
     display: flex;
     flex-direction: column;
-    max-height: 10em;
+    max-height: 15em;
     overflow-y: auto;
     box-sizing: border-box;
     top: 100%;
@@ -150,15 +150,15 @@ h5 {
 }
 
 .in-autocomplete {
-    padding: 0.4em 0.6em;
+    padding: 0.3em 0.4em;
 }
 
 .id {
     display: flex;
     border-right: dimgray dashed 1px;
-    width: fit-content;
     align-items: center;
     white-space: nowrap;
+    min-inline-size: 2em;
 }
 
 .full-name {
@@ -330,6 +330,10 @@ h5 {
 @media only screen and (min-width: 600px) and (max-height: 455px) {
     #stat-box {
         display: none;
+    }
+
+    #custom-autocomplete {
+        max-height: 50dvh
     }
 }
 

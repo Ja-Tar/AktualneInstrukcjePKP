@@ -283,7 +283,46 @@ function stopHints() {
 const searchField = document.getElementById("search");
 
 searchField.addEventListener("focusin", stopHints);
-searchField.addEventListener("focusout", runHints);
+searchField.addEventListener("focusout", () => {
+    if (searchField.value === "") {
+        runHints();
+    }
+});
+
+// ==== AUTOCOMPLETE ====
+
+searchField.addEventListener("input", runAutocomplete);
+
+/**
+ * @param inputEvent {InputEvent}
+ */
+function runAutocomplete(inputEvent) {
+    const value = inputEvent.currentTarget.value;
+    if (!value) {return;}
+    console.log(value);
+}
+
+const customAutocomplete = document.getElementById("custom-autocomplete");
+
+/**
+ * @param instrFile {InstrFile}
+ */
+function addAutocompleteElement(instrFile) {
+    const autocompleteElement = document.createElement("div");
+    autocompleteElement.classList.add("autocomplete");
+
+    const idElement = document.createElement("div");
+    idElement.classList.add("in-autocomplete", "id");
+    idElement.textContent = instrFile.number;
+
+    const fullNameElement = document.createElement("div");
+    fullNameElement.classList.add("in-autocomplete", "full-name");
+    fullNameElement.textContent = instrFile.versions[0].name;
+
+    autocompleteElement.appendChild(idElement);
+    autocompleteElement.appendChild(fullNameElement);
+    customAutocomplete.appendChild(autocompleteElement);
+}
 
 // ==== LOAD WEBSITE ====
 
@@ -292,5 +331,11 @@ getFilesInfo().then(async (configs) => {
     console.log(configs.allInstrConfigs);
     loadStatistics(configs.allInstrConfigs);
     runHints();
+    const allInstr = configs.allInstrConfigs.flatMap((config) => {
+        return config.configInstrFiles.flatMap((file) => file);
+    });
+    allInstr.forEach((file) => {
+        addAutocompleteElement(file);
+    });
 });
 // TODO: Add autocomplete
