@@ -154,18 +154,20 @@ h5 {
 }
 
 .id {
-    display: flex;
-    border-right: dimgray dashed 1px;
-    align-items: center;
+    display: inline-table;
+    text-align: center;
     white-space: nowrap;
-    min-inline-size: 2em;
+    min-width: 2.8em;
+    align-self: center;
 }
 
 .full-name {
+    font-size: 0.8em;
     display: flex;
     align-items: center;
-    border-left: none;
     padding-left: 0.5em;
+    border-left: dimgray dashed 1px;
+    hyphens: none;
 }
 
 .autocomplete:first-child {

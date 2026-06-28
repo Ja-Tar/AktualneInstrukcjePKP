@@ -291,15 +291,43 @@ searchField.addEventListener("focusout", () => {
 
 // ==== AUTOCOMPLETE ====
 
+/**
+ * @type {string[]}
+ */
+const instrNumberTypes = [];
+
+/**
+ * @param allInstrConfigs {InstrConfig[]}
+ */
+function setUpNumberTypes(allInstrConfigs) {
+    allInstrConfigs.forEach(instrConfig => {
+        instrNumberTypes.push(instrConfig.configInstrFiles[0].number[1]);
+    });
+}
+
 searchField.addEventListener("input", runAutocomplete);
 
 /**
  * @param inputEvent {InputEvent}
  */
 function runAutocomplete(inputEvent) {
+    /** @type {string} */
     const value = inputEvent.currentTarget.value;
     if (!value) {return;}
-    console.log(value);
+    if (value.startsWith("I")) {
+        numberAutocomplete(value);
+    }
+}
+
+/**
+ * @param value {string}
+ */
+function numberAutocomplete(value) {
+    const instrType = value[1];
+    const instrIndex = instrNumberTypes.findIndex((value) => value === instrType);
+    if (instrIndex > -1) {
+
+    }
 }
 
 const customAutocomplete = document.getElementById("custom-autocomplete");
@@ -331,6 +359,7 @@ getFilesInfo().then(async (configs) => {
     console.log(configs.allInstrConfigs);
     loadStatistics(configs.allInstrConfigs);
     runHints();
+    setUpNumberTypes(configs.allInstrConfigs);
     const allInstr = configs.allInstrConfigs.flatMap((config) => {
         return config.configInstrFiles.flatMap((file) => file);
     });
