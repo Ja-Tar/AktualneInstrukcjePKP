@@ -292,42 +292,35 @@ searchField.addEventListener("focusout", () => {
 // ==== AUTOCOMPLETE ====
 
 /**
- * @type {string[]}
- */
-const instrNumberTypes = [];
-
-/**
  * @param allInstrConfigs {InstrConfig[]}
+ * @return {string[]}
  */
-function setUpNumberTypes(allInstrConfigs) {
-    allInstrConfigs.forEach(instrConfig => {
-        instrNumberTypes.push(instrConfig.configInstrFiles[0].number[1]);
+function getOnlyInstrNumbers(allInstrConfigs) {
+    return allInstrConfigs.flatMap(instrConfig => {
+        return instrConfig.configInstrFiles.flatMap(instrFile => {
+            return instrFile.number;
+        });
     });
 }
 
-searchField.addEventListener("input", runAutocomplete);
-
 /**
  * @param inputEvent {InputEvent}
+ * @param
  */
-function runAutocomplete(inputEvent) {
+function runAutocomplete(inputEvent, allInstrConfigs) {
     /** @type {string} */
     const value = inputEvent.currentTarget.value;
     if (!value) {return;}
     if (value.startsWith("I")) {
-        numberAutocomplete(value);
+        numberAutocomplete(value, getOnlyInstrNumbers(allInstrConfigs));
     }
 }
 
 /**
  * @param value {string}
  */
-function numberAutocomplete(value) {
-    const instrType = value[1];
-    const instrIndex = instrNumberTypes.findIndex((value) => value === instrType);
-    if (instrIndex > -1) {
-
-    }
+function numberAutocomplete(value, strings) {
+    console.log(value, strings);
 }
 
 const customAutocomplete = document.getElementById("custom-autocomplete");
@@ -358,13 +351,20 @@ loadSettings();
 getFilesInfo().then(async (configs) => {
     console.log(configs.allInstrConfigs);
     loadStatistics(configs.allInstrConfigs);
-    runHints();
-    setUpNumberTypes(configs.allInstrConfigs);
-    const allInstr = configs.allInstrConfigs.flatMap((config) => {
-        return config.configInstrFiles.flatMap((file) => file);
-    });
-    allInstr.forEach((file) => {
-        addAutocompleteElement(file);
-    });
+    if (!searchField.matches(':focus')) {
+        runHints();
+    }
+    // const allInstr = configs.allInstrConfigs.flatMap((config) => {
+    //     return config.configInstrFiles.flatMap((file) => file);
+    // });
+    // allInstr.forEach((file) => {
+    //     addAutocompleteElement(file);
+    // });
+    searchField.addEventListener("input",
+        ( inputEvent) => runAutocomplete(
+            /** @type {InputEvent} */ inputEvent,
+            configs.allInstrConfigs
+        )
+    );
 });
 // TODO: Add autocomplete
