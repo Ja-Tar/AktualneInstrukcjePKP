@@ -305,19 +305,21 @@ function getOnlyInstrNumbers(allInstrConfigs) {
 
 /**
  * @param inputEvent {InputEvent}
- * @param
+ * @param allInstrConfigs {InstrConfig[]}
+ * @param allInstrNumbers {string[]}
  */
-function runAutocomplete(inputEvent, allInstrConfigs) {
+function runAutocomplete(inputEvent, allInstrConfigs, allInstrNumbers) {
     /** @type {string} */
     const value = inputEvent.currentTarget.value;
     if (!value) {return;}
     if (value.startsWith("I")) {
-        numberAutocomplete(value, getOnlyInstrNumbers(allInstrConfigs));
+        numberAutocomplete(value, allInstrNumbers);
     }
 }
 
 /**
  * @param value {string}
+ * @param strings {string[]}
  */
 function numberAutocomplete(value, strings) {
     console.log(value, strings);
@@ -363,7 +365,8 @@ getFilesInfo().then(async (configs) => {
     searchField.addEventListener("input",
         ( inputEvent) => runAutocomplete(
             /** @type {InputEvent} */ inputEvent,
-            configs.allInstrConfigs
+            configs.allInstrConfigs,
+            getOnlyInstrNumbers(configs.allInstrConfigs),
         )
     );
 });
