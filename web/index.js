@@ -311,18 +311,64 @@ function getOnlyInstrNumbers(allInstrConfigs) {
 function runAutocomplete(inputEvent, allInstrConfigs, allInstrNumbers) {
     /** @type {string} */
     const value = inputEvent.currentTarget.value;
-    if (!value) {return;}
+    if (!value || value.length < 2) {return;}
+    // TODO Make categories to use when there is only one char or with word search
     if (value.startsWith("I")) {
-        numberAutocomplete(value, allInstrNumbers);
+        console.log(numberAutocomplete(value, allInstrNumbers));
     }
 }
 
 /**
  * @param value {string}
  * @param strings {string[]}
+ * @return {string[]}
  */
 function numberAutocomplete(value, strings) {
-    console.log(value, strings);
+    const sortedStrings = strings.sort((a, b) => a.localeCompare(b));
+    const matchIndex = findIndex(value);
+    if (matchIndex === -1) {return [];}
+    const matches = [sortedStrings[matchIndex]];
+    return matches.concat(farmMatches(value, sortedStrings, matchIndex));
+
+    /**
+     * @param query {string}
+     * @param start {number}
+     * @param end {number}
+     * @return {number}
+     */
+    function findIndex(query, start = 0, end = sortedStrings.length) {
+        if (start > end) {return -1;}
+        const midpoint = Math.floor(start + ((end - start) / 2));
+        const string = sortedStrings[midpoint];
+        if (string.startsWith(query)) {return midpoint;}
+
+        [start, end] = query < sortedStrings[midpoint] ? [start, midpoint - 1] : [midpoint + 1, end];
+        return findIndex(query, start, end);
+    }
+
+    /**
+     * @param value {string}
+     * @param sortedStrings {string[]}
+     * @param matchIndex {number}
+     */
+    function farmMatches(value, sortedStrings, matchIndex) {
+        /** @type {string[]} */
+        const matches = [];
+
+        for (let i = matchIndex + 1; i < sortedStrings.length; i++) {
+            const string = sortedStrings[i];
+            if (!string.startsWith(value)) {break;}
+            matches.push(string);
+        }
+
+        for (let j = matchIndex - 1; j >= 0; j--) {
+            const string = sortedStrings[j];
+            if (!string.startsWith(value)) {break;}
+            matches.push(string);
+        }
+
+        return matches;
+    }
 }
 
 const customAutocomplete = document.getElementById("custom-autocomplete");
