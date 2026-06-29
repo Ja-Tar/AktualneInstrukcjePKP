@@ -147,6 +147,8 @@ h5 {
     color: var(--text-field);
     border: dimgray solid 1px;
     border-bottom: none;
+    text-decoration: none;
+    padding: 2px;
 }
 
 .in-autocomplete {
@@ -181,6 +183,12 @@ h5 {
 .autocomplete:hover {
     cursor: pointer;
     background-color: var(--hover);
+}
+
+.autocomplete:focus {
+    margin: 2px;
+    padding: 0;
+    outline: 2px solid var(--focus);
 }
 
 #typing-hint-box {

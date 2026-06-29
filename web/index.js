@@ -159,7 +159,7 @@ function calculateStatistics(allInstrConfigs) {
     });
 
     for (const instr of allInstr) {
-        //console.debug(instr);
+        console.debug(instr.number);
         for (let i = 0; i < instr.versions.length; i++) {
             const file = instr.versions[i];
 
@@ -299,8 +299,9 @@ const customAutocomplete = document.getElementById("custom-autocomplete");
  * @param instrFile {InstrFile}
  */
 function addAutocompleteElement(instrFile) {
-    const autocompleteElement = document.createElement("div");
+    const autocompleteElement = document.createElement("a");
     autocompleteElement.classList.add("autocomplete");
+    autocompleteElement.href = "#";
 
     const idElement = document.createElement("div");
     idElement.classList.add("in-autocomplete", "id");
@@ -320,22 +321,40 @@ function addAutocompleteElement(instrFile) {
  * @param allInstrConfigs {InstrConfig[]}
  */
 function runAutocomplete(inputEvent, allInstrConfigs) {
-    /** @type {string} */
-    const value = inputEvent.currentTarget.value;
-    if (!value || value.length < 2) {
+    if (!inputEvent.currentTarget.value || inputEvent.currentTarget.value.length < 2) {
         customAutocomplete.classList.add("hidden");
         return;
     }
     // TODO Make categories to use when there is only one char or with word search
-    if (value.startsWith("I")) {
+    const isNumberAutocomplete = edgeCasesNumberAutocomplete(inputEvent);
+    if (isNumberAutocomplete) {
         customAutocomplete.textContent = "";
-        numberAutocomplete(value, allInstrConfigs).forEach((item) => {
+        numberAutocomplete(inputEvent.currentTarget.value, allInstrConfigs).forEach((item) => {
             addAutocompleteElement(item);
         });
         customAutocomplete.classList.remove("hidden");
     }
     // TODO Rewrite numberAutocomplete for use with suffixes
     //  (for better word search, maybe use instr {name, number} for better searching)
+}
+
+/**
+ * @param inputEvent {InputEvent}
+ */
+function edgeCasesNumberAutocomplete(inputEvent) {
+    let value = inputEvent.currentTarget.value;
+    const regexNumber = /^I[a-z]-\w+(?:\.\d+| .+|)$/gm;
+    if (regexNumber.test(value)) {return true;}
+
+    if (value.startsWith("i")) {
+        value = "I" + value.slice(1);
+    }
+    if (value.at(2) && value.at(2) !== "-") {
+        value = value.slice(0, 2) + "-" + value.slice(2);
+    }
+
+    inputEvent.currentTarget.value = value;
+    return true;
 }
 
 /**
@@ -367,7 +386,7 @@ function numberAutocomplete(value, allInstrConfigs) {
      * @return {number}
      */
     function findIndex(query, start = 0, end = sortedInstr.length) {
-        if (start > end) {return -1;}
+        if (start >= end) {return -1;}
         const midpoint = Math.floor(start + ((end - start) / 2));
         const string = sortedInstr[midpoint].number;
         if (string.startsWith(query)) {return midpoint;}
@@ -400,6 +419,12 @@ function numberAutocomplete(value, allInstrConfigs) {
     }
 }
 
+// === INSTRUCTION DETAILS ===
+
+function openInstr(number) {
+    console.log(number);
+}
+
 // ==== LOAD WEBSITE ====
 
 loadSettings();
@@ -409,12 +434,6 @@ getFilesInfo().then(async (configs) => {
     if (!searchField.matches(':focus')) {
         runHints();
     }
-    // const allInstr = configs.allInstrConfigs.flatMap((config) => {
-    //     return config.configInstrFiles.flatMap((file) => file);
-    // });
-    // allInstr.forEach((file) => {
-    //     addAutocompleteElement(file);
-    // });
     searchField.addEventListener("input",
         ( inputEvent) => runAutocomplete(
             /** @type {InputEvent} */ inputEvent,
