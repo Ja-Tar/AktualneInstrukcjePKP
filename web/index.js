@@ -323,13 +323,16 @@ function runAutocomplete(inputEvent, allInstrConfigs) {
     /** @type {string} */
     const value = inputEvent.currentTarget.value;
     if (!value || value.length < 2) {
+        customAutocomplete.classList.add("hidden");
         return;
     }
     // TODO Make categories to use when there is only one char or with word search
     if (value.startsWith("I")) {
+        customAutocomplete.textContent = "";
         numberAutocomplete(value, allInstrConfigs).forEach((item) => {
             addAutocompleteElement(item);
         });
+        customAutocomplete.classList.remove("hidden");
     }
     // TODO Rewrite numberAutocomplete for use with suffixes
     //  (for better word search, maybe use instr {name, number} for better searching)
