@@ -159,7 +159,7 @@ function calculateStatistics(allInstrConfigs) {
     });
 
     for (const instr of allInstr) {
-        console.debug(instr);
+        //console.debug(instr);
         for (let i = 0; i < instr.versions.length; i++) {
             const file = instr.versions[i];
 
@@ -168,10 +168,10 @@ function calculateStatistics(allInstrConfigs) {
                 const previousFile = instr.versions.at(i-1);
                 if (previousFile.wcag !== file.wcag) {
                     if (file.from_date && previousFile.from_date === file.from_date) {
-                        console.debug(`SKIP [from date] -> index [${i}]`);
+                        //console.debug(`SKIP [from date] -> index [${i}]`);
                         continue;
                     } else if (file.to_date && previousFile.to_date === file.to_date) {
-                        console.debug(`SKIP [to date] -> index [${i}]`);
+                        //console.debug(`SKIP [to date] -> index [${i}]`);
                         continue;
                     }
                 }
@@ -294,18 +294,6 @@ searchField.addEventListener("focusout", () => {
 // ==== AUTOCOMPLETE ====
 
 /**
- * @param allInstrConfigs {InstrConfig[]}
- * @return {string[]}
- */
-function getOnlyInstrNumbers(allInstrConfigs) {
-    return allInstrConfigs.flatMap(instrConfig => {
-        return instrConfig.configInstrFiles.flatMap(instrFile => {
-            return instrFile.number;
-        });
-    });
-}
-
-/**
  * @param inputEvent {InputEvent}
  * @param allInstrConfigs {InstrConfig[]}
  */
@@ -409,7 +397,7 @@ function addAutocompleteElement(instrFile) {
 
 loadSettings();
 getFilesInfo().then(async (configs) => {
-    console.log(configs.allInstrConfigs);
+    //console.log(configs.allInstrConfigs);
     loadStatistics(configs.allInstrConfigs);
     if (!searchField.matches(':focus')) {
         runHints();
