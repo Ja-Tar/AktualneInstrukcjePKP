@@ -293,6 +293,28 @@ searchField.addEventListener("focusout", () => {
 
 // ==== AUTOCOMPLETE ====
 
+const customAutocomplete = document.getElementById("custom-autocomplete");
+
+/**
+ * @param instrFile {InstrFile}
+ */
+function addAutocompleteElement(instrFile) {
+    const autocompleteElement = document.createElement("div");
+    autocompleteElement.classList.add("autocomplete");
+
+    const idElement = document.createElement("div");
+    idElement.classList.add("in-autocomplete", "id");
+    idElement.textContent = instrFile.number;
+
+    const fullNameElement = document.createElement("div");
+    fullNameElement.classList.add("in-autocomplete", "full-name");
+    fullNameElement.textContent = instrFile.versions[0].name;
+
+    autocompleteElement.appendChild(idElement);
+    autocompleteElement.appendChild(fullNameElement);
+    customAutocomplete.appendChild(autocompleteElement);
+}
+
 /**
  * @param inputEvent {InputEvent}
  * @param allInstrConfigs {InstrConfig[]}
@@ -300,10 +322,14 @@ searchField.addEventListener("focusout", () => {
 function runAutocomplete(inputEvent, allInstrConfigs) {
     /** @type {string} */
     const value = inputEvent.currentTarget.value;
-    if (!value || value.length < 2) {return;}
+    if (!value || value.length < 2) {
+        return;
+    }
     // TODO Make categories to use when there is only one char or with word search
     if (value.startsWith("I")) {
-        console.log(numberAutocomplete(value, allInstrConfigs));
+        numberAutocomplete(value, allInstrConfigs).forEach((item) => {
+            addAutocompleteElement(item);
+        });
     }
     // TODO Rewrite numberAutocomplete for use with suffixes
     //  (for better word search, maybe use instr {name, number} for better searching)
@@ -369,28 +395,6 @@ function numberAutocomplete(value, allInstrConfigs) {
 
         return matches;
     }
-}
-
-const customAutocomplete = document.getElementById("custom-autocomplete");
-
-/**
- * @param instrFile {InstrFile}
- */
-function addAutocompleteElement(instrFile) {
-    const autocompleteElement = document.createElement("div");
-    autocompleteElement.classList.add("autocomplete");
-
-    const idElement = document.createElement("div");
-    idElement.classList.add("in-autocomplete", "id");
-    idElement.textContent = instrFile.number;
-
-    const fullNameElement = document.createElement("div");
-    fullNameElement.classList.add("in-autocomplete", "full-name");
-    fullNameElement.textContent = instrFile.versions[0].name;
-
-    autocompleteElement.appendChild(idElement);
-    autocompleteElement.appendChild(fullNameElement);
-    customAutocomplete.appendChild(autocompleteElement);
 }
 
 // ==== LOAD WEBSITE ====
