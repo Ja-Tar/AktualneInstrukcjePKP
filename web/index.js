@@ -1,6 +1,8 @@
 /*jshint loopfunc: true */
 // ==== DATA TYPES (jsdoc) ====
 
+import {orderBy} from "./modules/natural-orderby.production.min.js";
+
 /**
  * @typedef InstrVersion
  * @property {string} name
@@ -306,29 +308,40 @@ function getOnlyInstrNumbers(allInstrConfigs) {
 /**
  * @param inputEvent {InputEvent}
  * @param allInstrConfigs {InstrConfig[]}
- * @param allInstrNumbers {string[]}
  */
-function runAutocomplete(inputEvent, allInstrConfigs, allInstrNumbers) {
+function runAutocomplete(inputEvent, allInstrConfigs) {
     /** @type {string} */
     const value = inputEvent.currentTarget.value;
     if (!value || value.length < 2) {return;}
     // TODO Make categories to use when there is only one char or with word search
     if (value.startsWith("I")) {
-        console.log(numberAutocomplete(value, allInstrNumbers));
+        console.log(numberAutocomplete(value, allInstrConfigs));
     }
+    // TODO Rewrite numberAutocomplete for use with suffixes
+    //  (for better word search, maybe use instr {name, number} for better searching)
 }
 
 /**
  * @param value {string}
- * @param strings {string[]}
- * @return {string[]}
+ * @param allInstrConfigs {InstrConfig[]}
+ * @return {InstrFile[]}
  */
-function numberAutocomplete(value, strings) {
-    const sortedStrings = strings.sort((a, b) => a.localeCompare(b));
+function numberAutocomplete(value, allInstrConfigs) {
+    const instrConfigs = allInstrConfigs.flatMap(instrConfig => {
+        return instrConfig.configInstrFiles;
+    });
+    const sortedInstr = instrConfigs.sort((a, b) => {
+        return a.number.localeCompare(b.number);
+    });
     const matchIndex = findIndex(value);
     if (matchIndex === -1) {return [];}
-    const matches = [sortedStrings[matchIndex]];
-    return matches.concat(farmMatches(value, sortedStrings, matchIndex));
+    const matches = [sortedInstr[matchIndex]];
+    const selectedInstr =  matches.concat(farmMatches(value, sortedInstr, matchIndex));
+    return orderBy(
+        selectedInstr,
+        [v => v.number],
+        "asc"
+    );
 
     /**
      * @param query {string}
@@ -336,35 +349,34 @@ function numberAutocomplete(value, strings) {
      * @param end {number}
      * @return {number}
      */
-    function findIndex(query, start = 0, end = sortedStrings.length) {
+    function findIndex(query, start = 0, end = sortedInstr.length) {
         if (start > end) {return -1;}
         const midpoint = Math.floor(start + ((end - start) / 2));
-        const string = sortedStrings[midpoint];
+        const string = sortedInstr[midpoint].number;
         if (string.startsWith(query)) {return midpoint;}
 
-        [start, end] = query < sortedStrings[midpoint] ? [start, midpoint - 1] : [midpoint + 1, end];
+        [start, end] = query < sortedInstr[midpoint].number ? [start, midpoint - 1] : [midpoint + 1, end];
         return findIndex(query, start, end);
     }
 
     /**
      * @param value {string}
-     * @param sortedStrings {string[]}
+     * @param sortedInstr {InstrFile[]}
      * @param matchIndex {number}
+     * @returns {InstrFile[]}
      */
-    function farmMatches(value, sortedStrings, matchIndex) {
-        /** @type {string[]} */
+    function farmMatches(value, sortedInstr, matchIndex) {
+        /** @type {InstrFile[]} */
         const matches = [];
 
-        for (let i = matchIndex + 1; i < sortedStrings.length; i++) {
-            const string = sortedStrings[i];
-            if (!string.startsWith(value)) {break;}
-            matches.push(string);
+        for (let i = matchIndex + 1; i < sortedInstr.length; i++) {
+            if (!sortedInstr[i].number.startsWith(value)) {break;}
+            matches.push(sortedInstr[i]);
         }
 
         for (let j = matchIndex - 1; j >= 0; j--) {
-            const string = sortedStrings[j];
-            if (!string.startsWith(value)) {break;}
-            matches.push(string);
+            if (!sortedInstr[j].number.startsWith(value)) {break;}
+            matches.push(sortedInstr[j]);
         }
 
         return matches;
@@ -411,8 +423,7 @@ getFilesInfo().then(async (configs) => {
     searchField.addEventListener("input",
         ( inputEvent) => runAutocomplete(
             /** @type {InputEvent} */ inputEvent,
-            configs.allInstrConfigs,
-            getOnlyInstrNumbers(configs.allInstrConfigs),
+            configs.allInstrConfigs
         )
     );
 });
