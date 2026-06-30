@@ -159,7 +159,7 @@ function calculateStatistics(allInstrConfigs) {
     });
 
     for (const instr of allInstr) {
-        console.debug(instr.number);
+        //console.debug(instr);
         for (let i = 0; i < instr.versions.length; i++) {
             const file = instr.versions[i];
 
@@ -317,23 +317,31 @@ function addAutocompleteElement(instrFile) {
 }
 
 /**
- * @param inputEvent {InputEvent}
- * @param allInstrConfigs {InstrConfig[]}
+ * @typedef InstrWordNumber
+ * @property {string} word
+ * @property {string} number
  */
-function runAutocomplete(inputEvent, allInstrConfigs) {
+
+/**
+ * @param inputEvent {InputEvent}
+ * @param instrFiles {InstrFile[]}
+ * @param sortedWordNumber {InstrWordNumber[]}
+ */
+function runAutocomplete(inputEvent, instrFiles, sortedWordNumber) {
     if (!inputEvent.currentTarget.value || inputEvent.currentTarget.value.length < 2) {
         customAutocomplete.classList.add("hidden");
         return;
     }
-    // TODO Make categories to use when there is only one char or with word search
-    const isNumberAutocomplete = edgeCasesNumberAutocomplete(inputEvent);
-    if (isNumberAutocomplete) {
+    if (edgeCasesNumberAutocomplete(inputEvent)) {
         customAutocomplete.textContent = "";
-        numberAutocomplete(inputEvent.currentTarget.value, allInstrConfigs).forEach((item) => {
+        numberAutocomplete(inputEvent.currentTarget.value, instrFiles).forEach((item) => {
             addAutocompleteElement(item);
         });
         customAutocomplete.classList.remove("hidden");
+        return;
     }
+    wordSearch(inputEvent.currentTarget.value, sortedWordNumber);
+    // TODO Make categories to use with word search
     // TODO Rewrite numberAutocomplete for use with suffixes
     //  (for better word search, maybe use instr {name, number} for better searching)
 }
@@ -343,29 +351,26 @@ function runAutocomplete(inputEvent, allInstrConfigs) {
  */
 function edgeCasesNumberAutocomplete(inputEvent) {
     let value = inputEvent.currentTarget.value;
-    const regexNumber = /^I[a-z]-\w+(?:\.\d+| .+|)$/gm;
-    if (regexNumber.test(value)) {return true;}
-
-    if (value.startsWith("i")) {
-        value = "I" + value.slice(1);
+    const regexNumber = /^[Ii][a-z][ -]\w+(?:\.\d+| .+|)$/gm;
+    if (regexNumber.test(value)) {
+        if (value.startsWith("i")) {
+            value = "I" + value.slice(1);
+        }
+        if (value.at(2) === " ") {
+            value = value.slice(0, 2) + "-" + value.slice(3);
+        }
+        inputEvent.currentTarget.value = value;
+        return true;
     }
-    if (value.at(2) && value.at(2) !== "-") {
-        value = value.slice(0, 2) + "-" + value.slice(2);
-    }
-
-    inputEvent.currentTarget.value = value;
-    return true;
+    return false;
 }
 
 /**
  * @param value {string}
- * @param allInstrConfigs {InstrConfig[]}
+ * @param instrConfigs {InstrFile[]}
  * @return {InstrFile[]}
  */
-function numberAutocomplete(value, allInstrConfigs) {
-    const instrConfigs = allInstrConfigs.flatMap(instrConfig => {
-        return instrConfig.configInstrFiles;
-    });
+function numberAutocomplete(value, instrConfigs) {
     const sortedInstr = instrConfigs.sort((a, b) => {
         return a.number.localeCompare(b.number);
     });
@@ -419,6 +424,42 @@ function numberAutocomplete(value, allInstrConfigs) {
     }
 }
 
+/**
+ * @param value {string}
+ * @param sortedWordNumber {InstrWordNumber[]}
+ */
+function wordSearch(value, sortedWordNumber) {
+    const matchIndex = findIndex(value);
+    if (matchIndex === -1) {return [];}
+    const matches = [sortedWordNumber[matchIndex]];
+    const selectedInstr =  matches.concat(farmMatches(value, sortedWordNumber, matchIndex));
+
+
+}
+
+/**
+ * @param instrConfigs {InstrFile[]}
+ * @returns {InstrWordNumber[]}
+ */
+function setupWordSearch(instrConfigs) {
+    const instrNameNumber = instrConfigs.flatMap(instrConfig => {
+        return {name: instrConfig.versions[0].name, number: instrConfig.number};
+    });
+    /**
+     * @type {InstrWordNumber[]}
+     */
+    const instrWordNumber = [];
+    instrNameNumber.forEach(object => {
+        const splitName = object.name.split(" ");
+        splitName.forEach((item) => {
+            instrWordNumber.push({word: item, number: object.number});
+        });
+    });
+    return instrWordNumber.sort((a, b) => {
+        a.word.localeCompare(b.word);
+    });
+}
+
 // === INSTRUCTION DETAILS ===
 
 function openInstr(number) {
@@ -434,10 +475,14 @@ getFilesInfo().then(async (configs) => {
     if (!searchField.matches(':focus')) {
         runHints();
     }
+    const instrFiles = configs.allInstrConfigs.flatMap(instrConfig => {
+        return instrConfig.configInstrFiles;
+    });
     searchField.addEventListener("input",
         ( inputEvent) => runAutocomplete(
             /** @type {InputEvent} */ inputEvent,
-            configs.allInstrConfigs
+            instrFiles,
+            setupWordSearch(instrFiles)
         )
     );
 });
