@@ -293,6 +293,29 @@ searchField.addEventListener("focusout", () => {
 
 // ==== AUTOCOMPLETE ====
 
+/**
+ * @param instrConfigs {InstrFile[]}
+ * @returns {InstrWordNumber[]}
+ */
+function setupWordSearch(instrConfigs) {
+    const instrNameNumber = instrConfigs.flatMap(instrConfig => {
+        return {name: instrConfig.versions[0].name, number: instrConfig.number};
+    });
+    /**
+     * @type {InstrWordNumber[]}
+     */
+    const instrWordNumber = [];
+    instrNameNumber.forEach(object => {
+        const splitName = object.name.split(" ");
+        splitName.forEach((item) => {
+            instrWordNumber.push({word: item, number: object.number});
+        });
+    });
+    return instrWordNumber.sort((a, b) => {
+        a.word.localeCompare(b.word);
+    });
+}
+
 const customAutocomplete = document.getElementById("custom-autocomplete");
 
 /**
@@ -340,7 +363,7 @@ function runAutocomplete(inputEvent, instrFiles, sortedWordNumber) {
         customAutocomplete.classList.remove("hidden");
         return;
     }
-    wordSearch(inputEvent.currentTarget.value, sortedWordNumber);
+    console.log(wordAutocomplete(inputEvent.currentTarget.value, sortedWordNumber));
     // TODO Make categories to use with word search
     // TODO Rewrite numberAutocomplete for use with suffixes
     //  (for better word search, maybe use instr {name, number} for better searching)
@@ -366,23 +389,17 @@ function edgeCasesNumberAutocomplete(inputEvent) {
 }
 
 /**
+ * Binary search for custom properties
  * @param value {string}
- * @param instrConfigs {InstrFile[]}
- * @return {InstrFile[]}
+ * @param sortedObjects {Object[]}
+ * @param searchedProperty {string}
+ * @return {Object[]}
  */
-function numberAutocomplete(value, instrConfigs) {
-    const sortedInstr = instrConfigs.sort((a, b) => {
-        return a.number.localeCompare(b.number);
-    });
+function searchAlgorithm(value, sortedObjects, searchedProperty) {
     const matchIndex = findIndex(value);
     if (matchIndex === -1) {return [];}
-    const matches = [sortedInstr[matchIndex]];
-    const selectedInstr =  matches.concat(farmMatches(value, sortedInstr, matchIndex));
-    return orderBy(
-        selectedInstr,
-        [v => v.number],
-        "asc"
-    );
+    const matches = [sortedObjects[matchIndex]];
+    return matches.concat(farmMatches(value, matchIndex));
 
     /**
      * @param query {string}
@@ -390,34 +407,33 @@ function numberAutocomplete(value, instrConfigs) {
      * @param end {number}
      * @return {number}
      */
-    function findIndex(query, start = 0, end = sortedInstr.length) {
+    function findIndex(query, start = 0, end = sortedObjects.length) {
         if (start >= end) {return -1;}
         const midpoint = Math.floor(start + ((end - start) / 2));
-        const string = sortedInstr[midpoint].number;
+        const string = sortedObjects[midpoint][searchedProperty];
         if (string.startsWith(query)) {return midpoint;}
 
-        [start, end] = query < sortedInstr[midpoint].number ? [start, midpoint - 1] : [midpoint + 1, end];
+        [start, end] = query < sortedObjects[midpoint][searchedProperty] ? [start, midpoint - 1] : [midpoint + 1, end];
         return findIndex(query, start, end);
     }
 
     /**
      * @param value {string}
-     * @param sortedInstr {InstrFile[]}
      * @param matchIndex {number}
-     * @returns {InstrFile[]}
+     * @returns {Object[]}
      */
-    function farmMatches(value, sortedInstr, matchIndex) {
-        /** @type {InstrFile[]} */
+    function farmMatches(value, matchIndex) {
+        /** @type {Object[]} */
         const matches = [];
 
-        for (let i = matchIndex + 1; i < sortedInstr.length; i++) {
-            if (!sortedInstr[i].number.startsWith(value)) {break;}
-            matches.push(sortedInstr[i]);
+        for (let i = matchIndex + 1; i < sortedObjects.length; i++) {
+            if (!sortedObjects[i][searchedProperty].startsWith(value)) {break;}
+            matches.push(sortedObjects[i]);
         }
 
         for (let j = matchIndex - 1; j >= 0; j--) {
-            if (!sortedInstr[j].number.startsWith(value)) {break;}
-            matches.push(sortedInstr[j]);
+            if (!sortedObjects[j][searchedProperty].startsWith(value)) {break;}
+            matches.push(sortedObjects[j]);
         }
 
         return matches;
@@ -426,38 +442,27 @@ function numberAutocomplete(value, instrConfigs) {
 
 /**
  * @param value {string}
- * @param sortedWordNumber {InstrWordNumber[]}
+ * @param instrFiles {InstrFile[]}
+ * @return {InstrFile[]}
  */
-function wordSearch(value, sortedWordNumber) {
-    const matchIndex = findIndex(value);
-    if (matchIndex === -1) {return [];}
-    const matches = [sortedWordNumber[matchIndex]];
-    const selectedInstr =  matches.concat(farmMatches(value, sortedWordNumber, matchIndex));
-
-
+function numberAutocomplete(value, instrFiles) {
+    const sortedInstrFiles = instrFiles.sort((a, b) => {
+       return a.number.localeCompare(b.number);
+    });
+    const selectedInstr = searchAlgorithm(value, sortedInstrFiles, "number");
+    return orderBy(
+        selectedInstr,
+        [v => v.number],
+        "asc"
+    );
 }
 
 /**
- * @param instrConfigs {InstrFile[]}
- * @returns {InstrWordNumber[]}
+ * @param value {string}
+ * @param sortedWordNumber {InstrWordNumber[]}
  */
-function setupWordSearch(instrConfigs) {
-    const instrNameNumber = instrConfigs.flatMap(instrConfig => {
-        return {name: instrConfig.versions[0].name, number: instrConfig.number};
-    });
-    /**
-     * @type {InstrWordNumber[]}
-     */
-    const instrWordNumber = [];
-    instrNameNumber.forEach(object => {
-        const splitName = object.name.split(" ");
-        splitName.forEach((item) => {
-            instrWordNumber.push({word: item, number: object.number});
-        });
-    });
-    return instrWordNumber.sort((a, b) => {
-        a.word.localeCompare(b.word);
-    });
+function wordAutocomplete(value, sortedWordNumber) {
+    return searchAlgorithm(value, sortedWordNumber, "word");
 }
 
 // === INSTRUCTION DETAILS ===
