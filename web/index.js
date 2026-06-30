@@ -306,13 +306,14 @@ function setupWordSearch(instrConfigs) {
      */
     const instrWordNumber = [];
     instrNameNumber.forEach(object => {
-        const splitName = object.name.split(" ");
+        const filteredName = object.name.replaceAll(/[(),]| -/g, "");
+        const splitName = filteredName.split(/[ \/]/);
         splitName.forEach((item) => {
             instrWordNumber.push({word: item, number: object.number});
         });
     });
     return instrWordNumber.sort((a, b) => {
-        a.word.localeCompare(b.word);
+        return a.word.localeCompare(b.word);
     });
 }
 
@@ -322,6 +323,7 @@ const customAutocomplete = document.getElementById("custom-autocomplete");
  * @param instrFile {InstrFile}
  */
 function addAutocompleteElement(instrFile) {
+    // TODO Highlight searched value
     const autocompleteElement = document.createElement("a");
     autocompleteElement.classList.add("autocomplete");
     autocompleteElement.href = "#";
@@ -355,18 +357,18 @@ function runAutocomplete(inputEvent, instrFiles, sortedWordNumber) {
         customAutocomplete.classList.add("hidden");
         return;
     }
+    customAutocomplete.textContent = "";
     if (edgeCasesNumberAutocomplete(inputEvent)) {
-        customAutocomplete.textContent = "";
         numberAutocomplete(inputEvent.currentTarget.value, instrFiles).forEach((item) => {
             addAutocompleteElement(item);
         });
-        customAutocomplete.classList.remove("hidden");
-        return;
+    } else {
+        wordAutocomplete(inputEvent.currentTarget.value, sortedWordNumber).forEach((/**InstrWordNumber*/wordNumber) => {
+            addAutocompleteElement(instrFiles.find((instr) => instr.number === wordNumber.number));
+        });
     }
-    console.log(wordAutocomplete(inputEvent.currentTarget.value, sortedWordNumber));
+    customAutocomplete.classList.remove("hidden");
     // TODO Make categories to use with word search
-    // TODO Rewrite numberAutocomplete for use with suffixes
-    //  (for better word search, maybe use instr {name, number} for better searching)
 }
 
 /**
@@ -408,12 +410,12 @@ function searchAlgorithm(value, sortedObjects, searchedProperty) {
      * @return {number}
      */
     function findIndex(query, start = 0, end = sortedObjects.length) {
-        if (start >= end) {return -1;}
+        if (start > end) {return -1;}
         const midpoint = Math.floor(start + ((end - start) / 2));
+        /** @type {string} */
         const string = sortedObjects[midpoint][searchedProperty];
         if (string.startsWith(query)) {return midpoint;}
-
-        [start, end] = query < sortedObjects[midpoint][searchedProperty] ? [start, midpoint - 1] : [midpoint + 1, end];
+        [start, end] = query.localeCompare(sortedObjects[midpoint][searchedProperty]) < 0 ? [start, midpoint - 1] : [midpoint + 1, end];
         return findIndex(query, start, end);
     }
 
@@ -462,7 +464,17 @@ function numberAutocomplete(value, instrFiles) {
  * @param sortedWordNumber {InstrWordNumber[]}
  */
 function wordAutocomplete(value, sortedWordNumber) {
-    return searchAlgorithm(value, sortedWordNumber, "word");
+    const splitValue = value.split(" ");
+    const results = searchAlgorithm(splitValue[0], sortedWordNumber, "word");
+    if (splitValue.length > 1) {
+        console.log();
+    }
+    return orderBy(
+        results,
+        [v => v.number],
+        "asc"
+    );
+    // TODO: Make it so Ir instructions are on top
 }
 
 // === INSTRUCTION DETAILS ===
