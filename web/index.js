@@ -465,9 +465,17 @@ function numberAutocomplete(value, instrFiles) {
  */
 function wordAutocomplete(value, sortedWordNumber) {
     const splitValue = value.split(" ");
-    const results = searchAlgorithm(splitValue[0], sortedWordNumber, "word");
+    /** @type {InstrWordNumber[]} */
+    let results = searchAlgorithm(splitValue[0], sortedWordNumber, "word");
     if (splitValue.length > 1) {
-        console.log();
+        const remainingWords = splitValue.slice(1);
+        const resultsInstrNumbers = results.flatMap(wordNum => wordNum.number);
+        const remainingWordNumber = sortedWordNumber.filter((wordNum) =>
+            resultsInstrNumbers.includes(wordNum.number));
+        remainingWords.forEach((word) => {
+            if (!word) {return;}
+            results = searchAlgorithm(word, remainingWordNumber, "word");
+        });
     }
     return orderBy(
         results,
