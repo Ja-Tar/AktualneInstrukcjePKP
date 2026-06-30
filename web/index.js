@@ -309,7 +309,7 @@ function setupWordSearch(instrConfigs) {
         const filteredName = object.name.replaceAll(/[(),]| -/g, "");
         const splitName = filteredName.split(/[ \/]/);
         splitName.forEach((item) => {
-            instrWordNumber.push({word: item, number: object.number});
+            instrWordNumber.push({word: item.toLowerCase(), number: object.number});
         });
     });
     return instrWordNumber.sort((a, b) => {
@@ -363,7 +363,7 @@ function runAutocomplete(inputEvent, instrFiles, sortedWordNumber) {
             addAutocompleteElement(item);
         });
     } else {
-        wordAutocomplete(inputEvent.currentTarget.value, sortedWordNumber).forEach((/**InstrWordNumber*/wordNumber) => {
+        wordAutocomplete(inputEvent.currentTarget.value.toLowerCase(), sortedWordNumber).forEach((/**InstrWordNumber*/wordNumber) => {
             addAutocompleteElement(instrFiles.find((instr) => instr.number === wordNumber.number));
         });
     }
