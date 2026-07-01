@@ -30,14 +30,14 @@ import {orderBy} from "./modules/natural-orderby.production.min.js";
  */
 
 /**
- * @typedef Config
+ * @typedef MainConfig
  * @property {InstrConfig[]} trackedUrls
  */
 
 /**
  * @typedef AllConfigs
  * @property {InstrFile[]} allInstrFiles
- * @property {InstrConfig[]} mainConfig
+ * @property {MainConfig} mainConfig
  */
 
 // ==== DARK THEME ====
@@ -126,7 +126,7 @@ async function fetchData(url) {
 }
 
 /**
- * @return {Promise<Config | undefined>}
+ * @return {Promise<MainConfig | undefined>}
  */
 async function getMainConfig() {
     return await fetchData(`${webOrigin}/configs/main.json`);
@@ -333,8 +333,9 @@ const customAutocomplete = document.getElementById("custom-autocomplete");
 
 /**
  * @param instrFile {InstrFile}
+ * @param instrConfigs {?InstrConfig[]}
  */
-function addAutocompleteElement(instrFile) {
+function addAutocompleteElement(instrFile, instrConfigs=null) {
     // TODO Highlight searched value
     const autocompleteElement = document.createElement("a");
     autocompleteElement.classList.add("autocomplete");
@@ -350,7 +351,24 @@ function addAutocompleteElement(instrFile) {
 
     autocompleteElement.appendChild(idElement);
     autocompleteElement.appendChild(fullNameElement);
-    customAutocomplete.appendChild(autocompleteElement);
+
+    if (instrConfigs) {
+        let categoryDiv = document.getElementById(instrFile.fileName);
+        const categoryConfig = instrConfigs.find((conf) => conf.fileName === instrFile.fileName);
+        if (!categoryDiv) {
+            categoryDiv = document.createElement("div");
+            categoryDiv.id = instrFile.fileName;
+            categoryDiv.classList.add("autocomplete-category", "in-autocomplete");
+            const textInfo = document.createElement("div");
+            textInfo.textContent = categoryConfig.categoryName;
+            textInfo.classList.add("autocomplete-category-text");
+            categoryDiv.appendChild(textInfo);
+            customAutocomplete.appendChild(categoryDiv);
+        }
+        categoryDiv.appendChild(autocompleteElement);
+    } else {
+        customAutocomplete.appendChild(autocompleteElement);
+    }
 }
 
 /**
@@ -376,7 +394,7 @@ function runAutocomplete(inputEvent, configs, sortedWordNumber) {
         });
     } else {
         wordAutocomplete(inputEvent.currentTarget.value.toLowerCase(), sortedWordNumber).forEach((/**InstrWordNumber*/wordNumber) => {
-            addAutocompleteElement(configs.allInstrFiles.find((instr) => instr.number === wordNumber.number));
+            addAutocompleteElement(configs.allInstrFiles.find((instr) => instr.number === wordNumber.number), configs.mainConfig.trackedUrls);
         });
     }
     customAutocomplete.classList.remove("hidden");
