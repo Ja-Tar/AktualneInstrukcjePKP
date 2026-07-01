@@ -3,13 +3,35 @@
   "title": "Checker configuration",
   "properties": {
     "trackedUrls": {
-      "title": "Name of file and its tracked URL",
-      "type": "object",
-      "patternProperties": {
-        "[a-z-]*": {
-          "type": "string",
-          "title": "Tracked URL"
-        }
+      "title": "Array of instr sources",
+      "type": "array",
+      "contains": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "title": "Tracked URL",
+            "type": "string"
+          },
+          "fileName": {
+            "type": "string",
+            "title": "Safe category name for tracking",
+            "pattern": "[a-z-]*"
+          },
+          "categoryName": {
+            "type": "string",
+            "title": "Displayed category name"
+          },
+          "instrNrStartsWith": {
+            "type": "string",
+            "title": "Every instr number starts with (PREFIX)"
+          }
+        },
+        "required": [
+          "url",
+          "fileName",
+          "categoryName",
+          "instrNrStartsWith"
+        ]
       }
     }
   }
