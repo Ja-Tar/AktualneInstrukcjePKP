@@ -23,6 +23,7 @@
         },
         "required": [
           "url",
+          "fileName",
           "categoryName",
           "instrNrStartsWith"
         ]
