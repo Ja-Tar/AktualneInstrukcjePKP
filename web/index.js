@@ -17,13 +17,8 @@ import {orderBy} from "./modules/natural-orderby.production.min.js";
 /**
  * @typedef InstrFile
  * @property {string} number
- * @property {InstrVersion[]} versions
- */
-
-/**
- * @typedef InstrConfig
  * @property {string} fileName
- * @property {InstrFile[]} configInstrFiles
+ * @property {InstrVersion[]} versions
  */
 
 /**
@@ -122,9 +117,9 @@ async function getMainConfig() {
 
 async function getFilesInfo() {
     /**
-     * @type {InstrConfig[]}
+     * @type {InstrFile[]}
      */
-    const allInstrConfigs = [];
+    const allInstrFiles = [];
 
     const mainConfig = await getMainConfig();
     if (!mainConfig) { throw new Error("Could not find main config!"); }
@@ -132,33 +127,29 @@ async function getFilesInfo() {
         if (Object.hasOwn(mainConfig.trackedUrls, fileName)) {
             const webpageUrl = `${webOrigin}/configs/${fileName}.json`;
 
+            /** @type {{number: string, versions:InstrVersion[]}[]} */
             const config = await fetchData(webpageUrl);
-            allInstrConfigs.push({
-                fileName: fileName,
-                configInstrFiles: config
+            config.forEach((instr) => {
+               allInstrFiles.push({number:instr.number, versions:instr.versions, fileName:fileName});
             });
         }
     }
 
-    return {allInstrConfigs, mainConfig};
+    return {allInstrFiles, mainConfig};
 }
 
 // ==== STATS ====
 
 /**
- * @param allInstrConfigs {InstrConfig[]}
+ * @param allInstrFiles {InstrFile[]}
  */
-function calculateStatistics(allInstrConfigs) {
+function calculateStatistics(allInstrFiles) {
     // CURRENTLY COUNTED | UPDATED THIS YEAR | NO LONGER IN USE
     let currentlyCounted = 0;
     let updatedThisYear = 0;
     let noLongerInUse = 0;
 
-    const allInstr = allInstrConfigs.flatMap((config) => {
-        return config.configInstrFiles.flatMap((file) => file);
-    });
-
-    for (const instr of allInstr) {
+    for (const instr of allInstrFiles) {
         //console.debug(instr);
         for (let i = 0; i < instr.versions.length; i++) {
             const file = instr.versions[i];
@@ -192,12 +183,15 @@ function calculateStatistics(allInstrConfigs) {
     return {currentlyCounted, updatedThisYear, noLongerInUse};
 }
 
-function loadStatistics(allInstrConfigs) {
+/**
+ * @param allInstrFiles {InstrFile[]}
+ */
+function loadStatistics(allInstrFiles) {
     const instSum = document.getElementById("inst-sum");
     const instUpdate = document.getElementById("inst-update");
     const instOld = document.getElementById("inst-old");
 
-    const {currentlyCounted, updatedThisYear, noLongerInUse} = calculateStatistics(allInstrConfigs);
+    const {currentlyCounted, updatedThisYear, noLongerInUse} = calculateStatistics(allInstrFiles);
     instSum.textContent = currentlyCounted.toString();
     instUpdate.textContent = updatedThisYear.toString();
     instOld.textContent = noLongerInUse.toString();
@@ -363,6 +357,7 @@ function runAutocomplete(inputEvent, instrFiles, sortedWordNumber) {
             addAutocompleteElement(item);
         });
     } else {
+
         wordAutocomplete(inputEvent.currentTarget.value.toLowerCase(), sortedWordNumber).forEach((/**InstrWordNumber*/wordNumber) => {
             addAutocompleteElement(instrFiles.find((instr) => instr.number === wordNumber.number));
         });
@@ -495,20 +490,16 @@ function openInstr(number) {
 
 loadSettings();
 getFilesInfo().then(async (configs) => {
-    //console.log(configs.allInstrConfigs);
-    loadStatistics(configs.allInstrConfigs);
+    //console.log(configs.allInstrFiles);
+    loadStatistics(configs.allInstrFiles);
     if (!searchField.matches(':focus')) {
         runHints();
     }
-    const instrFiles = configs.allInstrConfigs.flatMap(instrConfig => {
-        return instrConfig.configInstrFiles;
-    });
     searchField.addEventListener("input",
         ( inputEvent) => runAutocomplete(
             /** @type {InputEvent} */ inputEvent,
-            instrFiles,
-            setupWordSearch(instrFiles)
+            configs.allInstrFiles,
+            setupWordSearch(configs.allInstrFiles)
         )
     );
 });
-// TODO: Add autocomplete
