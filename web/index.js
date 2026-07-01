@@ -336,9 +336,12 @@ const customAutocomplete = document.getElementById("custom-autocomplete");
  * @param instrConfigs {?InstrConfig[]}
  */
 function addAutocompleteElement(instrFile, instrConfigs=null) {
+    if (customAutocomplete.querySelector(`[data-number='${instrFile.number}']`)) {return;}
+
     // TODO: Highlight searched value
     const autocompleteElement = document.createElement("a");
     autocompleteElement.classList.add("autocomplete");
+    autocompleteElement.dataset.number = instrFile.number;
     autocompleteElement.href = "#";
 
     const idElement = document.createElement("div");
