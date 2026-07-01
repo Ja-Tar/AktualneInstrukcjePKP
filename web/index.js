@@ -358,6 +358,7 @@ function addAutocompleteElement(instrFile, instrConfigs=null) {
         if (!categoryDiv) {
             categoryDiv = document.createElement("div");
             categoryDiv.id = instrFile.fileName;
+            categoryDiv.style.gridArea = instrFile.fileName;
             categoryDiv.classList.add("autocomplete-category", "in-autocomplete");
             const textInfo = document.createElement("div");
             textInfo.textContent = categoryConfig.categoryName;
