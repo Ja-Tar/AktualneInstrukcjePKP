@@ -336,7 +336,7 @@ const customAutocomplete = document.getElementById("custom-autocomplete");
  * @param instrConfigs {?InstrConfig[]}
  */
 function addAutocompleteElement(instrFile, instrConfigs=null) {
-    // TODO Highlight searched value
+    // TODO: Highlight searched value
     const autocompleteElement = document.createElement("a");
     autocompleteElement.classList.add("autocomplete");
     autocompleteElement.href = "#";
@@ -399,7 +399,6 @@ function runAutocomplete(inputEvent, configs, sortedWordNumber) {
         });
     }
     customAutocomplete.classList.remove("hidden");
-    // TODO Make categories to use with word search
 }
 
 /**
@@ -513,7 +512,6 @@ function wordAutocomplete(value, sortedWordNumber) {
         [v => v.number],
         "asc"
     );
-    // TODO: Make it so Ir instructions are on top
 }
 
 // === INSTRUCTION DETAILS ===
