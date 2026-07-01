@@ -136,7 +136,7 @@ h5 {
     top: 100%;
     left: 2%;
     width: 96%;
-    border-bottom: dimgray solid 1px;
+    border-bottom: var(--autocomplete-border) solid 1px;
     border-top-width: 0;
     font-size: 0.8em;
 }
@@ -145,7 +145,7 @@ h5 {
     display: flex;
     background: var(--autocomplete);
     color: var(--text-field);
-    border: dimgray solid 1px;
+    border: var(--autocomplete-border) solid 1px;
     border-bottom: none;
     text-decoration: none;
     padding: 2px;
@@ -168,7 +168,7 @@ h5 {
     display: flex;
     align-items: center;
     padding-left: 0.5em;
-    border-left: dimgray dashed 1px;
+    border-left: var(--autocomplete-border) dashed 1px;
     hyphens: none;
 }
 
@@ -180,6 +180,10 @@ h5 {
     border-bottom: none;
 }
 
+.autocomplete-category > .autocomplete:last-child {
+    border-bottom: var(--autocomplete-border) solid 1px;
+}
+
 .autocomplete:hover {
     cursor: pointer;
     background-color: var(--hover);
@@ -188,7 +192,27 @@ h5 {
 .autocomplete:focus {
     margin: 2px;
     padding: 0;
-    outline: 2px solid var(--focus);
+    outline: 2px solid var(--secondary);
+}
+
+.autocomplete-category {
+    background: var(--autocomplete);
+    border: var(--autocomplete-border) solid 1px;
+    border-bottom: var(--autocomplete-border) double 4px;
+    border-top: var(--autocomplete-border) double 4px;
+    color: var(--text-field);
+}
+
+.autocomplete-category:first-child {
+    border-top: none;
+}
+
+.autocomplete-category:last-child {
+    border-bottom: none;
+}
+
+.autocomplete-category-text {
+    padding-bottom: 0.3em;
 }
 
 #typing-hint-box {

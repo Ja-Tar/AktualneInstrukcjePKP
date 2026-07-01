@@ -10,8 +10,8 @@
     --primary: #004683;
     --secondary: royalblue;
     --autocomplete: white;
+    --autocomplete-border: dimgray;
     --hover: antiquewhite;
-    --focus: blue;
     --id-border: black;
     --button-background: #45ff8f;
     --button-border: #1dc36a;
@@ -30,8 +30,8 @@
     --primary: #002a4e;
     --secondary: dodgerblue;
     --autocomplete: #001428;
+    --autocomplete-border: lightgray;
     --hover: #00434c;
-    --focus: none; /* FIXME */
     --id-border: steelblue;
     --button-background: #048e6e;
     --button-border: #2eef88;
