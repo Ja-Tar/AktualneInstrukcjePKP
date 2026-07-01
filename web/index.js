@@ -34,6 +34,12 @@ import {orderBy} from "./modules/natural-orderby.production.min.js";
  * @property {InstrConfig[]} trackedUrls
  */
 
+/**
+ * @typedef AllConfigs
+ * @property {InstrFile[]} allInstrFiles
+ * @property {InstrConfig[]} mainConfig
+ */
+
 // ==== DARK THEME ====
 const themeButton = document.getElementById("theme-button");
 if (window.matchMedia?.("(prefers-color-scheme: dark)").matches) {
@@ -127,7 +133,7 @@ async function getMainConfig() {
 }
 
 /**
- * @return {Promise<{allInstrFiles: InstrFile[], mainConfig: Config}>}
+ * @return {Promise<AllConfigs>}
  */
 async function getFilesInfo() {
     /**
@@ -355,23 +361,22 @@ function addAutocompleteElement(instrFile) {
 
 /**
  * @param inputEvent {InputEvent}
- * @param instrFiles {InstrFile[]}
+ * @param configs {AllConfigs}
  * @param sortedWordNumber {InstrWordNumber[]}
  */
-function runAutocomplete(inputEvent, instrFiles, sortedWordNumber) {
+function runAutocomplete(inputEvent, configs, sortedWordNumber) {
     if (!inputEvent.currentTarget.value || inputEvent.currentTarget.value.length < 2) {
         customAutocomplete.classList.add("hidden");
         return;
     }
     customAutocomplete.textContent = "";
     if (edgeCasesNumberAutocomplete(inputEvent)) {
-        numberAutocomplete(inputEvent.currentTarget.value, instrFiles).forEach((item) => {
+        numberAutocomplete(inputEvent.currentTarget.value, configs.allInstrFiles).forEach((item) => {
             addAutocompleteElement(item);
         });
     } else {
-
         wordAutocomplete(inputEvent.currentTarget.value.toLowerCase(), sortedWordNumber).forEach((/**InstrWordNumber*/wordNumber) => {
-            addAutocompleteElement(instrFiles.find((instr) => instr.number === wordNumber.number));
+            addAutocompleteElement(configs.allInstrFiles.find((instr) => instr.number === wordNumber.number));
         });
     }
     customAutocomplete.classList.remove("hidden");
@@ -510,7 +515,7 @@ getFilesInfo().then(async (configs) => {
     searchField.addEventListener("input",
         ( inputEvent) => runAutocomplete(
             /** @type {InputEvent} */ inputEvent,
-            configs.allInstrFiles,
+            configs,
             setupWordSearch(configs.allInstrFiles)
         )
     );
