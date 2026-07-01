@@ -1,0 +1,38 @@
+﻿{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Checker configuration",
+  "properties": {
+    "trackedUrls": {
+      "title": "Array of instr sources",
+      "type": "array",
+      "contains": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "title": "Tracked URL",
+            "type": "string"
+          },
+          "fileName": {
+            "type": "string",
+            "title": "Safe category name for tracking",
+            "pattern": "[a-z-]*"
+          },
+          "categoryName": {
+            "type": "string",
+            "title": "Displayed category name"
+          },
+          "instrNrStartsWith": {
+            "type": "string",
+            "title": "Every instr number starts with (PREFIX)"
+          }
+        },
+        "required": [
+          "url",
+          "fileName",
+          "categoryName",
+          "instrNrStartsWith"
+        ]
+      }
+    }
+  }
+}
