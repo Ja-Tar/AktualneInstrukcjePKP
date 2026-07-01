@@ -22,8 +22,16 @@ import {orderBy} from "./modules/natural-orderby.production.min.js";
  */
 
 /**
+ * @typedef InstrConfig
+ * @property {string} url
+ * @property {string} fileName
+ * @property {string} categoryName
+ * @property {string} instrNrStartsWith
+ */
+
+/**
  * @typedef Config
- * @property {Object<string, string>} trackedUrls
+ * @property {InstrConfig[]} trackedUrls
  */
 
 // ==== DARK THEME ====
@@ -99,6 +107,10 @@ themeButton.addEventListener("change", () => {
 // TODO: Change to prod url
 const webOrigin = "https://rewrite-noai.instrukcje-pkp.pages.dev"; //window.location.origin;
 
+/**
+ * @param url {string}
+ * @return {Promise<any>}
+ */
 async function fetchData(url) {
     const response = await fetch(url);
     if (response.ok) {
@@ -108,13 +120,15 @@ async function fetchData(url) {
 }
 
 /**
- *
  * @return {Promise<Config | undefined>}
  */
 async function getMainConfig() {
     return await fetchData(`${webOrigin}/configs/main.json`);
 }
 
+/**
+ * @return {Promise<{allInstrFiles: InstrFile[], mainConfig: Config}>}
+ */
 async function getFilesInfo() {
     /**
      * @type {InstrFile[]}
@@ -123,16 +137,14 @@ async function getFilesInfo() {
 
     const mainConfig = await getMainConfig();
     if (!mainConfig) { throw new Error("Could not find main config!"); }
-    for (const fileName in mainConfig.trackedUrls) {
-        if (Object.hasOwn(mainConfig.trackedUrls, fileName)) {
-            const webpageUrl = `${webOrigin}/configs/${fileName}.json`;
+    for (const remoteFile of mainConfig.trackedUrls) {
+        const webpageUrl = `${webOrigin}/configs/${remoteFile.fileName}.json`;
 
-            /** @type {{number: string, versions:InstrVersion[]}[]} */
-            const config = await fetchData(webpageUrl);
-            config.forEach((instr) => {
-               allInstrFiles.push({number:instr.number, versions:instr.versions, fileName:fileName});
-            });
-        }
+        /** @type {{number: string, versions:InstrVersion[]}[]} */
+        const config = await fetchData(webpageUrl);
+        config.forEach((instr) => {
+            allInstrFiles.push({number:instr.number, versions:instr.versions, fileName:remoteFile.fileName});
+        });
     }
 
     return {allInstrFiles, mainConfig};
