@@ -12,11 +12,6 @@
             "title": "Tracked URL",
             "type": "string"
           },
-          "fileName": {
-            "type": "string",
-            "title": "Safe category name for tracking",
-            "pattern": "[a-z-]*"
-          },
           "categoryName": {
             "type": "string",
             "title": "Displayed category name"
