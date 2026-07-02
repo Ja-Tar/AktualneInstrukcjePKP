@@ -530,7 +530,8 @@ searchField.addEventListener("keypress", function(event) {
 
 function showFirstResult() {
     if (customAutocomplete.children.length > 0) {
-        customAutocomplete.children[0].click();
+        customAutocomplete.querySelector(".autocomplete").click();
+        // FIXME: Wrong instr clicked when clicking enter with switched order
     }
 }
 
