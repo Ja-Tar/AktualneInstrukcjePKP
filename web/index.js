@@ -519,6 +519,19 @@ function wordAutocomplete(value, sortedWordNumber) {
         [v => v.number],
         "asc"
     );
+    // FIXME: Wrong tab order
+}
+
+searchField.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        showFirstResult();
+    }
+});
+
+function showFirstResult() {
+    if (customAutocomplete.children.length > 0) {
+        customAutocomplete.children[0].click();
+    }
 }
 
 function showAutocomplete() {
