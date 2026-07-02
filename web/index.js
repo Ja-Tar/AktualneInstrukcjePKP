@@ -342,7 +342,11 @@ function addAutocompleteElement(instrFile, instrConfigs=null) {
     const autocompleteElement = document.createElement("a");
     autocompleteElement.classList.add("autocomplete");
     autocompleteElement.dataset.number = instrFile.number;
-    autocompleteElement.href = "#";
+    autocompleteElement.href = `#${encodeURI(instrFile.number)}`;
+    // TODO: Check when opening the url if it has istr number
+    autocompleteElement.addEventListener("click", (e) => {
+        openInstr(instrFile);
+    });
 
     const idElement = document.createElement("div");
     idElement.classList.add("in-autocomplete", "id");
@@ -517,10 +521,32 @@ function wordAutocomplete(value, sortedWordNumber) {
     );
 }
 
+function showAutocomplete() {
+    customAutocomplete.classList.remove("hidden");
+    searchField.removeEventListener("focusin", showAutocomplete);
+}
+
 // === INSTRUCTION DETAILS ===
 
-function openInstr(number) {
-    console.log(number);
+/**
+ * @param instrFile {InstrFile}
+ */
+function openInstr(instrFile) {
+    const resultBox = document.getElementById("result-box");
+
+    const newestInstr = instrFile.versions[0];
+    const instrId = document.getElementById("instr-id");
+    instrId.textContent = instrFile.number;
+    const instrName = document.getElementById("instr-name");
+    instrName.textContent = newestInstr.name;
+    const instrLastUpdate = document.getElementById("instr-last-update");
+    const fromDate = new Date(newestInstr.from_date);
+    if (isNaN(fromDate.valueOf())) {console.warn("No from date!");}
+    instrLastUpdate.textContent = `Aktualizacja: ${fromDate.getDate()}.${fromDate.getMonth()}.${fromDate.getFullYear()}`;
+
+    customAutocomplete.classList.add("hidden");
+    resultBox.classList.remove("hidden");
+    searchField.addEventListener("focusin", showAutocomplete);
 }
 
 // ==== LOAD WEBSITE ====
