@@ -6,7 +6,6 @@
     --text-result: black;
     --background: #f0f0f0;
     --background-field: white;
-    --background-result: white;
     --primary: #004683;
     --secondary: royalblue;
     --autocomplete: white;
@@ -26,7 +25,6 @@
     --text-result: seashell;
     --background: #191919;
     --background-field: #464646;
-    --background-result: none; /* FIXME */
     --primary: #002a4e;
     --secondary: dodgerblue;
     --autocomplete: #001428;
