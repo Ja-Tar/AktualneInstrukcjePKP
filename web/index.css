@@ -136,16 +136,8 @@ h5 {
     top: 100%;
     left: 2%;
     width: 96%;
-    border-bottom: var(--autocomplete-border) solid 1px;
     border-top-width: 0;
     font-size: 0.8em;
-}
-
-#custom-autocomplete:has(.autocomplete-category) {
-    display: grid;
-    grid-template:
-    "ruch-i-przewozy-kolejowe" auto
-    "automatyka-i-telekomunikacja" auto / auto;
 }
 
 .autocomplete {
@@ -209,8 +201,12 @@ h5 {
     color: var(--text-field);
 }
 
+.autocomplete-category:last-child {
+    border-bottom: var(--autocomplete-border) solid 1px;
+}
+
 .autocomplete-category + .autocomplete-category {
-    border-bottom: var(--autocomplete-border) double 4px;
+    border-top: var(--autocomplete-border) double 4px;
 }
 
 .autocomplete-category-text {

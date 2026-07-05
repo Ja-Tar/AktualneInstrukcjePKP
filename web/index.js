@@ -365,7 +365,6 @@ function addAutocompleteElement(instrFile, instrConfigs=null) {
         if (!categoryDiv) {
             categoryDiv = document.createElement("div");
             categoryDiv.id = instrFile.fileName;
-            categoryDiv.style.gridArea = instrFile.fileName;
             categoryDiv.classList.add("autocomplete-category", "in-autocomplete");
             const textInfo = document.createElement("div");
             textInfo.textContent = categoryConfig.categoryName;
@@ -404,8 +403,20 @@ function runAutocomplete(inputEvent, configs, sortedWordNumber) {
         wordAutocomplete(inputEvent.currentTarget.value.toLowerCase(), sortedWordNumber).forEach((/**InstrWordNumber*/wordNumber) => {
             addAutocompleteElement(configs.allInstrFiles.find((instr) => instr.number === wordNumber.number), configs.mainConfig.trackedUrls);
         });
+        reorderInstrCategories(configs.mainConfig.trackedUrls);
     }
     customAutocomplete.classList.remove("hidden");
+}
+
+/**
+ * @param trackedUrls {InstrConfig[]}
+ */
+function reorderInstrCategories(trackedUrls) {
+    if (!customAutocomplete.matches(":has(.autocomplete-category)")) { return ;}
+    for (let i = 0; i < trackedUrls.length; i++) {
+        const category = document.getElementById(trackedUrls[i].fileName);
+        customAutocomplete.appendChild(category);
+    }
 }
 
 /**
