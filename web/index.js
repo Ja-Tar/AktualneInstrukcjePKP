@@ -415,7 +415,9 @@ function reorderInstrCategories(trackedUrls) {
     if (!customAutocomplete.matches(":has(.autocomplete-category)")) { return ;}
     for (let i = 0; i < trackedUrls.length; i++) {
         const category = document.getElementById(trackedUrls[i].fileName);
-        customAutocomplete.appendChild(category);
+        if (category) {
+            customAutocomplete.appendChild(category);
+        }
     }
 }
 
