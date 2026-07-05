@@ -532,7 +532,6 @@ function wordAutocomplete(value, sortedWordNumber) {
         [v => v.number],
         "asc"
     );
-    // FIXME: Wrong tab order
 }
 
 searchField.addEventListener("keypress", function(event) {
@@ -544,7 +543,6 @@ searchField.addEventListener("keypress", function(event) {
 function showFirstResult() {
     if (customAutocomplete.children.length > 0) {
         customAutocomplete.querySelector(".autocomplete").click();
-        // FIXME: Wrong instr clicked when clicking enter with switched order
     }
 }
 
