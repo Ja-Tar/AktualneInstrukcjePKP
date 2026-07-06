@@ -220,7 +220,7 @@ function loadStatistics(allInstrFiles) {
 const hints = [
     "Ir-1",
     "sygnalizacji",
-    "ładunków",
+    "łączności",
     "Ie-1"
 ];
 
@@ -427,7 +427,7 @@ function reorderInstrCategories(trackedUrls) {
  */
 function edgeCasesNumberAutocomplete(inputEvent) {
     let value = inputEvent.currentTarget.value;
-    const regexNumber = /^[Ii][a-z][ -]\d\w*(?:\.\d+| .+|)$/gm;
+    const regexNumber = /^[Ii][a-z][ -]\d\w*(?:\.\d*| .*|)$/gm;
     if (regexNumber.test(value)) {
         if (value.startsWith("i")) {
             value = "I" + value.slice(1);
