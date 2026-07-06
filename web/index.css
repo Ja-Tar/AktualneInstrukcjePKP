@@ -175,10 +175,6 @@ h5 {
     border-top: none;
 }
 
-.autocomplete:last-child {
-    border-bottom: none;
-}
-
 .autocomplete-category > .autocomplete:last-child {
     border-bottom: var(--autocomplete-border) solid 1px;
 }

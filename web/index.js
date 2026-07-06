@@ -405,6 +405,7 @@ function runAutocomplete(inputEvent, configs, sortedWordNumber) {
         });
         reorderInstrCategories(configs.mainConfig.trackedUrls);
     }
+    customAutocomplete.scroll(0, 0);
     customAutocomplete.classList.remove("hidden");
 }
 
@@ -426,7 +427,7 @@ function reorderInstrCategories(trackedUrls) {
  */
 function edgeCasesNumberAutocomplete(inputEvent) {
     let value = inputEvent.currentTarget.value;
-    const regexNumber = /^[Ii][a-z][ -]\w+(?:\.\d+| .+|)$/gm;
+    const regexNumber = /^[Ii][a-z][ -]\d\w*(?:\.\d+| .+|)$/gm;
     if (regexNumber.test(value)) {
         if (value.startsWith("i")) {
             value = "I" + value.slice(1);
@@ -534,15 +535,33 @@ function wordAutocomplete(value, sortedWordNumber) {
     );
 }
 
+// === SHORTCUTS ===
+
 searchField.addEventListener("keypress", function(event) {
     if (event.key === "Enter") {
         showFirstResult();
     }
 });
 
+customAutocomplete.addEventListener("keydown", function(event) {
+    if (event.key === "Backspace") {
+        backspaceInInput(event);
+    }
+});
+
 function showFirstResult() {
     if (customAutocomplete.children.length > 0) {
         customAutocomplete.querySelector(".autocomplete").click();
+    }
+}
+
+/**
+ *
+ * @param event {KeyboardEvent}
+ */
+function backspaceInInput(event) {
+    if (event.target.classList.contains("autocomplete")) {
+        searchField.focus();
     }
 }
 
