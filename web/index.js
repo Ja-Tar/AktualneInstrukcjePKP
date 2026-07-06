@@ -345,7 +345,7 @@ function addAutocompleteElement(instrFile, instrConfigs=null) {
     autocompleteElement.href = `#${encodeURI(instrFile.number)}`;
     // TODO: Check when opening the url if it has istr number
     autocompleteElement.addEventListener("click", () => {
-        openInstr(instrFile);
+        showInstr(instrFile);
     });
 
     const idElement = document.createElement("div");
@@ -572,10 +572,12 @@ function showAutocomplete() {
 
 // === INSTRUCTION DETAILS ===
 
+const openInstrButton = document.getElementById("open-instr-button");
+
 /**
  * @param instrFile {InstrFile}
  */
-function openInstr(instrFile) {
+function showInstr(instrFile) {
     const resultBox = document.getElementById("result-box");
 
     const newestInstr = instrFile.versions[0];
@@ -587,10 +589,34 @@ function openInstr(instrFile) {
     const fromDate = new Date(newestInstr.from_date);
     if (isNaN(fromDate.valueOf())) {console.warn("No from date!");}
     instrLastUpdate.textContent = `Aktualizacja: ${fromDate.getDate()}.${fromDate.getMonth()}.${fromDate.getFullYear()}`;
+    openInstrButton.dataset.href = newestInstr.resource_url;
 
     customAutocomplete.classList.add("hidden");
     resultBox.classList.remove("hidden");
     searchField.addEventListener("focusin", showAutocomplete);
+}
+
+openInstrButton.addEventListener("click", (evt) => openInstr(evt.target.dataset.href));
+
+/**
+ * @param href {string}
+ */
+function openInNewTab(href) {
+    Object.assign(document.createElement('a'), {
+        target: '_blank',
+        rel: 'noopener noreferrer',
+        href: href,
+    }).click();
+}
+
+
+/**
+ * @param resourceUrl {string}
+ */
+function openInstr(resourceUrl) {
+    const webUrl = new URL("https://www.plk-sa.pl");
+    webUrl.pathname = resourceUrl;
+    openInNewTab(webUrl.href);
 }
 
 // ==== LOAD WEBSITE ====
