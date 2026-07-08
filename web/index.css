@@ -114,6 +114,22 @@ h5 {
     width: 90%;
 }
 
+#input-search-box:after {
+    content: url("./static/icons/search.svg");
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+    padding-right: 0.45em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: red;
+    pointer-events: none;
+    filter: var(--filter-secondary);
+}
+
 #search {
     font-family: system-ui, sans-serif;
     padding: 0.3em 0.6em;

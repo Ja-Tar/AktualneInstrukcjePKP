@@ -15,6 +15,8 @@
     --button-background: #45ff8f;
     --button-border: #1dc36a;
     --button-text: darkslategray;
+
+    --filter-secondary: invert(42%) sepia(42%) saturate(4697%) hue-rotate(213deg) brightness(89%) contrast(97%);
 }
 
 :root[data-theme="dark"] {
@@ -34,4 +36,6 @@
     --button-background: #048e6e;
     --button-border: #2eef88;
     --button-text: seashell;
+
+    --filter-secondary: invert(50%) sepia(89%) saturate(3288%) hue-rotate(191deg) brightness(100%) contrast(101%);
 }
