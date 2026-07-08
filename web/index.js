@@ -587,8 +587,11 @@ function showInstr(instrFile) {
     instrName.textContent = newestInstr.name;
     const instrLastUpdate = document.getElementById("instr-last-update");
     const fromDate = new Date(newestInstr.from_date);
-    if (isNaN(fromDate.valueOf())) {console.warn("No from date!");}
-    instrLastUpdate.textContent = `Aktualizacja: ${fromDate.getDate()}.${fromDate.getMonth()}.${fromDate.getFullYear()}`;
+    if (isNaN(fromDate.valueOf()) || fromDate.valueOf() === 0) {
+        instrLastUpdate.textContent = "Aktualna";
+    } else {
+        instrLastUpdate.textContent = `Aktualizacja: ${fromDate.getDate()}.${fromDate.getMonth()}.${fromDate.getFullYear()}`;
+    }
     openInstrButton.dataset.href = newestInstr.resource_url;
 
     customAutocomplete.classList.add("hidden");
