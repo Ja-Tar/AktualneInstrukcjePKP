@@ -341,8 +341,6 @@ function addAutocompleteElement(instrFile, instrConfigs=null) {
     const autocompleteElement = document.createElement("a");
     autocompleteElement.classList.add("autocomplete");
     autocompleteElement.dataset.number = instrFile.number;
-    autocompleteElement.href = `#${encodeURI(instrFile.number)}`;
-    // TODO: Check when opening the url if it has istr number
     autocompleteElement.addEventListener("click", () => {
         showInstr(instrFile);
     });
