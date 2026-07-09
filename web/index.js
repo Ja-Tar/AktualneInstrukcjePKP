@@ -338,7 +338,6 @@ const customAutocomplete = document.getElementById("custom-autocomplete");
 function addAutocompleteElement(instrFile, instrConfigs=null) {
     if (customAutocomplete.querySelector(`[data-number='${instrFile.number}']`)) {return;}
 
-    // TODO: Highlight searched value
     const autocompleteElement = document.createElement("a");
     autocompleteElement.classList.add("autocomplete");
     autocompleteElement.dataset.number = instrFile.number;
@@ -396,13 +395,18 @@ function runAutocomplete(inputEvent, configs, sortedWordNumber) {
     }
     customAutocomplete.textContent = "";
     if (edgeCasesNumberAutocomplete(inputEvent)) {
-        numberAutocomplete(inputEvent.currentTarget.value, configs.allInstrFiles).forEach((item) => {
-            addAutocompleteElement(item);
-        });
+        numberAutocomplete(inputEvent.currentTarget.value, configs.allInstrFiles)
+            .forEach((item) => {
+                addAutocompleteElement(item);
+            });
     } else {
-        wordAutocomplete(inputEvent.currentTarget.value.toLowerCase(), sortedWordNumber).forEach((/**InstrWordNumber*/wordNumber) => {
-            addAutocompleteElement(configs.allInstrFiles.find((instr) => instr.number === wordNumber.number), configs.mainConfig.trackedUrls);
-        });
+        wordAutocomplete(inputEvent.currentTarget.value.toLowerCase(), sortedWordNumber)
+            .forEach((/**InstrWordNumber*/wordNumber) => {
+                addAutocompleteElement(configs.allInstrFiles.find((instr) =>
+                    instr.number === wordNumber.number),
+                    configs.mainConfig.trackedUrls
+                );
+            });
         reorderInstrCategories(configs.mainConfig.trackedUrls);
     }
     customAutocomplete.scroll(0, 0);
