@@ -341,6 +341,7 @@ function addAutocompleteElement(instrFile, instrConfigs=null) {
     const autocompleteElement = document.createElement("a");
     autocompleteElement.classList.add("autocomplete");
     autocompleteElement.dataset.number = instrFile.number;
+    autocompleteElement.href = "#";
     autocompleteElement.addEventListener("click", () => {
         showInstr(instrFile);
     });
