@@ -352,6 +352,8 @@ h5 {
     padding: 0.2em;
     border: 5px solid var(--id-border);
     min-height: 1.3em;
+    align-items: center;
+    display: flex;
 }
 
 #instr-id:empty {
@@ -372,6 +374,43 @@ h5 {
     color: var(--button-text);
     border: var(--button-border) solid 0.2em
 }
+
+/* BADGES */
+
+#instr-badges-box {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-auto-flow: dense;
+    grid-template-columns: repeat(auto-fit, minmax(min-content, 100px));
+    text-align: center;
+    overflow: hidden;
+    font-size: 0.7em;
+}
+
+.badge {
+    border: 0.25em ridge darkgray;
+    padding: 1px 2px;
+    margin: 0 0.2em;
+    background-color: wheat;
+    border-radius: 5px;
+}
+
+#badge-newest {
+    background-color: palegreen;
+    border-color: green;
+}
+
+#badge-wcag {
+    background-color: lightblue;
+    border-color: cadetblue;
+}
+
+#badge-changes-soon {
+    background-color: #ffeb3b;
+    border-color: #ff9d2c;
+}
+
 
 /* MOBILE COMPATIBILITY */
 
