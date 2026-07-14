@@ -583,7 +583,7 @@ const openInstrButton = document.getElementById("open-instr-button");
 function showInstr(instrFile) {
     const resultBox = document.getElementById("result-box");
 
-    const newestInstr = instrFile.versions[0];
+    const {newestInstr, changesSoon} = getNewestInstr(instrFile);
     const instrId = document.getElementById("instr-id");
     instrId.textContent = instrFile.number;
     const instrName = document.getElementById("instr-name");
@@ -596,6 +596,8 @@ function showInstr(instrFile) {
         instrLastUpdate.textContent = `Aktualizacja: ${fromDate.getDate()}.${fromDate.getMonth()}.${fromDate.getFullYear()}`;
     }
     openInstrButton.dataset.href = newestInstr.resource_url;
+    hideBadges();
+    showBadges(newestInstr, changesSoon);
 
     customAutocomplete.classList.add("hidden");
     resultBox.classList.remove("hidden");
@@ -603,6 +605,62 @@ function showInstr(instrFile) {
 }
 
 openInstrButton.addEventListener("click", (evt) => openInstr(evt.target.dataset.href));
+
+/**
+ * @param instrFile {InstrFile}
+ * @returns {{instrVersion: InstrVersion, changesSoon: boolean}}
+ */
+function getNewestInstr(instrFile) {
+    const today = new Date();
+    for (const instrVersion of instrFile.versions) {
+        const fromDate = new Date(instrVersion.from_date);
+        if (fromDate < today) {
+            return {instrVersion: instrVersion, changesSoon: false};
+            // TODO: Finish changesSoon
+        }
+    }
+}
+
+/**
+ * @param newestInstr {InstrVersion}
+ * @param changesSoon {boolean}
+ */
+function showBadges(newestInstr, changesSoon) {
+    // Newest / Old
+    const badgeNewest = document.getElementById("badge-newest");
+    const oldVersion = document.getElementById("badge-old");
+
+    const now = new Date();
+    const toDate = new Date(newestInstr.to_date);
+    if (!isNaN(toDate.valueOf()) && toDate.valueOf() !== 0) {
+        if (now <= toDate) {
+            oldVersion.classList.remove("hidden");
+        } else {
+            badgeNewest.classList.remove("hidden");
+        }
+    } else {
+        badgeNewest.classList.remove("hidden");
+    }
+
+    // WCAG
+    const badgeWCAG = document.getElementById("badge-wcag");
+    if (newestInstr.wcag) {
+        badgeWCAG.classList.remove("hidden");
+    }
+
+    // Changes soon
+    const badgeChangesSoon = document.getElementById("badge-changes-soon");
+    if (changesSoon) {
+        badgeChangesSoon.classList.remove("hidden");
+    }
+}
+
+function hideBadges() {
+    const badges = document.getElementsByClassName("badge");
+    for (let i = 0; i < badges.length; i++) {
+        badges[i].classList.add("hidden");
+    }
+}
 
 /**
  * @param href {string}
