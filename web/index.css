@@ -338,14 +338,24 @@ h5 {
     gap: 0.5em;
 }
 
-#instr-last-update {
-    padding: 0 1em;
+#instr-update-box {
     grid-area: update;
-    font-size: 0.8em;
+    display: flex;
+    flex-direction: column;
     align-self: center;
-    font-weight: bold;
     text-align: center;
+    padding: 0 1em;
+    font-size: 0.8em;
+}
+
+#instr-last-update {
+    font-weight: bold;
     color: #009859;
+}
+
+#instr-new-version {
+    font-weight: bold;
+    color: #ff6700;
 }
 
 #instr-id {
@@ -396,6 +406,7 @@ h5 {
 .badge {
     border: 0.25em ridge darkgray;
     font-weight: bold;
+    font-family: monospace;
     padding: 1px 2px;
     margin: 0 0.2em;
     background-color: wheat;
@@ -407,21 +418,25 @@ h5 {
 #badge-newest {
     background-color: palegreen;
     border-color: green;
+    color: darkgreen;
 }
 
 #badge-old {
     background-color: #ffaf98;
     border-color: orangered;
+    color: darkred;
 }
 
 #badge-wcag {
     background-color: lightblue;
     border-color: cadetblue;
+    color: #273c3e;
 }
 
 #badge-changes-soon {
     background-color: #ffee4f;
     border-color: #ff9d2c;
+    color: #ff6200;
 }
 
 

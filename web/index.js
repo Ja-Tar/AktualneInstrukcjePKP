@@ -583,21 +583,50 @@ const openInstrButton = document.getElementById("open-instr-button");
 function showInstr(instrFile) {
     const resultBox = document.getElementById("result-box");
 
-    const {newestInstr, changesSoon} = getNewestInstr(instrFile);
+    const {instrVersion, changesDate} = getNewestInstr(instrFile);
     const instrId = document.getElementById("instr-id");
     instrId.textContent = instrFile.number;
     const instrName = document.getElementById("instr-name");
-    instrName.textContent = newestInstr.name;
+    instrName.textContent = instrVersion.name;
+    const instrUpdateBox = document.getElementById("instr-update-box");
     const instrLastUpdate = document.getElementById("instr-last-update");
-    const fromDate = new Date(newestInstr.from_date);
-    if (isNaN(fromDate.valueOf()) || fromDate.valueOf() === 0) {
-        instrLastUpdate.textContent = "Aktualna";
+    const instrNewVersion = document.getElementById("instr-new-version");
+    const hidden = {fromDate: false, toDate: false};
+    /** @type {Intl.DateTimeFormatOptions} */
+    const dateOptions = {day:"2-digit", month:"2-digit", year:"numeric"};
+    const fromDate = new Date(instrVersion.from_date);
+    if (!isNaN(fromDate.valueOf()) && fromDate.valueOf() !== 0) {
+        instrLastUpdate.textContent = `od: ${fromDate.toLocaleDateString("pl-PL", dateOptions)}`;
     } else {
-        instrLastUpdate.textContent = `Aktualizacja: ${fromDate.getDate()}.${fromDate.getMonth()}.${fromDate.getFullYear()}`;
+        hidden.fromDate = true;
     }
-    openInstrButton.dataset.href = newestInstr.resource_url;
+
+    let toDate = new Date(instrVersion.to_date);
+    if (changesDate) {
+        toDate = changesDate;
+    }
+    if (!isNaN(toDate.valueOf()) && toDate.valueOf() !== 0) {
+        instrNewVersion.textContent = `do: ${toDate.toLocaleDateString("pl-PL", dateOptions)}`;
+    } else {
+        hidden.toDate = true;
+    }
+
+    if (hidden.fromDate && hidden.toDate) {
+        instrUpdateBox.classList.add("hidden");
+    } else {
+        instrUpdateBox.classList.remove("hidden");
+        instrLastUpdate.classList.remove("hidden");
+        instrNewVersion.classList.remove("hidden");
+        if (hidden.fromDate) {
+            instrLastUpdate.classList.add("hidden");
+        } else if (hidden.toDate) {
+            instrNewVersion.classList.add("hidden");
+        }
+    }
+
+    openInstrButton.dataset.href = instrVersion.resource_url;
     hideBadges();
-    showBadges(newestInstr, changesSoon);
+    showBadges(instrVersion);
 
     customAutocomplete.classList.add("hidden");
     resultBox.classList.remove("hidden");
@@ -608,50 +637,41 @@ openInstrButton.addEventListener("click", (evt) => openInstr(evt.target.dataset.
 
 /**
  * @param instrFile {InstrFile}
- * @returns {{instrVersion: InstrVersion, changesSoon: boolean}}
+ * @returns {{instrVersion: InstrVersion, changesDate: ?Date}}
  */
 function getNewestInstr(instrFile) {
     const today = new Date();
-    for (const instrVersion of instrFile.versions) {
+    let changesDate = null;
+    for (let i = 0; i < instrFile.versions.length; i++) {
+        const instrVersion = instrFile.versions[i];
         const fromDate = new Date(instrVersion.from_date);
-        if (fromDate < today) {
-            return {instrVersion: instrVersion, changesSoon: false};
-            // TODO: Finish changesSoon
+        if (fromDate < today || isNaN(fromDate.valueOf()) || fromDate.valueOf() === 0) {
+            return {instrVersion, changesDate};
+        }
+        if (fromDate >= today) {
+            changesDate = fromDate;
         }
     }
 }
 
 /**
  * @param newestInstr {InstrVersion}
- * @param changesSoon {boolean}
  */
-function showBadges(newestInstr, changesSoon) {
+function showBadges(newestInstr) {
     // Newest / Old
     const badgeNewest = document.getElementById("badge-newest");
     const oldVersion = document.getElementById("badge-old");
 
     const now = new Date();
     const toDate = new Date(newestInstr.to_date);
-    if (!isNaN(toDate.valueOf()) && toDate.valueOf() !== 0) {
-        if (now <= toDate) {
-            oldVersion.classList.remove("hidden");
-        } else {
-            badgeNewest.classList.remove("hidden");
-        }
-    } else {
-        badgeNewest.classList.remove("hidden");
+    if (!isNaN(toDate.valueOf()) && toDate.valueOf() !== 0 && now <= toDate) {
+        oldVersion.classList.remove("hidden");
     }
 
     // WCAG
     const badgeWCAG = document.getElementById("badge-wcag");
     if (newestInstr.wcag) {
         badgeWCAG.classList.remove("hidden");
-    }
-
-    // Changes soon
-    const badgeChangesSoon = document.getElementById("badge-changes-soon");
-    if (changesSoon) {
-        badgeChangesSoon.classList.remove("hidden");
     }
 }
 
