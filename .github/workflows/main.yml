@@ -33,6 +33,6 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: "Update data from getData.py"
-          file_pattern: "allFiles/*
+          file_pattern: "allFiles/*"
           branch: main
           commit_author: GitHub Actions <actions@github.com>
