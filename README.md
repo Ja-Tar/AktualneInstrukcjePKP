@@ -1,4 +1,6 @@
 # Wyszukiwarka instrukcji PKP
+<img height="400" alt="obraz" src="https://github.com/user-attachments/assets/fb6e9968-a535-4130-90bc-aa7898ecaac5" />
+
 ---
 # PL
 ## O projekcie
