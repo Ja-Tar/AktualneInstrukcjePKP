@@ -540,13 +540,13 @@ function wordAutocomplete(value, sortedWordNumber) {
 
 // === SHORTCUTS ===
 
-searchField.addEventListener("keypress", function(event) {
+searchField.addEventListener("keypress", event => {
     if (event.key === "Enter") {
         showFirstResult();
     }
 });
 
-customAutocomplete.addEventListener("keydown", function(event) {
+customAutocomplete.addEventListener("keydown", event => {
     if (event.key === "Backspace") {
         backspaceInInput(event);
     }
@@ -584,6 +584,7 @@ function showInstr(instrFile) {
     const resultBox = document.getElementById("result-box");
 
     const {instrVersion, changesDate} = getNewestInstr(instrFile);
+    if (instrVersion === null) {return}
     const instrId = document.getElementById("instr-id");
     instrId.textContent = instrFile.number;
     const instrName = document.getElementById("instr-name");
@@ -637,7 +638,7 @@ openInstrButton.addEventListener("click", (evt) => openInstr(evt.target.dataset.
 
 /**
  * @param instrFile {InstrFile}
- * @returns {{instrVersion: InstrVersion, changesDate: ?Date}}
+ * @returns {{instrVersion: ?InstrVersion, changesDate: ?Date}}
  */
 function getNewestInstr(instrFile) {
     const today = new Date();
@@ -652,6 +653,7 @@ function getNewestInstr(instrFile) {
             changesDate = fromDate;
         }
     }
+    return {instrVersion: null, changesDate: null};
 }
 
 /**
@@ -659,7 +661,6 @@ function getNewestInstr(instrFile) {
  */
 function showBadges(newestInstr) {
     // Newest / Old
-    const badgeNewest = document.getElementById("badge-newest");
     const oldVersion = document.getElementById("badge-old");
 
     const now = new Date();
@@ -689,7 +690,7 @@ function openInNewTab(href) {
     Object.assign(document.createElement('a'), {
         target: '_blank',
         rel: 'noopener noreferrer',
-        href: href,
+        href,
     }).click();
 }
 
@@ -706,7 +707,7 @@ function openInstr(resourceUrl) {
 // ==== LOAD WEBSITE ====
 
 loadSettings();
-getFilesInfo().then(async (configs) => {
+getFilesInfo().then((configs) => {
     //console.log(configs.allInstrFiles);
     loadStatistics(configs.allInstrFiles);
     if (!searchField.matches(':focus')) {
