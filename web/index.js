@@ -273,7 +273,7 @@ async function runHints() {
     hintsIntervalId = Math.floor(Math.random() * 10000);
     const firstId = hintsIntervalId;
     //console.log(`${firstId} - ${hintsIntervalId}`);
-    while (hintsIntervalId === firstId) {
+    while (hintsIntervalId === firstId) { // skipcq: JS-0092
         for (const hint of hints) {
             if (Math.random() > 0.5) {continue;}
             await wait(1000);
