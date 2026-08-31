@@ -1,0 +1,17 @@
+﻿{
+  "$schema": "main.schema.json",
+  "trackedUrls": [
+    {
+      "url": "https://www.plk-sa.pl/klienci-i-kontrahenci/akty-prawne-i-przepisy/instrukcje-pkp-polskich-linii-kolejowych-sa/ruch-i-przewozy-kolejowe",
+      "fileName": "ruch-i-przewozy-kolejowe",
+      "categoryName": "Ruch i przewozy kolejowe",
+      "instrNrStartsWith": "Ir"
+    },
+    {
+      "url": "https://www.plk-sa.pl/klienci-i-kontrahenci/akty-prawne-i-przepisy/instrukcje-pkp-polskich-linii-kolejowych-sa/automatyka-i-telekomunikacja",
+      "fileName": "automatyka-i-telekomunikacja",
+      "categoryName": "Automatyka i telekomunikacja",
+      "instrNrStartsWith": "Ie"
+    }
+  ]
+}
