@@ -474,25 +474,25 @@ function searchAlgorithm(value, sortedObjects, searchedProperty) {
     }
 
     /**
-     * @param value {string}
-     * @param matchIndex {number}
+     * @param str {string}
+     * @param _matchIndex {number}
      * @returns {Object[]}
      */
-    function farmMatches(value, matchIndex) {
+    function farmMatches(str, _matchIndex) {
         /** @type {Object[]} */
-        const matches = [];
+        const _matches = [];
 
-        for (let i = matchIndex + 1; i < sortedObjects.length; i++) {
-            if (!sortedObjects[i][searchedProperty].startsWith(value)) {break;}
-            matches.push(sortedObjects[i]);
+        for (let i = _matchIndex + 1; i < sortedObjects.length; i++) {
+            if (!sortedObjects[i][searchedProperty].startsWith(str)) {break;}
+            _matches.push(sortedObjects[i]);
         }
 
-        for (let j = matchIndex - 1; j >= 0; j--) {
-            if (!sortedObjects[j][searchedProperty].startsWith(value)) {break;}
-            matches.push(sortedObjects[j]);
+        for (let j = _matchIndex - 1; j >= 0; j--) {
+            if (!sortedObjects[j][searchedProperty].startsWith(str)) {break;}
+            _matches.push(sortedObjects[j]);
         }
 
-        return matches;
+        return _matches;
     }
 }
 
