@@ -393,13 +393,14 @@ function runAutocomplete(inputEvent, configs, sortedWordNumber) {
         return;
     }
     customAutocomplete.textContent = "";
-    if (edgeCasesNumberAutocomplete(inputEvent)) {
-        numberAutocomplete(inputEvent.currentTarget.value, configs.allInstrFiles)
+    let {number, value} = edgeCasesNumberAutocomplete(inputEvent);
+    if (number) {
+        numberAutocomplete(value, configs.allInstrFiles)
             .forEach((item) => {
                 addAutocompleteElement(item);
             });
     } else {
-        wordAutocomplete(inputEvent.currentTarget.value.toLowerCase(), sortedWordNumber)
+        wordAutocomplete(value.toLowerCase(), sortedWordNumber)
             .forEach((/**InstrWordNumber*/wordNumber) => {
                 addAutocompleteElement(configs.allInstrFiles.find((instr) =>
                     instr.number === wordNumber.number),
@@ -427,21 +428,26 @@ function reorderInstrCategories(trackedUrls) {
 
 /**
  * @param inputEvent {InputEvent}
+ * @return {{number: boolean, value: string}}
  */
 function edgeCasesNumberAutocomplete(inputEvent) {
     let value = inputEvent.currentTarget.value;
-    const regexNumber = /^[Ii][a-z][ -]\d\w*(?:\.\d*| .*|)$/gm;
-    if (regexNumber.test(value)) {
+    const regexNumber = /^[Ii][a-z](?<normal>[ -]|(?<short>\d))\w*(?:\.\d*| .*|)$/gm;
+    const re = regexNumber.exec(value)
+    console.log(re)
+    if (re) {
         if (value.startsWith("i")) {
             value = "I" + value.slice(1);
         }
         if (value.at(2) === " ") {
             value = value.slice(0, 2) + "-" + value.slice(3);
         }
-        inputEvent.currentTarget.value = value;
-        return true;
+        if (re.groups.short) {
+            value = value.slice(0, 2) + "-" + value.slice(2);
+        }
+        return {number: true, value};
     }
-    return false;
+    return {number: false, value};
 }
 
 /**
