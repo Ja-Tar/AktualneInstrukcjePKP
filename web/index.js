@@ -653,10 +653,11 @@ openInstrButton.addEventListener("click", (evt) => openInstr(evt.target.dataset.
 noWcagButton.addEventListener("click", (evt) => openInstr(evt.target.dataset.href));
 
 /**
+ * Newest and older instructions (without future ones)
  * @param instrFile {InstrFile}
- * @returns {{instrVersion: ?InstrVersion, changesDate: ?Date, noWcagVersion: ?InstrVersion}}
+ * @return {{instrVersion: (InstrVersion|null), changesDate: (Date|null)}[]}
  */
-function getNewestInstr(instrFile) {
+function getInstr(instrFile) {
     const today = new Date();
     /** @type {{instrVersion: ?InstrVersion, changesDate: ?Date}[]} */
     const toReturn = [];
@@ -671,19 +672,42 @@ function getNewestInstr(instrFile) {
             changesDate = fromDate;
         }
     }
+    return toReturn;
+}
+
+/**
+ * @param instrFile {InstrFile}
+ * @returns {{instrVersion: ?InstrVersion, changesDate: ?Date, noWcagVersion: ?InstrVersion}}
+ */
+function getNewestInstr(instrFile) {
+    const toReturn = getInstr(instrFile);
     if (toReturn.length > 0) {
+        console.log(toReturn);
         if (toReturn.length === 2) {
             const wcagVersionIndex = toReturn.findIndex(
                 (element) => element.instrVersion.wcag === true);
-
-            return {instrVersion: toReturn[wcagVersionIndex].instrVersion,
-                changesDate: toReturn[wcagVersionIndex].changesDate,
-                noWcagVersion: toReturn[Math.abs(wcagVersionIndex - 1)].instrVersion
-            };
+            const wcag = toReturn[wcagVersionIndex];
+            const noWcag = toReturn[Math.abs(wcagVersionIndex - 1)]
+            if (sameInstr(wcag.instrVersion,noWcag.instrVersion)) {
+                return {instrVersion: wcag.instrVersion,
+                    changesDate: wcag.changesDate,
+                    noWcagVersion: noWcag.instrVersion
+                };
+            }
         }
         return {instrVersion: toReturn[0].instrVersion, changesDate: toReturn[0].changesDate, noWcagVersion: null};
     }
     return {instrVersion: null, changesDate: null, noWcagVersion: null};
+}
+
+/**
+ *
+ * @param vA {InstrVersion}
+ * @param vB {InstrVersion}
+ */
+function sameInstr(vA, vB) {
+    return (vA.from_date !== null && vA.from_date === vB.from_date) ||
+        (vA.to_date !== null && vA.to_date === vB.to_date);
 }
 
 /**
