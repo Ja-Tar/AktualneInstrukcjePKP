@@ -12,9 +12,12 @@
     --autocomplete-border: dimgray;
     --hover: antiquewhite;
     --id-border: black;
-    --button-background: #45ff8f;
-    --button-border: #1dc36a;
-    --button-text: darkslategray;
+    --button-background: #dcdcdc;
+    --button-border: #acacac;
+    --button-text: #494949;
+    --button-open-background: #45ff8f;
+    --button-open-border: #1dc36a;
+    --button-open-text: darkslategray;
 
     --filter-secondary: invert(42%) sepia(42%) saturate(4697%) hue-rotate(213deg) brightness(89%) contrast(97%);
 }
@@ -33,9 +36,12 @@
     --autocomplete-border: lightgray;
     --hover: #00434c;
     --id-border: steelblue;
-    --button-background: #048e6e;
-    --button-border: #2eef88;
-    --button-text: seashell;
+    --button-background: #616161;
+    --button-border: #f1f1f1;
+    --button-text: #ffffff;
+    --button-open-background: #048e6e;
+    --button-open-border: #2eef88;
+    --button-open-text: seashell;
 
     --filter-secondary: invert(50%) sepia(89%) saturate(3288%) hue-rotate(191deg) brightness(100%) contrast(101%);
 }

@@ -375,19 +375,27 @@ h5 {
     grid-area: badges;
 }
 
-#open-instr-button {
-    margin: 0.5em 0;
+.button {
+    margin: 0.1em 0;
     padding: 0.2em 0.7em;
     background-color: var(--button-background);
-    font-size: 1.15em;
+    font-size: 0.8em;
     border-radius: 0.8em;
-    font-weight: bold;
     color: var(--button-text);
     border: var(--button-border) outset 0.2em
 }
 
-#open-instr-button:active {
+.button:active {
     border-style: inset;
+}
+
+#open-instr-button {
+    margin: 0.5em 0;
+    background-color: var(--button-open-background);
+    font-size: 1.15em;
+    font-weight: bold;
+    color: var(--button-open-text);
+    border: var(--button-open-border) outset 0.2em
 }
 
 /* BADGES */
