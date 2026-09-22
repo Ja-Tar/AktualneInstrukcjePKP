@@ -582,6 +582,7 @@ function showAutocomplete() {
 // === INSTRUCTION DETAILS ===
 
 const openInstrButton = document.getElementById("open-instr-button");
+const noWcagButton = document.getElementById("open-nowcag-button");
 
 /**
  * @param instrFile {InstrFile}
@@ -589,7 +590,8 @@ const openInstrButton = document.getElementById("open-instr-button");
 function showInstr(instrFile) {
     const resultBox = document.getElementById("result-box");
 
-    const {instrVersion, changesDate} = getNewestInstr(instrFile);
+    const {instrVersion, changesDate, noWcagVersion} = getNewestInstr(instrFile);
+    console.log(noWcagVersion);
     if (instrVersion === null) {return}
     const instrId = document.getElementById("instr-id");
     instrId.textContent = instrFile.number;
@@ -632,6 +634,13 @@ function showInstr(instrFile) {
     }
 
     openInstrButton.dataset.href = instrVersion.resource_url;
+    if (noWcagVersion) {
+        noWcagButton.classList.remove("hidden");
+        noWcagButton.dataset.href = noWcagVersion.resource_url;
+    } else {
+        noWcagButton.classList.add("hidden");
+    }
+
     hideBadges();
     showBadges(instrVersion);
 
@@ -641,25 +650,40 @@ function showInstr(instrFile) {
 }
 
 openInstrButton.addEventListener("click", (evt) => openInstr(evt.target.dataset.href));
+noWcagButton.addEventListener("click", (evt) => openInstr(evt.target.dataset.href));
 
 /**
  * @param instrFile {InstrFile}
- * @returns {{instrVersion: ?InstrVersion, changesDate: ?Date}}
+ * @returns {{instrVersion: ?InstrVersion, changesDate: ?Date, noWcagVersion: ?InstrVersion}}
  */
 function getNewestInstr(instrFile) {
     const today = new Date();
+    /** @type {{instrVersion: ?InstrVersion, changesDate: ?Date}[]} */
+    const toReturn = [];
     let changesDate = null;
     for (let i = 0; i < instrFile.versions.length; i++) {
         const instrVersion = instrFile.versions[i];
         const fromDate = new Date(instrVersion.from_date);
         if (fromDate < today || isNaN(fromDate.valueOf()) || fromDate.valueOf() === 0) {
-            return {instrVersion, changesDate};
+            toReturn.push({instrVersion, changesDate});
         }
         if (fromDate >= today) {
             changesDate = fromDate;
         }
     }
-    return {instrVersion: null, changesDate: null};
+    if (toReturn.length > 0) {
+        if (toReturn.length === 2) {
+            const wcagVersionIndex = toReturn.findIndex(
+                (element) => element.instrVersion.wcag === true);
+
+            return {instrVersion: toReturn[wcagVersionIndex].instrVersion,
+                changesDate: toReturn[wcagVersionIndex].changesDate,
+                noWcagVersion: toReturn[Math.abs(wcagVersionIndex - 1)].instrVersion
+            };
+        }
+        return {instrVersion: toReturn[0].instrVersion, changesDate: toReturn[0].changesDate, noWcagVersion: null};
+    }
+    return {instrVersion: null, changesDate: null, noWcagVersion: null};
 }
 
 /**
