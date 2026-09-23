@@ -110,8 +110,11 @@ themeButton.addEventListener("change", () => {
 
 // ==== FETCH AND LOAD DATA ====
 
-// TODO: Change to prod url
-const webOrigin = "https://rewrite-noai.instrukcje-pkp.pages.dev"; //window.location.origin;
+let webOrigin = window.location.origin;
+if (webOrigin.startsWith("http://localhost")) {
+    console.debug("LOCALHOST webOrigin");
+    webOrigin = "https://instrukcje-pkp.pages.dev"
+}
 
 /**
  * @param url {string}
