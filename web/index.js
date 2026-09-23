@@ -681,7 +681,6 @@ function getInstr(instrFile) {
 function getNewestInstr(instrFile) {
     const toReturn = getInstr(instrFile);
     if (toReturn.length > 0) {
-        console.log(toReturn);
         if (toReturn.length === 2) {
             const wcagVersionIndex = toReturn.findIndex(
                 (element) => element.instrVersion.wcag === true);
