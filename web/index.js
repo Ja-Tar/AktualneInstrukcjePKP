@@ -592,7 +592,7 @@ const noWcagButton = document.getElementById("open-nowcag-button");
 function showInstr(instrFile) {
     const resultBox = document.getElementById("result-box");
 
-    const {instrVersion, changesDate, noWcagVersion} = getNewestInstr(instrFile);
+    const {instrVersion, changesDate, noWcagVersion} = checkForWCAG(getInstr(instrFile).slice(0, 2));
     console.debug(instrFile, changesDate, noWcagVersion);
     if (instrVersion === null) {return}
     const instrId = document.getElementById("instr-id");
@@ -678,25 +678,22 @@ function getInstr(instrFile) {
 }
 
 /**
- * @param instrFile {InstrFile}
+ * @param instrVersions {{instrVersion: ?InstrVersion, changesDate: ?Date}[]}
  * @returns {{instrVersion: ?InstrVersion, changesDate: ?Date, noWcagVersion: ?InstrVersion}}
  */
-function getNewestInstr(instrFile) {
-    const toReturn = getInstr(instrFile);
-    if (toReturn.length > 0) {
-        if (toReturn.length === 2) {
-            const wcagVersionIndex = toReturn.findIndex(
-                (element) => element.instrVersion.wcag === true);
-            const wcag = toReturn[wcagVersionIndex];
-            const noWcag = toReturn[Math.abs(wcagVersionIndex - 1)]
-            if (sameInstr(wcag.instrVersion,noWcag.instrVersion)) {
-                return {instrVersion: wcag.instrVersion,
-                    changesDate: wcag.changesDate,
-                    noWcagVersion: noWcag.instrVersion
-                };
-            }
+function checkForWCAG(instrVersions) {
+    if (instrVersions.length > 0) {
+        const wcagVersionIndex = instrVersions.findIndex(
+            (element) => element.instrVersion.wcag === true);
+        const wcag = instrVersions[wcagVersionIndex];
+        const noWcag = instrVersions[Math.abs(wcagVersionIndex - 1)]
+        if (sameInstr(wcag.instrVersion,noWcag.instrVersion)) {
+            return {instrVersion: wcag.instrVersion,
+                changesDate: wcag.changesDate,
+                noWcagVersion: noWcag.instrVersion
+            };
         }
-        return {instrVersion: toReturn[0].instrVersion, changesDate: toReturn[0].changesDate, noWcagVersion: null};
+        return {instrVersion: instrVersions[0].instrVersion, changesDate: instrVersions[0].changesDate, noWcagVersion: null};
     }
     return {instrVersion: null, changesDate: null, noWcagVersion: null};
 }
