@@ -393,7 +393,7 @@ function runAutocomplete(inputEvent, configs, sortedWordNumber) {
         return;
     }
     customAutocomplete.textContent = "";
-    let {number, value} = edgeCasesNumberAutocomplete(inputEvent);
+    const {number, value} = edgeCasesNumberAutocomplete(inputEvent);
     if (number) {
         numberAutocomplete(value, configs.allInstrFiles)
             .forEach((item) => {
@@ -434,16 +434,15 @@ function edgeCasesNumberAutocomplete(inputEvent) {
     let value = inputEvent.currentTarget.value;
     const regexNumber = /^[Ii][a-z](?<normal>[ -]|(?<short>\d))\w*(?:\.\d*| .*|)$/gm;
     const re = regexNumber.exec(value)
-    console.log(re)
     if (re) {
         if (value.startsWith("i")) {
-            value = "I" + value.slice(1);
+            value = `I${value.slice(1)}`;
         }
         if (value.at(2) === " ") {
-            value = value.slice(0, 2) + "-" + value.slice(3);
+            value = `${value.slice(0, 2)}-${value.slice(3)}`;
         }
         if (re.groups.short) {
-            value = value.slice(0, 2) + "-" + value.slice(2);
+            value = `${value.slice(0, 2)}-${value.slice(2)}`;
         }
         return {number: true, value};
     }
@@ -591,7 +590,7 @@ function showInstr(instrFile) {
     const resultBox = document.getElementById("result-box");
 
     const {instrVersion, changesDate, noWcagVersion} = getNewestInstr(instrFile);
-    console.log(noWcagVersion);
+    console.debug(instrFile, changesDate, noWcagVersion);
     if (instrVersion === null) {return}
     const instrId = document.getElementById("instr-id");
     instrId.textContent = instrFile.number;
