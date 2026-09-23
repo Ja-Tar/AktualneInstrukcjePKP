@@ -110,8 +110,11 @@ themeButton.addEventListener("change", () => {
 
 // ==== FETCH AND LOAD DATA ====
 
-// TODO: Change to prod url
-const webOrigin = "https://rewrite-noai.instrukcje-pkp.pages.dev"; //window.location.origin;
+let webOrigin = window.location.origin;
+if (webOrigin.startsWith("http://localhost")) {
+    console.debug("LOCALHOST webOrigin");
+    webOrigin = "https://instrukcje-pkp.pages.dev"
+}
 
 /**
  * @param url {string}
@@ -393,13 +396,14 @@ function runAutocomplete(inputEvent, configs, sortedWordNumber) {
         return;
     }
     customAutocomplete.textContent = "";
-    if (edgeCasesNumberAutocomplete(inputEvent)) {
-        numberAutocomplete(inputEvent.currentTarget.value, configs.allInstrFiles)
+    const {number, value} = edgeCasesNumberAutocomplete(inputEvent);
+    if (number) {
+        numberAutocomplete(value, configs.allInstrFiles)
             .forEach((item) => {
                 addAutocompleteElement(item);
             });
     } else {
-        wordAutocomplete(inputEvent.currentTarget.value.toLowerCase(), sortedWordNumber)
+        wordAutocomplete(value.toLowerCase(), sortedWordNumber)
             .forEach((/**InstrWordNumber*/wordNumber) => {
                 addAutocompleteElement(configs.allInstrFiles.find((instr) =>
                     instr.number === wordNumber.number),
@@ -427,21 +431,25 @@ function reorderInstrCategories(trackedUrls) {
 
 /**
  * @param inputEvent {InputEvent}
+ * @return {{number: boolean, value: string}}
  */
 function edgeCasesNumberAutocomplete(inputEvent) {
     let value = inputEvent.currentTarget.value;
-    const regexNumber = /^[Ii][a-z][ -]\d\w*(?:\.\d*| .*|)$/gm;
-    if (regexNumber.test(value)) {
+    const regexNumber = /^[Ii][a-z](?<normal>[ -]|(?<short>\d))\w*(?:\.\d*| .*|)$/gm;
+    const re = regexNumber.exec(value)
+    if (re) {
         if (value.startsWith("i")) {
-            value = "I" + value.slice(1);
+            value = `I${value.slice(1)}`;
         }
         if (value.at(2) === " ") {
-            value = value.slice(0, 2) + "-" + value.slice(3);
+            value = `${value.slice(0, 2)}-${value.slice(3)}`;
         }
-        inputEvent.currentTarget.value = value;
-        return true;
+        if (re.groups.short) {
+            value = `${value.slice(0, 2)}-${value.slice(2)}`;
+        }
+        return {number: true, value};
     }
-    return false;
+    return {number: false, value};
 }
 
 /**
@@ -576,6 +584,7 @@ function showAutocomplete() {
 // === INSTRUCTION DETAILS ===
 
 const openInstrButton = document.getElementById("open-instr-button");
+const noWcagButton = document.getElementById("open-nowcag-button");
 
 /**
  * @param instrFile {InstrFile}
@@ -583,7 +592,8 @@ const openInstrButton = document.getElementById("open-instr-button");
 function showInstr(instrFile) {
     const resultBox = document.getElementById("result-box");
 
-    const {instrVersion, changesDate} = getNewestInstr(instrFile);
+    const {instrVersion, changesDate, noWcagVersion} = getNewestInstr(instrFile);
+    console.debug(instrFile, changesDate, noWcagVersion);
     if (instrVersion === null) {return}
     const instrId = document.getElementById("instr-id");
     instrId.textContent = instrFile.number;
@@ -626,6 +636,13 @@ function showInstr(instrFile) {
     }
 
     openInstrButton.dataset.href = instrVersion.resource_url;
+    if (noWcagVersion) {
+        noWcagButton.classList.remove("hidden");
+        noWcagButton.dataset.href = noWcagVersion.resource_url;
+    } else {
+        noWcagButton.classList.add("hidden");
+    }
+
     hideBadges();
     showBadges(instrVersion);
 
@@ -635,25 +652,63 @@ function showInstr(instrFile) {
 }
 
 openInstrButton.addEventListener("click", (evt) => openInstr(evt.target.dataset.href));
+noWcagButton.addEventListener("click", (evt) => openInstr(evt.target.dataset.href));
 
 /**
+ * Newest and older instructions (without future ones)
  * @param instrFile {InstrFile}
- * @returns {{instrVersion: ?InstrVersion, changesDate: ?Date}}
+ * @return {{instrVersion: (InstrVersion|null), changesDate: (Date|null)}[]}
  */
-function getNewestInstr(instrFile) {
+function getInstr(instrFile) {
     const today = new Date();
+    /** @type {{instrVersion: ?InstrVersion, changesDate: ?Date}[]} */
+    const toReturn = [];
     let changesDate = null;
     for (let i = 0; i < instrFile.versions.length; i++) {
         const instrVersion = instrFile.versions[i];
         const fromDate = new Date(instrVersion.from_date);
         if (fromDate < today || isNaN(fromDate.valueOf()) || fromDate.valueOf() === 0) {
-            return {instrVersion, changesDate};
+            toReturn.push({instrVersion, changesDate});
         }
         if (fromDate >= today) {
             changesDate = fromDate;
         }
     }
-    return {instrVersion: null, changesDate: null};
+    return toReturn;
+}
+
+/**
+ * @param instrFile {InstrFile}
+ * @returns {{instrVersion: ?InstrVersion, changesDate: ?Date, noWcagVersion: ?InstrVersion}}
+ */
+function getNewestInstr(instrFile) {
+    const toReturn = getInstr(instrFile);
+    if (toReturn.length > 0) {
+        if (toReturn.length === 2) {
+            const wcagVersionIndex = toReturn.findIndex(
+                (element) => element.instrVersion.wcag === true);
+            const wcag = toReturn[wcagVersionIndex];
+            const noWcag = toReturn[Math.abs(wcagVersionIndex - 1)]
+            if (sameInstr(wcag.instrVersion,noWcag.instrVersion)) {
+                return {instrVersion: wcag.instrVersion,
+                    changesDate: wcag.changesDate,
+                    noWcagVersion: noWcag.instrVersion
+                };
+            }
+        }
+        return {instrVersion: toReturn[0].instrVersion, changesDate: toReturn[0].changesDate, noWcagVersion: null};
+    }
+    return {instrVersion: null, changesDate: null, noWcagVersion: null};
+}
+
+/**
+ *
+ * @param vA {InstrVersion}
+ * @param vB {InstrVersion}
+ */
+function sameInstr(vA, vB) {
+    return (vA.from_date !== null && vA.from_date === vB.from_date) ||
+        (vA.to_date !== null && vA.to_date === vB.to_date);
 }
 
 /**
