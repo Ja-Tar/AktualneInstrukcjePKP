@@ -592,7 +592,7 @@ const noWcagButton = document.getElementById("open-nowcag-button");
 function showInstr(instrFile) {
     const resultBox = document.getElementById("result-box");
 
-    const {instrVersion, changesDate, noWcagVersion} = getNewestInstr(instrFile);
+    const {instrVersion, changesDate, noWcagVersion} = checkForWCAG(getInstr(instrFile).slice(0, 2));
     console.debug(instrFile, changesDate, noWcagVersion);
     if (instrVersion === null) {return}
     const instrId = document.getElementById("instr-id");
@@ -678,25 +678,26 @@ function getInstr(instrFile) {
 }
 
 /**
- * @param instrFile {InstrFile}
+ * @param instrVersions {{instrVersion: ?InstrVersion, changesDate: ?Date}[]}
  * @returns {{instrVersion: ?InstrVersion, changesDate: ?Date, noWcagVersion: ?InstrVersion}}
  */
-function getNewestInstr(instrFile) {
-    const toReturn = getInstr(instrFile);
-    if (toReturn.length > 0) {
-        if (toReturn.length === 2) {
-            const wcagVersionIndex = toReturn.findIndex(
+function checkForWCAG(instrVersions) {
+    if (instrVersions.length > 0) {
+        if (instrVersions.length > 1) {
+            const wcagVersionIndex = instrVersions.findIndex(
                 (element) => element.instrVersion.wcag === true);
-            const wcag = toReturn[wcagVersionIndex];
-            const noWcag = toReturn[Math.abs(wcagVersionIndex - 1)]
-            if (sameInstr(wcag.instrVersion,noWcag.instrVersion)) {
-                return {instrVersion: wcag.instrVersion,
-                    changesDate: wcag.changesDate,
-                    noWcagVersion: noWcag.instrVersion
-                };
+            const wcag = instrVersions[wcagVersionIndex];
+            if (wcag) {
+                const noWcag = instrVersions[Math.abs(wcagVersionIndex - 1)]
+                if (sameInstr(wcag.instrVersion,noWcag.instrVersion)) {
+                    return {instrVersion: wcag.instrVersion,
+                        changesDate: wcag.changesDate,
+                        noWcagVersion: noWcag.instrVersion
+                    };
+                }
             }
         }
-        return {instrVersion: toReturn[0].instrVersion, changesDate: toReturn[0].changesDate, noWcagVersion: null};
+        return {instrVersion: instrVersions[0].instrVersion, changesDate: instrVersions[0].changesDate, noWcagVersion: null};
     }
     return {instrVersion: null, changesDate: null, noWcagVersion: null};
 }
@@ -720,7 +721,7 @@ function showBadges(newestInstr) {
 
     const now = new Date();
     const toDate = new Date(newestInstr.to_date);
-    if (!isNaN(toDate.valueOf()) && toDate.valueOf() !== 0 && now <= toDate) {
+    if (!isNaN(toDate.valueOf()) && toDate.valueOf() !== 0 && now >= toDate) {
         oldVersion.classList.remove("hidden");
     }
 
