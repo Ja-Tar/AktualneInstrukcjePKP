@@ -683,15 +683,19 @@ function getInstr(instrFile) {
  */
 function checkForWCAG(instrVersions) {
     if (instrVersions.length > 0) {
-        const wcagVersionIndex = instrVersions.findIndex(
-            (element) => element.instrVersion.wcag === true);
-        const wcag = instrVersions[wcagVersionIndex];
-        const noWcag = instrVersions[Math.abs(wcagVersionIndex - 1)]
-        if (sameInstr(wcag.instrVersion,noWcag.instrVersion)) {
-            return {instrVersion: wcag.instrVersion,
-                changesDate: wcag.changesDate,
-                noWcagVersion: noWcag.instrVersion
-            };
+        if (instrVersions.length > 1) {
+            const wcagVersionIndex = instrVersions.findIndex(
+                (element) => element.instrVersion.wcag === true);
+            const wcag = instrVersions[wcagVersionIndex];
+            if (wcag) {
+                const noWcag = instrVersions[Math.abs(wcagVersionIndex - 1)]
+                if (sameInstr(wcag.instrVersion,noWcag.instrVersion)) {
+                    return {instrVersion: wcag.instrVersion,
+                        changesDate: wcag.changesDate,
+                        noWcagVersion: noWcag.instrVersion
+                    };
+                }
+            }
         }
         return {instrVersion: instrVersions[0].instrVersion, changesDate: instrVersions[0].changesDate, noWcagVersion: null};
     }
@@ -717,7 +721,7 @@ function showBadges(newestInstr) {
 
     const now = new Date();
     const toDate = new Date(newestInstr.to_date);
-    if (!isNaN(toDate.valueOf()) && toDate.valueOf() !== 0 && now <= toDate) {
+    if (!isNaN(toDate.valueOf()) && toDate.valueOf() !== 0 && now >= toDate) {
         oldVersion.classList.remove("hidden");
     }
 
